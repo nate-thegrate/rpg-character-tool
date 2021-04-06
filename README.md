@@ -42,7 +42,7 @@ Making a character in Call of Cthulhu 7th edition is a pretty lengthy process:
 
 1. Determine your characteristics: STR, CON, SIZ, DEX, APP, INT, POW, and EDU
 2. Pick an age and apply its effects
-3. Use your characteristics to determine Sanity Points, Magic Points, Luck, Hit Points, Move Rate
+3. Use your characteristics to determine Sanity Points, Magic Points, Luck, Hit Points, and Move Rate
 4. Choose an occupation based on your characteristics
 5. Determine how many Skill Points you can allocate based on your occupation and Intelligence score
 6. Create a backstory, either using your own ideas or by referencing the rulebook
