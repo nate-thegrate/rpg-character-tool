@@ -50,14 +50,14 @@ class PlayerStat {
 
 class Player {
   List<PlayerStat> stats = [
-    PlayerStat('str', (d6() + d6() + d6()) * 5),
-    PlayerStat('con', (d6() + d6() + d6()) * 5),
-    PlayerStat('siz', (d6() + d6() + 6) * 5),
-    PlayerStat('dex', (d6() + d6() + d6()) * 5),
-    PlayerStat('app', (d6() + d6() + d6()) * 5),
-    PlayerStat('int', (d6() + d6() + 6) * 5),
-    PlayerStat('pow', (d6() + d6() + d6()) * 5),
-    PlayerStat('edu', (d6() + d6() + 6) * 5)
+    PlayerStat('STR', (d6() + d6() + d6()) * 5),
+    PlayerStat('CON', (d6() + d6() + d6()) * 5),
+    PlayerStat('SIZ', (d6() + d6() + 6) * 5),
+    PlayerStat('DEX', (d6() + d6() + d6()) * 5),
+    PlayerStat('APP', (d6() + d6() + d6()) * 5),
+    PlayerStat('INT', (d6() + d6() + 6) * 5),
+    PlayerStat('POW', (d6() + d6() + d6()) * 5),
+    PlayerStat('EDU', (d6() + d6() + 6) * 5)
   ];
 
   int statGet(String s) {
@@ -99,14 +99,14 @@ class Player {
   String eduData = '';
 
   List<PlayerStat> statData = [
-    PlayerStat('str', 0),
-    PlayerStat('con', 0),
-    PlayerStat('siz', 0),
-    PlayerStat('dex', 0),
-    PlayerStat('app', 0),
-    PlayerStat('int', 0),
-    PlayerStat('pow', 0),
-    PlayerStat('edu', 0)
+    PlayerStat('STR', 0),
+    PlayerStat('CON', 0),
+    PlayerStat('SIZ', 0),
+    PlayerStat('DEX', 0),
+    PlayerStat('APP', 0),
+    PlayerStat('INT', 0),
+    PlayerStat('POW', 0),
+    PlayerStat('EDU', 0)
   ];
 
   void addtoStatData(String stat, int amt) {
@@ -151,9 +151,9 @@ class Player {
   void eduImprovement(int numChecks) {
     int numSuccesses = 0;
     for (var i = 0; i < numChecks; i++) {
-      if (rng.nextInt(100) >= statGet('edu')) {
+      if (rng.nextInt(100) >= statGet('EDU')) {
         numSuccesses += 1;
-        alterStat('edu', rng.nextInt(10) + 1, max: 99);
+        alterStat('EDU', rng.nextInt(10) + 1, max: 99);
       }
     }
     var s = numChecks > 1 ? 's' : '';
@@ -163,14 +163,14 @@ class Player {
 
   void statReduce(int amt, List<PlayerStat> bestAttributes) {
     List<String> reduceStats = [];
-    if (isIn('pow', bestAttributes)) {
-      reduceStats = ['str', 'dex', 'con'];
-    } else if (isIn('dex', bestAttributes)) {
-      reduceStats = ['str', 'con', 'dex'];
-    } else if (isIn('str', bestAttributes)) {
-      reduceStats = ['dex', 'con', 'str'];
+    if (isIn('POW', bestAttributes)) {
+      reduceStats = ['STR', 'DEX', 'CON'];
+    } else if (isIn('DEX', bestAttributes)) {
+      reduceStats = ['STR', 'CON', 'DEX'];
+    } else if (isIn('STR', bestAttributes)) {
+      reduceStats = ['DEX', 'CON', 'STR'];
     } else {
-      reduceStats = ['str', 'dex', 'con'];
+      reduceStats = ['STR', 'DEX', 'CON'];
     }
 
     while (amt > 0) {
@@ -197,48 +197,48 @@ class Player {
       } // remove non-optimal job skills
     }
     var mod = 1 /
-        (1 + exp(-3 - (statGet('int') - statGet('pow') - statGet('edu')) / 16));
-    age = (isIn('edu', bestAttributes))
+        (1 + exp(-3 - (statGet('INT') - statGet('POW') - statGet('EDU')) / 16));
+    age = (isIn('EDU', bestAttributes))
         ? (20 + 20 * mod).toInt()
-        : (isIn('app', bestAttributes))
+        : (isIn('APP', bestAttributes))
             ? (15 + 10 * mod).toInt()
             : (15 + 64 * mod).toInt();
 
     if (age < 20) {
       luck = [(d6() + d6() + d6()) * 5, (d6() + d6() + d6()) * 5].reduce(max);
-      if (isIn('str', bestAttributes)) {
-        alterStat('siz', -5);
+      if (isIn('STR', bestAttributes)) {
+        alterStat('SIZ', -5);
       } else {
-        alterStat('str', -5);
+        alterStat('STR', -5);
       }
-      alterStat('edu', -5);
+      alterStat('EDU', -5);
     } else {
       luck = (d6() + d6() + d6()) * 5;
       if (age < 40) {
         eduImprovement(1);
       } else if (age < 50) {
         statReduce(5, bestAttributes);
-        alterStat('app', -5);
+        alterStat('APP', -5);
         eduImprovement(2);
         mov -= 1;
       } else if (age < 60) {
         statReduce(10, bestAttributes);
-        alterStat('app', -10);
+        alterStat('APP', -10);
         eduImprovement(3);
         mov -= 2;
       } else if (age < 70) {
         statReduce(20, bestAttributes);
-        alterStat('app', -15);
+        alterStat('APP', -15);
         eduImprovement(4);
         mov -= 3;
       } else if (age < 80) {
         statReduce(40, bestAttributes);
-        alterStat('app', -20);
+        alterStat('APP', -20);
         eduImprovement(4);
         mov -= 4;
       } else {
         statReduce(80, bestAttributes);
-        alterStat('app', -25);
+        alterStat('APP', -25);
         eduImprovement(4);
         mov -= 5;
       }
@@ -246,16 +246,16 @@ class Player {
   }
 
   void hpMovBuild() {
-    hp = (statGet('siz') + statGet('con')) ~/ 10;
-    if (statGet('dex') < statGet('siz') && statGet('str') < statGet('siz')) {
+    hp = (statGet('SIZ') + statGet('CON')) ~/ 10;
+    if (statGet('DEX') < statGet('SIZ') && statGet('STR') < statGet('SIZ')) {
       mov += 7;
-    } else if (statGet('dex') > statGet('siz') &&
-        statGet('str') > statGet('siz')) {
+    } else if (statGet('DEX') > statGet('SIZ') &&
+        statGet('STR') > statGet('SIZ')) {
       mov += 9;
     } else {
       mov += 8;
     }
-    final thicc = statGet('str') + statGet('siz');
+    final thicc = statGet('STR') + statGet('SIZ');
     build = (thicc < 65)
         ? -2
         : (thicc < 85)
@@ -281,34 +281,34 @@ class Player {
       } // remove non-optimal job skills
     }
     List<Job> jobs = [
-      Job('Antiquarian', ['edu']),
-      Job('Artist', ['pow', 'dex']),
-      Job('Athlete', ['dex', 'str']),
-      Job('Author', ['edu']),
-      Job('Clergy', ['edu']),
-      Job('Criminal', ['dex', 'str']),
-      Job('Dilletante', ['app']),
-      Job('Doctor', ['edu']),
-      Job('Drifter', ['app', 'dex', 'str']),
-      Job('Engineer', ['edu']),
-      Job('Entertainer', ['app']),
-      Job('Farmer', ['dex', 'str']),
-      Job('Hacker', ['edu']),
-      Job('Journalist', ['edu']),
-      Job('Lawyer', ['edu']),
-      Job('Librarian', ['edu']),
-      Job('Military Officer', ['dex', 'str']),
-      Job('Missionary', ['edu']),
-      Job('Musician', ['dex', 'pow']),
-      Job('Parapsychologist', ['edu']),
-      Job('Pilot', ['dex']),
-      Job('Police Detective', ['dex', 'str']),
-      Job('Police Officer', ['dex', 'str']),
-      Job('Private Investigator', ['dex', 'str']),
-      Job('Professor', ['edu']),
-      Job('Soldier', ['dex', 'str']),
-      Job('Tribe Member', ['dex', 'str']),
-      Job('Zealot', ['app', 'pow'])
+      Job('Antiquarian', ['EDU']),
+      Job('Artist', ['POW', 'DEX']),
+      Job('Athlete', ['DEX', 'STR']),
+      Job('Author', ['EDU']),
+      Job('Clergy', ['EDU']),
+      Job('Criminal', ['DEX', 'STR']),
+      Job('Dilletante', ['APP']),
+      Job('Doctor', ['EDU']),
+      Job('Drifter', ['APP', 'DEX', 'STR']),
+      Job('Engineer', ['EDU']),
+      Job('Entertainer', ['APP']),
+      Job('Farmer', ['DEX', 'STR']),
+      Job('Hacker', ['EDU']),
+      Job('Journalist', ['EDU']),
+      Job('Lawyer', ['EDU']),
+      Job('Librarian', ['EDU']),
+      Job('Military Officer', ['DEX', 'STR']),
+      Job('Missionary', ['EDU']),
+      Job('Musician', ['DEX', 'POW']),
+      Job('Parapsychologist', ['EDU']),
+      Job('Pilot', ['DEX']),
+      Job('Police Detective', ['DEX', 'STR']),
+      Job('Police Officer', ['DEX', 'STR']),
+      Job('Private Investigator', ['DEX', 'STR']),
+      Job('Professor', ['EDU']),
+      Job('Soldier', ['DEX', 'STR']),
+      Job('Tribe Member', ['DEX', 'STR']),
+      Job('Zealot', ['APP', 'POW'])
     ];
     for (var i = 0; i < jobs.length; i++) {
       bool isBestJob = false;
@@ -322,7 +322,7 @@ class Player {
         bestJobs.add(jobs[i].name);
       }
     }
-    jobSkillPoints = 2 * statGet('edu') + 2 * bestValue.val;
+    jobSkillPoints = 2 * statGet('EDU') + 2 * bestValue.val;
   }
 }
 
@@ -540,34 +540,34 @@ class _ManualAgeState extends State<ManualAge> {
                                 (d6() + d6() + d6()) * 5,
                                 (d6() + d6() + d6()) * 5
                               ].reduce(max);
-                              p.alterStat('edu', -5);
+                              p.alterStat('EDU', -5);
                             } else {
                               p.luck = (d6() + d6() + d6()) * 5;
                               if (age < 40) {
                                 p.eduImprovement(1);
                               } else if (age < 50) {
                                 reduceAmt = 5;
-                                p.alterStat('app', -5);
+                                p.alterStat('APP', -5);
                                 p.eduImprovement(2);
                                 p.mov -= 1;
                               } else if (age < 60) {
                                 reduceAmt = 10;
-                                p.alterStat('app', -10);
+                                p.alterStat('APP', -10);
                                 p.eduImprovement(3);
                                 p.mov -= 2;
                               } else if (age < 70) {
                                 reduceAmt = 20;
-                                p.alterStat('app', -15);
+                                p.alterStat('APP', -15);
                                 p.eduImprovement(4);
                                 p.mov -= 3;
                               } else if (age < 80) {
                                 reduceAmt = 40;
-                                p.alterStat('app', -20);
+                                p.alterStat('APP', -20);
                                 p.eduImprovement(4);
                                 p.mov -= 4;
                               } else {
                                 reduceAmt = 80;
-                                p.alterStat('app', -25);
+                                p.alterStat('APP', -25);
                                 p.eduImprovement(4);
                                 p.mov -= 5;
                               }
@@ -627,9 +627,9 @@ class _StatReduceScreenState extends State<StatReduceScreen> {
                       p.stats[i].val = newMod;
                       reduceAmt -= 5;
                       if (reduceAmt <= 0 ||
-                          (p.statGet('str') < 10 &&
-                              p.statGet('con') < 10 &&
-                              p.statGet('dex') < 10)) {
+                          (p.statGet('STR') < 10 &&
+                              p.statGet('CON') < 10 &&
+                              p.statGet('DEX') < 10)) {
                         p.hpMovBuild();
                         p.decideOccupation();
                         Navigator.pop(context);
@@ -901,7 +901,7 @@ class _CharacterScreenState extends State<CharacterScreen> {
     final possession = rngText(treasuredPossessions);
     final screenWidth = MediaQuery.of(context).size.width;
     double tableWidth =
-        (screenWidth < 500) ? screenWidth : 500 + (screenWidth - 500) / 2;
+        (screenWidth < 500) ? screenWidth : 250 + screenWidth / 2;
     return Theme(
       data: cocTheme,
       child: Scaffold(
@@ -941,10 +941,10 @@ class _CharacterScreenState extends State<CharacterScreen> {
                   child: Column(children: [
                     DataList(left: 'Hit Points', right: p.hp.toString()),
                     DataList(
-                        left: 'Sanity', right: p.statGet('pow').toString()),
+                        left: 'Sanity', right: p.statGet('POW').toString()),
                     DataList(
                         left: 'Magic Points',
-                        right: (p.statGet('pow') / 5).toString()),
+                        right: (p.statGet('POW') ~/ 5).toString()),
                     DataList(left: 'Luck', right: p.luck.toString()),
                     DataList(left: 'Age', right: p.age.toString()),
                     DataList(left: 'Move Rate', right: p.mov.toString()),
@@ -968,7 +968,7 @@ class _CharacterScreenState extends State<CharacterScreen> {
                         right: p.jobSkillPoints.toString()),
                     DataList(
                         left: 'Personal Interest Skill Points',
-                        right: (p.statGet('int') * 2).toString()),
+                        right: (p.statGet('INT') * 2).toString()),
                     Container(
                         padding: EdgeInsets.only(top: 30),
                         child: Row(
@@ -1029,7 +1029,7 @@ class DataList extends StatelessWidget {
   Widget build(BuildContext context) {
     var screenWidth = MediaQuery.of(context).size.width;
     double totalWidth =
-        (screenWidth < 500) ? screenWidth : 500 + (screenWidth - 500) / 2;
+        (screenWidth < 500) ? screenWidth : 250 + screenWidth / 2;
     return InkWell(
       onTap: () {},
       child: Container(
