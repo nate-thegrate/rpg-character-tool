@@ -3,9 +3,10 @@ import 'package:flutter/cupertino.dart';
 import 'main.dart';
 
 var dndTheme = ThemeData(primarySwatch: Colors.green);
-var stats = <int>[]; // generated stat values
-var bonuses = <int>[]; // bonus that can be changed by user
 var autoArrange = true;
+
+List<int> stats = []; // generated stat values
+List<int> bonuses = []; // bonus that can be changed by user
 List<List<int>> arrays = [
   [18, 17, 8, 8, 7, 7],
   [18, 15, 14, 7, 7, 7],
@@ -47,8 +48,7 @@ void generate(index) {
       break;
     case 2: // Random Array
       {
-        stats = arrays[rng.nextInt(arrays.length)]
-            .toList(); // .toList() so it doesn't edit the original
+        stats = arrays[rng.nextInt(arrays.length)].toList();
         stats.shuffle();
       }
       break;
@@ -58,27 +58,29 @@ void generate(index) {
 
   if (autoArrange) {
     stats.sort();
-    var betterStats = <int>[];
+    List<int> betterStats = []; // randomly select 3 stats to prioritize
     if (rng.nextInt(13) == 0) {
-      betterStats = [0, 1, 2];
+      betterStats = [0, 1, 2]; // Barbarian
     } else {
-      var strDex = (rng.nextDouble() + .75).toInt();
-      final con = 2;
-      var x = rng.nextDouble();
-      var intWisCha = (x < 2 / 9)
+      int strDex = (rng.nextDouble() + .75).toInt();
+      final int con = 2;
+      double x = rng.nextDouble();
+      int intWisCha = (x < 2 / 9)
           ? 3
           : (x < 2 / 3)
               ? 4
               : 5;
       betterStats = [strDex, con, intWisCha];
-      var output = [stats[0], stats[1], stats[2]];
-      var betterValues = [stats[3], stats[4], stats[5]];
-      output.shuffle();
+      List<int> betterValues = [stats[3], stats[4], stats[5]];
+      // highest 3 stats
+      stats = [stats[0], stats[1], stats[2]];
+      // reduce stats to the lowest 3
+      stats.shuffle();
       betterValues.shuffle();
       for (final stat in betterStats) {
-        output.insert(stat, betterValues.removeAt(0));
+        // loop through indices of prioritized stats
+        stats.insert(stat, betterValues.removeAt(0));
       }
-      stats = output;
     }
     var highestEvenScore = stats.reduce((a, b) {
       if (a % 2 != 0 || (b > a && b % 2 == 0)) {
