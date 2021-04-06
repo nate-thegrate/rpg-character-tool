@@ -8,7 +8,7 @@ This is a resource made for Dungeons & Dragons and Call of Cthulhu. (more tablet
 
 ### Other Platforms
 
-**PC/Mac:** You can do it via the website!  
+**PC/Mac:** You can do it via Google Chrome!  
 <img src="https://i.redd.it/fffnjibpkir61.png" width="500" />
 
 **Android:** Download the APK [here](https://drive.google.com/file/d/1ey2k9wQFjwB3eyQKq-sv2dZ5d4OwX2JG/view?usp=sharing)
