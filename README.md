@@ -2,7 +2,7 @@
 
 This is a resource made for Dungeons & Dragons and Call of Cthulhu. (more tabletop roleplaying games may be added in the future)
 
-### [View it here!](https://wilsonna1.github.io/) 
+### [View it here!](https://nate-thegrate.github.io/) 
 
 <br>
 
