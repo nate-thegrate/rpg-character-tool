@@ -47,4 +47,4 @@ Making a character in Call of Cthulhu 7th edition is a pretty lengthy process:
 5. Determine how many Skill Points you can allocate based on your occupation and Intelligence score
 6. Create a backstory, either using your own ideas or by referencing the rulebook
 
-This app does it in a couple seconds.
+This app does it in a couple seconds. (Note: it's assumed that you have the [7th Edition Investigator's Handbook](https://www.drivethrurpg.com/product/167631/Call-of-Cthulhu-Investigator-Handbook-7th-Edition). You'll need it to determine occupation skills, finances, and equipment.)
