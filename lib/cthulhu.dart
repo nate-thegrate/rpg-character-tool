@@ -97,7 +97,7 @@ class _AutoAgeDisplayState extends State<AutoAgeDisplay> {
               DataColumn(label: Text('Stat')),
               DataColumn(label: Text('Value'))
             ],
-            rows: (() {
+            rows: () {
               List<DataRow> rows = [];
               for (var i = 0; i < initialStats.length; i++) {
                 rows.add(DataRow(cells: [
@@ -106,7 +106,7 @@ class _AutoAgeDisplayState extends State<AutoAgeDisplay> {
                 ]));
               }
               return rows;
-            }())),
+            }()),
         Text('\nAge: ${p.age}\n'),
         Text(p.eduData),
         Text(p.showStatData()),
@@ -149,7 +149,7 @@ class _ManualAgeState extends State<ManualAge> {
         DataColumn(label: Text('stat')),
         DataColumn(label: Text('value'))
       ],
-      rows: (() {
+      rows: () {
         List<DataRow> rows = [];
         final statNames = [
           'Strength',
@@ -168,7 +168,7 @@ class _ManualAgeState extends State<ManualAge> {
           ]));
         }
         return rows;
-      }()));
+      }());
 
   final ageForm = TextFormField(
     keyboardType: TextInputType.number,
@@ -381,7 +381,7 @@ class CharacterScreen extends StatelessWidget {
         DataColumn(label: Text('Half')),
         DataColumn(label: Text('Fifth')),
       ],
-      rows: (() {
+      rows: () {
         List<DataRow> rows = [];
         for (var i = 0; i < p.stats.length; i++) {
           rows.add(DataRow(cells: [
@@ -392,7 +392,7 @@ class CharacterScreen extends StatelessWidget {
           ]));
         }
         return rows;
-      }()));
+      }());
 
   final otherStats = Column(
     children: [

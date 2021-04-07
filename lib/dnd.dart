@@ -339,7 +339,7 @@ class _StatScreenState extends State<StatScreen> {
           constraints: BoxConstraints.expand(),
           child: Container(
             margin: EdgeInsets.symmetric(
-              horizontal: (() {
+              horizontal: () {
                 if (screenWidth < 600) {
                   return 0.0;
                 } else {
@@ -347,7 +347,7 @@ class _StatScreenState extends State<StatScreen> {
                   tableWidth = screenWidth - margin * 2;
                   return margin;
                 }
-              })(),
+              }(),
               vertical: 15,
             ),
             child: DataTable(
