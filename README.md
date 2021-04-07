@@ -29,8 +29,8 @@ The standard methods for determining character stats are outlined below:
 |---|---|---|
 | For each stat, roll four 6-sided dice and add the highest 3 results together | Take the values 15, 14, 13, 12, 10, and 8 and assign them however you'd like | Similar to Standard Array, but you can tweak the numbers if you want (e.g. change the 13 to a 12 and change the 8 to a 9) |
 |   |   |   |
-| Pro: The randomness can be really fun & exciting | Pro: Fast, easy, and fair | Pro: Fair, provides some variety |
-| Con: Can create unfair power discrepancies | Con: Pretty boring/monotonous | Con: Tedious/time consuming |
+| Pro: randomness can be really fun & exciting | Pro: fast, easy, and fair | Pro: fair, provides some variety |
+| Con: can create unfair power discrepancies | Con: boring/monotonous | Con: tedious/time consuming |
 
 Randomized arrays are a great way to get all of the benefits with none of the drawbacks! Just take a bunch of similarly effective arrays (the above link includes a bunch and supports copy/paste) and pick one at random.
 
