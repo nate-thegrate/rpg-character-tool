@@ -23,7 +23,7 @@ Assigning stats at random can lead to potentially undesirable outcomes: for inst
 
 ### Random Arrays
 
-The prominent methods for determining character stats are outlined below:
+The standard methods for determining character stats are outlined below:
 
 | 4d6 Drop Lowest | Standard Array | Point Buy |
 |---|---|---|
