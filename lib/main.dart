@@ -8,6 +8,8 @@ void main() => runApp(MyApp());
 
 var rng = new Random();
 
+int d6() => rng.nextInt(6) + 1;
+
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -34,7 +36,7 @@ Drawer appDrawer(context) {
           Icon(
             Icons.casino,
             size: 75,
-            color: (() {
+            color: () {
               switch (ModalRoute.of(context)?.settings.name) {
                 case 'CoC':
                   {
@@ -45,7 +47,7 @@ Drawer appDrawer(context) {
                     return Colors.green;
                   }
               }
-            }()),
+            }(),
           ),
           Expanded(
               child: Container(
@@ -64,8 +66,4 @@ Drawer appDrawer(context) {
       onTap: () => Navigator.pushReplacementNamed(context, 'CoC'),
     )
   ]));
-}
-
-int d6() {
-  return rng.nextInt(6) + 1;
 }
