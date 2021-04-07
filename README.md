@@ -19,7 +19,7 @@ This is a resource made for Dungeons & Dragons and Call of Cthulhu. (more tablet
 
 ### Auto-Configure Stats
 
-Assigning stats at random can lead to potentially undesirable outcomes: for instance, you could end up with a character that has Constitution as its lowest stat. For some, this may not be an issue, but anyone who would be bothered by this can opt to automatically allocate stats into a viable configuration.
+Assigning stats at random can lead to potentially undesirable outcomes: for instance, you could end up with a character with a really low Constitution score. This app gives the option to automatically allocate stats into a viable configuration.
 
 ### Random Arrays
 
