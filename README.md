@@ -8,10 +8,10 @@ This is a resource made for Dungeons & Dragons and Call of Cthulhu. (more tablet
 
 ### Other Platforms
 
-**PC/Mac:** You can do it via Google Chrome!  
+**PC/Mac** &ndash; You can do it via Microsoft Edge or Google Chrome:  
 <img src="https://i.redd.it/fffnjibpkir61.png" width="500" />
 
-**Android:** Download the APK [here](https://drive.google.com/file/d/1ey2k9wQFjwB3eyQKq-sv2dZ5d4OwX2JG/view?usp=sharing)
+**Android** &ndash; Download the APK [here](https://drive.google.com/file/d/1ey2k9wQFjwB3eyQKq-sv2dZ5d4OwX2JG/view?usp=sharing)
 
 <br>
 
@@ -19,11 +19,11 @@ This is a resource made for Dungeons & Dragons and Call of Cthulhu. (more tablet
 
 ### Auto-Configure Stats
 
-Assigning stats at random can lead to potentially undesirable outcomes: for instance, you could end up with a character that has Constitution as its lowest stat. For some, this may not be an issue, but anyone who would be bothered by this can opt to automatically allocate stats into a viable configuration.
+Assigning stats at random can lead to potentially undesirable outcomes: for instance, you could end up with a character with a really low Constitution score. This app gives the option to automatically allocate stats into a viable configuration.
 
 ### Random Arrays
 
-The prominent methods for determining character stats are outlined below:
+The standard methods for determining character stats are outlined below:
 
 | 4d6 Drop Lowest | Standard Array | Point Buy |
 |---|---|---|
@@ -32,7 +32,7 @@ The prominent methods for determining character stats are outlined below:
 | Pro: The randomness can be really fun & exciting | Pro: Fast, easy, and fair | Pro: Fair, provides some variety |
 | Con: Can create unfair power discrepancies | Con: Pretty boring/monotonous | Con: Tedious/time consuming |
 
-Randomized arrays are a great way to get all of the benefits with none of the drawbacks! Just take a bunch of similarly effective arrays (the above link has a bunch and supports copy/paste) and pick one at random.
+Randomized arrays are a great way to get all of the benefits with none of the drawbacks! Just take a bunch of similarly effective arrays (the above link includes a bunch and supports copy/paste) and pick one at random.
 
 <br>
 
