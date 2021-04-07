@@ -32,7 +32,7 @@ The standard methods for determining character stats are outlined below:
 | Pro: The randomness can be really fun & exciting | Pro: Fast, easy, and fair | Pro: Fair, provides some variety |
 | Con: Can create unfair power discrepancies | Con: Pretty boring/monotonous | Con: Tedious/time consuming |
 
-Randomized arrays are a great way to get all of the benefits with none of the drawbacks! Just take a bunch of similarly effective arrays (the above link has a bunch and supports copy/paste) and pick one at random.
+Randomized arrays are a great way to get all of the benefits with none of the drawbacks! Just take a bunch of similarly effective arrays (the above link includes a bunch and supports copy/paste) and pick one at random.
 
 <br>
 
