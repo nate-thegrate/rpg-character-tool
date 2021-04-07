@@ -1,14 +1,14 @@
 # Quick Character Generator
 
-This is a resource made for Dungeons & Dragons and Call of Cthulhu. (more tabletop roleplaying games may be added in the future)
+This is a resource made for Dungeons & Dragons and Call of Cthulhu. (More tabletop roleplaying games may be added in the future!)
 
-### [View it here!](https://nate-thegrate.github.io/) 
+### [View it here](https://nate-thegrate.github.io/) 
 
 <br>
 
 ### Other Platforms
 
-**PC/Mac** &ndash; You can do it via Microsoft Edge or Google Chrome:  
+**PC/Mac** &ndash; You can download via Microsoft Edge or Google Chrome:  
 <img src="https://i.redd.it/fffnjibpkir61.png" width="500" />
 
 **Android** &ndash; Download the APK [here](https://drive.google.com/file/d/1ey2k9wQFjwB3eyQKq-sv2dZ5d4OwX2JG/view?usp=sharing)
