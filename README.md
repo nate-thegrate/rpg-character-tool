@@ -32,7 +32,7 @@ The standard methods for determining character stats are outlined below:
 | Pro: randomness can be really fun & exciting | Pro: fast, easy, and fair | Pro: fair, provides some variety |
 | Con: can create unfair power discrepancies | Con: boring/monotonous | Con: tedious/time consuming |
 
-Randomized arrays are a great way to get all of the benefits with none of the drawbacks! Just take a bunch of similarly effective arrays (the above link includes a bunch and supports copy/paste) and pick one at random.
+Randomized arrays are a great way to get all of the benefits with none of the drawbacks! Just take a bunch of similarly effective arrays (this app includes a bunch and supports copy/paste) and pick one at random.
 
 <br>
 
@@ -47,4 +47,6 @@ Making a character in Call of Cthulhu 7th edition is a pretty lengthy process:
 5. Determine how many Skill Points you can allocate based on your occupation and Intelligence score
 6. Create a backstory, either using your own ideas or by referencing the rulebook
 
-This app does it in a couple seconds. (Note: it's assumed that you have the [7th Edition Investigator's Handbook](https://www.drivethrurpg.com/product/167631/Call-of-Cthulhu-Investigator-Handbook-7th-Edition). You'll need it to determine occupation skills, finances, and equipment.)
+This app does it in a couple seconds.
+
+(Note: it's assumed that you have the [7th Edition Investigator's Handbook](https://www.drivethrurpg.com/product/167631/Call-of-Cthulhu-Investigator-Handbook-7th-Edition). You'll need it to determine occupation skills, finances, and equipment.)
