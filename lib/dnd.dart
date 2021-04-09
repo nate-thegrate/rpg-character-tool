@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'main.dart';
+import 'dart:math';
 
 var dndTheme = ThemeData(primarySwatch: Colors.green);
 var autoArrange = true;
 
 List<int> stats = []; // generated stat values
 List<int> bonuses = []; // bonus that can be changed by user
+final List<String> statNames = ['Str', 'Dex', 'Con', 'Int', 'Wis', 'Cha'];
 List<List<int>> arrays = [
   [18, 17, 8, 8, 7, 7],
   [18, 15, 14, 7, 7, 7],
@@ -97,6 +99,382 @@ void generate(index) {
     bonuses[stats.indexOf(highestEvenScore)] = 2;
     bonuses[stats.indexOf(highestOddScore)] = 1;
   }
+}
+
+List<String> getRecommendations() {
+  List<String> getHighestStats() {
+    if (stats.length < 6 || bonuses.length < 6) {
+      print("stat or bonus array is incomplete");
+      return [];
+    }
+    List<int> statTotals = [0, 0, 0, 0, 0, 0];
+    for (int i = 0; i < statTotals.length; i++) {
+      statTotals[i] = stats[i] + bonuses[i];
+    }
+    List<String> bestScores = [];
+    List<String> scores2pickfrom = [];
+    while (bestScores.length < 6) {
+      int maxScore = statTotals.reduce(max);
+      for (int i = 0; i < statTotals.length; i++) {
+        if (statTotals[i] == maxScore) {
+          scores2pickfrom.add(statNames[i]);
+        }
+      }
+      String scoreName = scores2pickfrom[rng.nextInt(scores2pickfrom.length)];
+      bestScores.add(scoreName);
+      statTotals[statNames.indexOf(scoreName)] = 0;
+      scores2pickfrom = [];
+    }
+    return bestScores;
+  }
+
+  final List<String> bestScores = getHighestStats();
+  for (int i = 2; i < bestScores.length; i++) {
+    if (stats[statNames.indexOf(bestScores[i])] < 12) bestScores[i] = "";
+  }
+  List<String> r = []; // list of recommendations
+  switch (bestScores[0]) {
+    case 'Str':
+      {
+        // highest ability is Strength
+        switch (bestScores[1]) {
+          case 'Dex':
+            {
+              // highest abilities: Str, Dex
+              r.add('Barbarian');
+              break;
+            }
+          case 'Con':
+            {
+              // highest abilities: Str, Con
+              r.add('Barbarian');
+              break;
+            }
+          case 'Int':
+            {
+              // highest abilities: Str, Int
+              r.add('Eldritch Knight');
+              break;
+            }
+          case 'Wis':
+            {
+              // highest abilities: Str, Wis
+              r.addAll(
+                  ['Cleric (Forge/Tempest/Twilight/War Domain)', 'Ranger']);
+              break;
+            }
+          case 'Cha':
+            {
+              // highest abilities: Str, Cha
+              r.add('Paladin');
+              break;
+            }
+          default:
+            {
+              print("Looks like we messed up");
+              break;
+            }
+        }
+        break;
+      }
+    case 'Dex':
+      {
+        // highest ability is Dexterity
+        switch (bestScores[1]) {
+          case 'Str':
+            {
+              // highest abilities: Dex, Str
+              r.addAll([
+                'Barbarian',
+                'Grappling Rogue (Barbarian or Fighter multiclass)'
+              ]);
+              break;
+            }
+          case 'Con':
+            {
+              // highest abilities: Dex, Con
+              r.addAll(['Rogue', 'Fighter']);
+              switch (bestScores[2]) {
+                case 'Str':
+                  {
+                    r.add('Barbarian');
+                    break;
+                  }
+                case 'Wis':
+                  {
+                    r.add('Ranger');
+                    break;
+                  }
+                case 'Cha':
+                  {
+                    r.add('Bard');
+                    break;
+                  }
+                default:
+                  {
+                    break;
+                  }
+              }
+              break;
+            }
+          case 'Int':
+            {
+              // highest abilities: Dex, Int
+              r.addAll(['Arcane Trickster Rogue', 'Bladesinger Wizard']);
+              break;
+            }
+          case 'Wis':
+            {
+              // highest abilities: Dex, Wis
+              r.addAll(['Monk', 'Ranger']);
+              break;
+            }
+          case 'Cha':
+            {
+              // highest abilities: Dex, Cha
+              r.addAll(['Bard', 'Warlock', 'Swashbuckler Rogue']);
+              break;
+            }
+          default:
+            {
+              print("Looks like we messed up");
+              break;
+            }
+        }
+        break;
+      }
+    case 'Con':
+      {
+        // highest ability is Constitution
+        switch (bestScores[1]) {
+          case 'Str':
+            {
+              // highest abilities: Con, Str
+              r.addAll(['Barbarian', 'Fighter']);
+              switch (bestScores[2]) {
+                case 'Wis':
+                  {
+                    r.add('Cleric (Forge/Tempest/Twilight/War Domain)');
+                    break;
+                  }
+                case 'Cha':
+                  {
+                    r.add('Paladin');
+                    break;
+                  }
+                default:
+                  {
+                    break;
+                  }
+              }
+              break;
+            }
+          case 'Dex':
+            {
+              // highest abilities: Con, Dex
+              r.addAll(['Fighter', 'Rogue']);
+              switch (bestScores[2]) {
+                case 'Int':
+                  {
+                    r.addAll(['Wizard', 'Artificer']);
+                    break;
+                  }
+                case 'Wis':
+                  {
+                    r.add('Ranger');
+                    break;
+                  }
+                case 'Cha':
+                  {
+                    r.addAll(['Warlock', 'Bard', 'Sorcerer']);
+                    break;
+                  }
+                default:
+                  {
+                    break;
+                  }
+              }
+              break;
+            }
+          case 'Int':
+            {
+              // highest abilities: Con, Int
+              r.addAll(['Wizard', 'Artificer']);
+              break;
+            }
+          case 'Wis':
+            {
+              // highest abilities: Con, Wis
+              r.addAll(['Druid', 'Ranger']);
+              if (bestScores[2] == 'Dex') r.add('Monk');
+              break;
+            }
+          case 'Cha':
+            {
+              // highest abilities: Con, Cha
+              r.addAll(['Sorcerer', 'Warlock', 'Bard']);
+              break;
+            }
+          default:
+            {
+              print("Looks like we messed up");
+              break;
+            }
+        }
+        break;
+      }
+    case 'Int':
+      {
+        // highest ability is Intelligence
+        switch (bestScores[1]) {
+          case 'Str':
+            {
+              // highest abilities: Int, Str
+              r.addAll([
+                'Eldritch Knight Fighter',
+                'War Wizard (with a couple Fighter levels)',
+              ]);
+              break;
+            }
+          case 'Dex':
+            {
+              // highest abilities: Int, Dex
+              r.addAll(['Wizard', 'Artificer', 'Arcane Trickster Rogue']);
+              break;
+            }
+          case 'Con':
+            {
+              // highest abilities: Int, Con
+              r.addAll(['Wizard', 'Artificer']);
+              break;
+            }
+          case 'Wis':
+            {
+              // highest abilities: Int, Wis
+              r.addAll(['Wizard', 'Cleric (Knowledge Domain)']);
+              break;
+            }
+          case 'Cha':
+            {
+              // highest abilities: Int, Cha
+              r.add(
+                  'Rogue/Bard (skill monkey, works well with one Hexblade level');
+              break;
+            }
+          default:
+            {
+              print("Looks like we messed up");
+              break;
+            }
+        }
+        break;
+      }
+    case 'Wis':
+      {
+        // highest ability is Wisdom
+        switch (bestScores[1]) {
+          case 'Str':
+            {
+              // highest abilities: Wis, Str
+              r.addAll(
+                  ['Cleric (Forge/Tempest/Twilight/War Domain)', 'Ranger']);
+              break;
+            }
+          case 'Dex':
+            {
+              // highest abilities: Wis, Dex
+              r.addAll([
+                'Cleric (Arcana/Death/Grave/Light/Peace/Trickery Domain)',
+                'Ranger',
+                'Monk',
+              ]);
+              break;
+            }
+          case 'Con':
+            {
+              // highest abilities: Wis, Con
+              if (bestScores[2] == 'Dex') {
+                r.addAll(['Druid', 'Ranger', 'Monk']);
+              } else {
+                r.addAll([
+                  'Cleric (Dwarf, Life/Nature/Order Domain)',
+                  'Druid',
+                  'Ranger (Druidic Warrior fighting style)',
+                ]);
+              }
+              break;
+            }
+          case 'Int':
+            {
+              // highest abilities: Wis, Int
+              r.add('Cleric (Knowledge Domain)');
+              break;
+            }
+          case 'Cha':
+            {
+              // highest abilities: Wis, Cha
+              r.add('Ranger (Fey Wanderer)');
+              break;
+            }
+          default:
+            {
+              print("Looks like we messed up");
+              break;
+            }
+        }
+        break;
+      }
+    case 'Cha':
+      {
+        // highest ability is Charisma
+        switch (bestScores[1]) {
+          case 'Str':
+            {
+              // highest abilities: Cha, Str
+              r.add('Paladin');
+              break;
+            }
+          case 'Dex':
+            {
+              // highest abilities: Cha, Dex
+              r.addAll(['Bard', 'Warlock', 'Sorcerer']);
+              break;
+            }
+          case 'Con':
+            {
+              // highest abilities: Cha, Con
+              r.addAll(['Sorcerer', 'Warlock']);
+              if (bestScores[2] == 'Str')
+                r.add('Paladin');
+              else if (bestScores[2] == 'Dex') r.add('Bard');
+              break;
+            }
+          case 'Int':
+            {
+              // highest abilities: Cha, Int
+              r.add('Bard');
+              break;
+            }
+          case 'Wis':
+            {
+              // highest abilities: Cha, Wis
+              r.add('Ranger (Fey Wanderer)');
+              break;
+            }
+          default:
+            {
+              print("Looks like we messed up");
+              break;
+            }
+        }
+        break;
+      }
+    default:
+      {
+        print("Looks like we messed up");
+      }
+  }
+  return r;
 }
 
 class DnDHome extends StatefulWidget {
@@ -290,7 +668,6 @@ class _StatScreenState extends State<StatScreen> {
 
     statRows(width) {
       List<DataRow> rows = [];
-      final statNames = <String>['Str', 'Dex', 'Con', 'Int', 'Wis', 'Cha'];
       for (var i = 0; i < 6; i++) {
         rows.add(DataRow(cells: [
           DataCell(Text(
@@ -335,33 +712,52 @@ class _StatScreenState extends State<StatScreen> {
       data: dndTheme,
       child: Scaffold(
         appBar: AppBar(title: Text('Stats')),
-        body: ConstrainedBox(
+        body: Container(
           constraints: BoxConstraints.expand(),
-          child: Container(
-            margin: EdgeInsets.symmetric(
-              horizontal: () {
-                if (screenWidth < 600) {
-                  return 0.0;
-                } else {
-                  var margin = (screenWidth - 600) / 3;
-                  tableWidth = screenWidth - margin * 2;
-                  return margin;
-                }
-              }(),
-              vertical: 15,
-            ),
-            child: DataTable(
-              headingRowHeight: 50,
-              headingTextStyle: TextStyle(
-                fontSize: 18,
-                color: Colors.black,
-                fontWeight: FontWeight.bold,
+          margin: EdgeInsets.symmetric(
+            horizontal: () {
+              if (screenWidth < 600) {
+                return 0.0;
+              } else {
+                var margin = (screenWidth - 600) / 3;
+                tableWidth = screenWidth - margin * 2;
+                return margin;
+              }
+            }(),
+            vertical: 15,
+          ),
+          child: Column(
+            children: [
+              DataTable(
+                headingRowHeight: 50,
+                headingTextStyle: TextStyle(
+                  fontSize: 18,
+                  color: Colors.black,
+                  fontWeight: FontWeight.bold,
+                ),
+                columnSpacing: 20,
+                dataRowHeight: 75,
+                columns: statColumns(tableWidth - 294),
+                rows: statRows(tableWidth - 310),
               ),
-              columnSpacing: 20,
-              dataRowHeight: 75,
-              columns: statColumns(tableWidth - 294),
-              rows: statRows(tableWidth - 310),
-            ),
+              Text(
+                () {
+                  List<String> l = getRecommendations();
+                  String s = "\n\nCharacter recommendation";
+                  if (l.length > 1) {
+                    s += 's:\n';
+                    for (var r in l) {
+                      s += '\n$r';
+                    }
+                  } else {
+                    s += ': ${l[0]}';
+                  }
+
+                  return s;
+                }(),
+                style: TextStyle(fontSize: 18),
+              )
+            ],
           ),
         ),
       ),
