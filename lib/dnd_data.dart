@@ -204,7 +204,7 @@ List<String> getRecommendations() {
                 'Bard (College of Whispers, with 6 Paladin levels)',
                 'Sorcerer (with 2 or 6 Paladin levels)',
                 'Warlock (with 2 or 6 Paladin levels)',
-                'Warlock (Pact of the Blade with one Fighter level)',
+                'Warlock (Pact of the Blade with 1 or 2 Fighter levels)',
               ]);
               r.add(cheese);
               break;
@@ -388,9 +388,9 @@ List<String> getRecommendations() {
                   'with 3 Artificer levels',
                 ])})',
                 pickRandom([
-                  'Wizard (School of War, with a couple Fighter levels)',
+                  'Wizard (School of War, with 1 or 2 Fighter levels)',
                   'Wizard (Dwarf [Mark of Warding], School of Abjuration '
-                      'with a couple Fighter levels)',
+                      'with 1 or 2 Fighter levels)',
                 ]),
               ]);
               break;
@@ -494,7 +494,7 @@ List<String> getRecommendations() {
                     'Twilight',
                     'War',
                   ])})',
-                  'Ranger (with a couple Fighter levels)',
+                  'Ranger (with 1 or 2 Fighter levels)',
                 ]);
               } else if (bestScores[2] == 'Dex') {
                 r.addAll(['Druid', 'Ranger', 'Monk']);
