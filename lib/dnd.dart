@@ -249,13 +249,13 @@ class _StatScreenState extends State<StatScreen> {
       ];
 
       for (final r in s) {
-        w.add(Row(children: [
-          Container(
-              padding: EdgeInsets.symmetric(vertical: 5),
-              width: 20,
-              child: Text(' •', style: bold)),
-          Container(width: width - 60, child: Text(r, style: reg)),
-        ]));
+        w.add(Padding(
+          padding: EdgeInsets.symmetric(vertical: 5),
+          child: Row(crossAxisAlignment: CrossAxisAlignment.start, children: [
+            Container(width: 20, child: Text(' •', style: bold)),
+            Container(width: width - 60, child: Text(r, style: reg)),
+          ]),
+        ));
       }
 
       return InkWell(

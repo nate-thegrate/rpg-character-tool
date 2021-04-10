@@ -128,7 +128,12 @@ List<String> getRecommendations() {
         switch (bestScores[1]) {
           case 'Dex': // highest abilities: Str, Dex
             {
-              r.add('Barbarian');
+              r.addAll([
+                'Barbarian',
+                '“The Grappler” (Barbarian with '
+                    'Unarmed fighting style [feat or Fighter level] '
+                    'and/or Athletics Expertise [feat or Rogue level])',
+              ]);
               break;
             }
           case 'Con': // highest abilities: Str, Con
@@ -139,7 +144,8 @@ List<String> getRecommendations() {
                   {
                     r.add('Fighter (${pickRandom([
                       'Eldritch Knight',
-                      'Psi Warrior'
+                      'Psi Warrior',
+                      'with 3 Artificer levels',
                     ])})');
                     break;
                   }
@@ -170,6 +176,7 @@ List<String> getRecommendations() {
               r.add('Fighter (${pickRandom([
                 'Eldritch Knight',
                 'Psi Warrior',
+                'with 3 Artificer levels',
               ])})');
               break;
             }
@@ -190,6 +197,16 @@ List<String> getRecommendations() {
           case 'Cha': // highest abilities: Str, Cha
             {
               r.add('Paladin');
+              String cheese = 'Charisma multiclass cheese: ';
+              cheese += pickRandom([
+                'Paladin (with 5 College of Swords Bard levels)',
+                'Bard (College of Swords, with 2 Paladin levels)',
+                'Bard (College of Whispers, with 6 Paladin levels)',
+                'Sorcerer (with 2 or 6 Paladin levels)',
+                'Warlock (with 2 or 6 Paladin levels)',
+                'Warlock (Pact of the Blade with one Fighter level)',
+              ]);
+              r.add(cheese);
               break;
             }
         }
@@ -207,7 +224,18 @@ List<String> getRecommendations() {
             {
               r.addAll(['Fighter (Archery fighting style)']);
               if (bestScores[2] == 'Wis') // Dex, Con, Wis
-                r.addAll(['Rogue (Inquisitive)', 'Ranger']);
+                r.addAll([
+                  'Rogue (Inquisitive)',
+                  'Fighter (Samurai)',
+                  'Ranger',
+                  pickRandom([
+                    '“D&D Batman” (Shadow Monk '
+                        'with 4 Gloom Stalker Ranger levels)',
+                    '“The Death Fist” (one Monk level, '
+                        '5 Echo Knight Fighter levels, '
+                        'and the rest in Druid Circle of Spores)',
+                  ]),
+                ]);
               else {
                 r.add('Rogue');
                 if (bestScores[2] == 'Str') // Dex, Con, Str
@@ -219,12 +247,30 @@ List<String> getRecommendations() {
             }
           case 'Int': // highest abilities: Dex, Int
             {
-              r.addAll(['Rogue (Arcane Trickster)', 'Wizard (Bladesinger)']);
+              r.addAll([
+                'Rogue (Arcane Trickster)',
+                'Wizard (Bladesinger)',
+                'Fighter (${pickRandom([
+                  'Eldritch Knight',
+                  'Psi Warrior',
+                  'with 3 Artificer levels',
+                ])})',
+              ]);
               break;
             }
           case 'Wis': // highest abilities: Dex, Wis
             {
-              r.addAll(['Monk', 'Ranger']);
+              r.addAll([
+                'Monk',
+                'Ranger',
+                pickRandom([
+                  '“D&D Batman” (Shadow Monk '
+                      'with 4 Gloom Stalker Ranger levels)',
+                  '“The Death Fist” (one Monk level, '
+                      '5 Echo Knight Fighter levels, '
+                      'and the rest in Druid Circle of Spores)',
+                ]),
+              ]);
               break;
             }
           case 'Cha': // highest abilities: Dex, Cha
@@ -299,6 +345,32 @@ List<String> getRecommendations() {
           case 'Cha': // highest abilities: Con, Cha
             {
               r.addAll(['Sorcerer', 'Warlock', 'Bard']);
+              String cheese = 'Charisma multiclass cheese: ';
+              if (bestScores[2] == 'Str') {
+                // Con, Cha, Str
+                cheese += pickRandom([
+                  'Paladin (with one Hexblade Warlock level)',
+                  'Paladin (with 5 College of Swords Bard levels)',
+                  'Bard (College of Swords, with 2 Paladin levels)',
+                  'Bard (College of Whispers, with 6 Paladin levels)',
+                  'Sorcerer (with 2 or 6 Paladin levels)',
+                  'Warlock (Hexblade, with 2 or 6 Paladin levels)',
+                  '“The Conquistador” (7 or more Conquest Paladin levels '
+                      'and 3 or More Hexblade Warlock levels, '
+                      'Pact of the Blade & Polearm Master)',
+                ]);
+                r.add(cheese);
+              } else {
+                cheese += pickRandom([
+                  'Sorcerer (with two Warlock levels)',
+                  'Warlock (with 5 Sorcerer levels)',
+                  'Agonizing Blast Bard (College of Lore & Eldritch Adept, '
+                      'or 2 Warlock levels)',
+                  'Bard (College of Whispers, with one Hexblade Warlock level)',
+                  'Rogue (Swashbuckler, with one Hexblade Warlock level)',
+                ]);
+                r.addAll(['Paladin', cheese]);
+              }
               break;
             }
         }
@@ -310,7 +382,11 @@ List<String> getRecommendations() {
           case 'Str': // highest abilities: Int, Str
             {
               r.addAll([
-                'Fighter (${pickRandom(['Eldritch Knight', 'Psi Warrior'])})',
+                'Fighter (${pickRandom([
+                  'Eldritch Knight',
+                  'Psi Warrior',
+                  'with 3 Artificer levels',
+                ])})',
                 pickRandom([
                   'Wizard (School of War, with a couple Fighter levels)',
                   'Wizard (Dwarf [Mark of Warding], School of Abjuration '
@@ -321,32 +397,52 @@ List<String> getRecommendations() {
             }
           case 'Dex': // highest abilities: Int, Dex
             {
-              r.addAll(['Wizard', 'Artificer', 'Rogue (Arcane Trickster)']);
+              r.addAll([
+                'Wizard',
+                'Artificer',
+                'Rogue (Arcane Trickster)',
+                'Fighter (${pickRandom([
+                  'Eldritch Knight',
+                  'Psi Warrior',
+                  'with 3 Artificer levels',
+                ])})',
+              ]);
               break;
             }
           case 'Con': // highest abilities: Int, Con
             {
-              r.addAll(
-                  ['Wizard', 'Artificer', 'Wizard (with one Artificer level)']);
+              r.addAll([
+                'Wizard',
+                'Artificer',
+                'Wizard (with one Artificer level)',
+                '“Teenage Mutant Bladesong Tortle” '
+                    '(Tortle Wizard, School of Bladesinging${pickRandom([
+                  '',
+                  ', with 3 Battle Smith Artificer levels',
+                ])})',
+              ]);
               break;
             }
           case 'Wis': // highest abilities: Int, Wis
             {
-              r.add('Wizard (Dwarf, with one ${pickRandom([
-                'Forge',
-                'Life',
-                'Order',
-                'Tempest',
-                'Twilight',
-              ])} Cleric level)');
+              r.add(pickRandom([
+                'Wizard (Dwarf, with one ${pickRandom([
+                  'Forge',
+                  'Life',
+                  'Order',
+                  'Twilight',
+                ])} Cleric level)',
+                'Wizard (Dwarf, School of Scribes, '
+                    'with two Tempest Cleric levels',
+              ]));
               break;
             }
           case 'Cha': // highest abilities: Int, Cha
             {
+              r.addAll(['Wizard', 'Bard']);
               if (bestScores[2] == 'Dex') {
                 r.add('Rogue (Swashbuckler)');
               }
-              r.addAll(['Wizard', 'Bard']);
               break;
             }
         }
@@ -362,7 +458,7 @@ List<String> getRecommendations() {
                   'Forge',
                   'Tempest',
                   'Twilight',
-                  'War'
+                  'War',
                 ])})',
                 'Ranger',
               ]);
@@ -377,7 +473,7 @@ List<String> getRecommendations() {
                   'Grave',
                   'Light',
                   'Peace',
-                  'Trickery'
+                  'Trickery',
                 ])})',
                 'Ranger',
                 'Monk',
@@ -396,7 +492,7 @@ List<String> getRecommendations() {
                     'Order',
                     'Tempest',
                     'Twilight',
-                    'War'
+                    'War',
                   ])})',
                   'Ranger (with a couple Fighter levels)',
                 ]);
@@ -417,12 +513,20 @@ List<String> getRecommendations() {
             }
           case 'Int': // highest abilities: Wis, Int
             {
-              r.add('Cleric (Knowledge)');
+              r.add(
+                'Cleric (${pickRandom([
+                  'Knowledge',
+                  'with one Artificer level',
+                ])})',
+              );
               break;
             }
           case 'Cha': // highest abilities: Wis, Cha
             {
-              r.addAll(['Ranger (Fey Wanderer)', 'Cleric (Order)', 'Bard']);
+              r.addAll([
+                'Ranger (Fey Wanderer)',
+                'Cleric (Order)',
+              ]);
               break;
             }
         }
@@ -434,22 +538,66 @@ List<String> getRecommendations() {
           case 'Str': // highest abilities: Cha, Str
             {
               r.add('Paladin');
+              String cheese = 'Charisma multiclass cheese: ';
+              cheese += pickRandom([
+                'Paladin (with one Hexblade Warlock level)',
+                'Paladin (with 5 College of Swords Bard levels)',
+                'Bard (College of Swords, with 2 Paladin levels)',
+                'Bard (College of Whispers, with 6 Paladin levels)',
+                'Sorcerer (with 2 or 6 Paladin levels)',
+                'Warlock (Hexblade, with 2 or 6 Paladin levels)',
+                '“The triple-crit-smite” (3+ Vengeance Paladin levels, '
+                    '5+ Hexblade Warlock levels, and 3+ Whispers Bard levels, '
+                    'with Elven Accuracy)',
+                '“The Conquistador” (7+ Conquest Paladin levels '
+                    'and 3+ Hexblade Warlock levels, '
+                    'Pact of the Blade & Polearm Master)',
+              ]);
+              r.add(cheese);
               break;
             }
           case 'Dex': // highest abilities: Cha, Dex
             {
               r.addAll(['Bard', 'Warlock', 'Sorcerer']);
+              String cheese = 'Charisma multiclass cheese: ';
+              cheese += pickRandom([
+                'Sorcerer (with two Warlock levels)',
+                'Warlock (with 5 Sorcerer levels)',
+                'Agonizing Blast Bard (College of Lore & Eldritch Adept, '
+                    'or 2 Warlock levels)',
+              ]);
+              r.add(cheese);
               break;
             }
           case 'Con': // highest abilities: Cha, Con
             {
               r.addAll(['Sorcerer', 'Warlock']);
-              if (bestScores[2] == 'Str') // Cha, Con, Str
-                r.add('Paladin (with one Hexblade Warlock level)');
-              else if (bestScores[2] == 'Dex') // Cha, Con, Dex
-                r.add('Bard');
-              else
-                r.add('Sorcerer (with two Warlock levels)');
+              String cheese = 'Charisma multiclass cheese: ';
+              if (bestScores[2] == 'Str') {
+                // Cha, Con, Str
+                cheese += pickRandom([
+                  'Paladin (with one Hexblade Warlock level)',
+                  'Paladin (with 5 College of Swords Bard levels)',
+                  'Bard (College of Swords, with 2 Paladin levels)',
+                  'Bard (College of Whispers, with 6 Paladin levels)',
+                  'Sorcerer (with 2 or 6 Paladin levels)',
+                  'Warlock (Hexblade, with 2 or 6 Paladin levels)',
+                  '“The Conquistador” (7 or more Conquest Paladin levels '
+                      'and 3 or More Hexblade Warlock levels, '
+                      'Pact of the Blade & Polearm Master)',
+                ]);
+                r.add(cheese);
+              } else {
+                cheese += pickRandom([
+                  'Sorcerer (with two Warlock levels)',
+                  'Warlock (with 5 Sorcerer levels)',
+                  'Agonizing Blast Bard (College of Lore & Eldritch Adept, '
+                      'or 2 Warlock levels)',
+                  'Bard (College of Whispers, with one Hexblade Warlock level)',
+                  'Rogue (Swashbuckler, with one Hexblade Warlock level)',
+                ]);
+                r.add(cheese);
+              }
               break;
             }
           case 'Int': // highest abilities: Cha, Int
@@ -464,7 +612,13 @@ List<String> getRecommendations() {
             {
               r.addAll([
                 'Ranger (Fey Wanderer)',
-                'Storm Sorcerer (Dwarf, with 2 Tempest Cleric levels)',
+                pickRandom([
+                  '“God of Thunder” (Dwarf Storm Sorcerer '
+                      'with 2 Tempest Cleric levels)',
+                  '“The Big Succ” (Dwarf Celestial Warlock, '
+                      'Gift of the Ever-Living Ones, Vampiric Touch, '
+                      'one Life Cleric level)',
+                ]),
               ]);
               break;
             }

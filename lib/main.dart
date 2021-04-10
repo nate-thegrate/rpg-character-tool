@@ -6,11 +6,11 @@ import 'dart:math';
 
 void main() => runApp(MyApp());
 
-var rng = new Random();
+Random rng = Random();
 
 int d6() => rng.nextInt(6) + 1;
 
-pickRandom(List array) => array[rng.nextInt(array.length)];
+dynamic pickRandom(List array) => array[rng.nextInt(array.length)];
 
 class MyApp extends StatelessWidget {
   @override
