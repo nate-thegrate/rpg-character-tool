@@ -3,7 +3,7 @@ import 'dnd.dart';
 import 'dart:math';
 
 List<int> stats = []; // generated stat values
-List<int> bonuses = []; // bonus that can be changed by user
+List<int> bonuses = []; // bonuses that can be changed by user
 
 final List<String> statNames = ['Str', 'Dex', 'Con', 'Int', 'Wis', 'Cha'];
 List<List<int>> arrays = [
@@ -27,7 +27,7 @@ void generate(index) {
   switch (index) {
     case 0: // 4d6 Drop Lowest
       {
-        stats = <int>[];
+        stats = [];
         for (int i = 0; i < 6; i++) {
           List<int> dice = [];
           for (int j = 0; j < 4; j++) {
@@ -71,9 +71,9 @@ void generate(index) {
               : 5;
       betterStats = [strDex, con, intWisCha];
       List<int> betterValues = [stats[3], stats[4], stats[5]];
-      // highest 3 stats
+      // betterValues = highest 3 stats
       stats = [stats[0], stats[1], stats[2]];
-      // reduce stats to the lowest 3
+      // remove betterValues from stats
       stats.shuffle();
       betterValues.shuffle();
       for (final stat in betterStats) {
@@ -81,18 +81,10 @@ void generate(index) {
         stats.insert(stat, betterValues.removeAt(0));
       }
     }
-    int highestEvenScore = stats.reduce((a, b) {
-      if (a % 2 != 0 || (b > a && b % 2 == 0)) {
-        return b;
-      }
-      return a;
-    });
-    int highestOddScore = stats.reduce((a, b) {
-      if (a % 2 == 0 || (b > a && b % 2 != 0)) {
-        return b;
-      }
-      return a;
-    });
+    int highestEvenScore =
+        stats.reduce((a, b) => (a % 2 != 0 || (b > a && b % 2 == 0)) ? b : a);
+    int highestOddScore =
+        stats.reduce((a, b) => (a % 2 == 0 || (b > a && b % 2 != 0)) ? b : a);
     bonuses[stats.indexOf(highestEvenScore)] = 2;
     bonuses[stats.indexOf(highestOddScore)] = 1;
   }
