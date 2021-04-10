@@ -87,7 +87,7 @@ This method ensures a nice spread of potential outcomes, allowing for every char
 
 ### Call of Cthulhu
 
-Call of Cthulhu puts a whole lot more information into play, so I made a `Player` class to keep the data organized.
+Call of Cthulhu character creation involves a whole lot more information, so I made a `Player` class to keep the data organized.
 
 Everything that needed to be done was explicitly laid out in the Investigator's Handbook, so the main thing for me to figure out was how to automatically determine a character's age.
 
