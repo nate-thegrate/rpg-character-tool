@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'main.dart';
 import 'cthulhu_data.dart';
 
-var cocTheme = ThemeData(primarySwatch: Colors.purple);
+final ThemeData cocTheme = ThemeData(primarySwatch: Colors.purple);
 bool autoAge = true;
 
 class CthulhuHome extends StatefulWidget {
@@ -78,7 +78,7 @@ class _AutoAgeDisplayState extends State<AutoAgeDisplay> {
   @override
   Widget build(BuildContext context) {
     List<PlayerStat> initialStats = [];
-    for (var stat in p.stats) {
+    for (final stat in p.stats) {
       initialStats.add(PlayerStat(stat.name, stat.val));
     }
 
@@ -99,7 +99,7 @@ class _AutoAgeDisplayState extends State<AutoAgeDisplay> {
             ],
             rows: () {
               List<DataRow> rows = [];
-              for (var i = 0; i < initialStats.length; i++) {
+              for (int i = 0; i < initialStats.length; i++) {
                 rows.add(DataRow(cells: [
                   DataCell(Text(statNames[i])),
                   DataCell(Text(initialStats[i].val.toString())),
@@ -161,7 +161,7 @@ class _ManualAgeState extends State<ManualAge> {
           'Willpower',
           'Education',
         ];
-        for (var i = 0; i < p.stats.length; i++) {
+        for (int i = 0; i < p.stats.length; i++) {
           rows.add(DataRow(cells: [
             DataCell(Text(statNames[i])),
             DataCell(Text(p.stats[i].val.toString())),
@@ -330,7 +330,7 @@ class StatReduceButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var totalWidth = MediaQuery.of(context).size.width;
+    double totalWidth = MediaQuery.of(context).size.width;
 
     return Container(
       padding: EdgeInsets.symmetric(vertical: 20),
@@ -383,7 +383,7 @@ class CharacterScreen extends StatelessWidget {
       ],
       rows: () {
         List<DataRow> rows = [];
-        for (var i = 0; i < p.stats.length; i++) {
+        for (int i = 0; i < p.stats.length; i++) {
           rows.add(DataRow(cells: [
             DataCell(Text(statNames[i])),
             DataCell(Text(p.stats[i].val.toString())),
@@ -408,7 +408,7 @@ class CharacterScreen extends StatelessWidget {
         left: 'Best Occupation Choices',
         right: () {
           String text = '${p.bestJobs[0]}';
-          for (var i = 1; i < p.bestJobs.length; i++) {
+          for (int i = 1; i < p.bestJobs.length; i++) {
             text += ", ${p.bestJobs[i]}";
           }
           return text;
@@ -518,7 +518,7 @@ class DataList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var screenWidth = MediaQuery.of(context).size.width;
+    double screenWidth = MediaQuery.of(context).size.width;
     double totalWidth =
         (screenWidth < 500) ? screenWidth : 250 + screenWidth / 2;
     return InkWell(

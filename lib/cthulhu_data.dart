@@ -203,7 +203,7 @@ class Player {
   ];
 
   int statGet(String s) {
-    for (var score in stats) {
+    for (final score in stats) {
       if (score.name == s) {
         return score.val;
       }
@@ -212,7 +212,7 @@ class Player {
   }
 
   void statSet(String s, int x) {
-    for (var i = 0; i < stats.length; i++) {
+    for (int i = 0; i < stats.length; i++) {
       if (stats[i].name == s) {
         stats[i].val = x;
         return;
@@ -221,7 +221,7 @@ class Player {
   }
 
   bool isIn(String s, List<PlayerStat> bestAttributes) {
-    for (var score in bestAttributes) {
+    for (final score in bestAttributes) {
       if (score.name == s) {
         return true;
       }
@@ -254,7 +254,7 @@ class Player {
   ];
 
   void addtoStatData(String stat, int amt) {
-    for (var i = 0; i < 8; i++) {
+    for (int i = 0; i < 8; i++) {
       if (statData[i].name == stat) {
         statData[i].val += amt;
         return;
@@ -264,7 +264,7 @@ class Player {
 
   String showStatData() {
     String data = '';
-    for (var stat in statData) {
+    for (final stat in statData) {
       if (stat.val != 0) {
         if (stat.val > 0) {
           data += '${stat.name} was increased by ${stat.val}\n';
@@ -295,15 +295,14 @@ class Player {
 
   void eduImprovement(int numChecks) {
     int numSuccesses = 0;
-    for (var i = 0; i < numChecks; i++) {
+    for (int i = 0; i < numChecks; i++) {
       if (rng.nextInt(100) >= statGet('EDU')) {
         numSuccesses += 1;
         alterStat('EDU', rng.nextInt(10) + 1, max: 99);
       }
     }
-    var s = numChecks > 1 ? 's' : '';
-    var es = numSuccesses != 1 ? 'es' : '';
-    eduData = '$numChecks edu improvement check$s, $numSuccesses success$es';
+    eduData = '$numChecks edu improvement check${numChecks > 1 ? 's' : ''}, '
+        '$numSuccesses success${numSuccesses != 1 ? 'es' : ''}';
   }
 
   void statReduce(int amt, List<PlayerStat> bestAttributes) {
@@ -334,17 +333,18 @@ class Player {
 
   void setAge() {
     if (autoAge) {
-      var bestAttributes = stats.toList();
-      for (var i in [5, 2, 1]) {
+      List<PlayerStat> bestAttributes = stats.toList();
+      for (final i in [5, 2, 1]) {
         bestAttributes.removeAt(i);
       } // remove stats that don't affect job skills
-      var bestValue = bestAttributes.reduce((a, b) => (a.val > b.val) ? a : b);
-      for (var i = bestAttributes.toList().length - 1; i >= 0; i--) {
+      PlayerStat bestValue =
+          bestAttributes.reduce((a, b) => (a.val > b.val) ? a : b);
+      for (int i = bestAttributes.toList().length - 1; i >= 0; i--) {
         if (bestAttributes[i].val < bestValue.val) {
           bestAttributes.removeAt(i);
         } // remove non-optimal job skills
       }
-      var mod = 1 /
+      double mod = 1 /
           (1 +
               exp(-3 -
                   (statGet('INT') - statGet('POW') - statGet('EDU')) / 16));
@@ -464,12 +464,12 @@ class Player {
   }
 
   void decideOccupation() {
-    var bestAttributes = stats.toList();
-    for (var i in [5, 2, 1]) {
+    List<PlayerStat> bestAttributes = stats.toList();
+    for (final i in [5, 2, 1]) {
       bestAttributes.removeAt(i);
     } // remove stats that don't affect job skills
     final bestValue = bestAttributes.reduce((a, b) => (a.val > b.val) ? a : b);
-    for (var i = bestAttributes.toList().length - 1; i >= 0; i--) {
+    for (int i = bestAttributes.toList().length - 1; i >= 0; i--) {
       if (bestAttributes[i].val < bestValue.val) {
         bestAttributes.removeAt(i);
       } // remove non-optimal job skills
@@ -504,9 +504,9 @@ class Player {
       Job('Tribe Member', ['DEX', 'STR']),
       Job('Zealot', ['APP', 'POW'])
     ];
-    for (var i = 0; i < jobs.length; i++) {
+    for (int i = 0; i < jobs.length; i++) {
       bool isBestJob = false;
-      for (var attribute in jobs[i].reqs) {
+      for (final attribute in jobs[i].reqs) {
         if (isIn(attribute, bestAttributes)) {
           isBestJob = true;
           break;
