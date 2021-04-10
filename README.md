@@ -93,4 +93,4 @@ Everything that needed to be done was explicitly laid out in the Investigator's 
 
 Aging in Call of Cthulhu does a few things to the character: most notably, it reduces stats like Appearance and gives you the chance to improve your education (the lower your current education, the higher the chance of improvement). How well a character can resist going insane impacts whether they're able to be used over a long period of time, and thus what their starting age ought to be.
 
-Adding up all the relevant stats results in a bell curve, so I used a [sigmoid function](https://en.wikipedia.org/wiki/Sigmoid_function) to even out the distribution. This method is implemented in the `setAge()` function in [lib/cthulu_data.dart](https://github.com/nate-thegrate/character_quickgen/blob/master/lib/cthulhu_data.dart#L334).
+Adding up all the relevant stats results in a bell curve, so I used a [sigmoid function](https://en.wikipedia.org/wiki/Sigmoid_function) to even out the distribution. This method is implemented in the `setAge()` function in [lib/cthulu_data.dart](https://github.com/nate-thegrate/character_quickgen/blob/master/lib/cthulhu_data.dart#L330).
