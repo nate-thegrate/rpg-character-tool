@@ -156,10 +156,6 @@ final List<List<String>> treasuredPossessions = [
   ["A pet", "a dog, a cat, a tortise"]
 ];
 
-List<String> rngText(List<List<String>> array) {
-  return array[rng.nextInt(array.length)];
-}
-
 class Job {
   String name = '';
   List<String> reqs = [];
@@ -338,7 +334,7 @@ class Player {
         bestAttributes.removeAt(i);
       } // remove stats that don't affect job skills
       PlayerStat bestValue =
-          bestAttributes.reduce((a, b) => (a.val > b.val) ? a : b);
+          bestAttributes.reduce((a, b) => a.val > b.val ? a : b);
       for (int i = bestAttributes.toList().length - 1; i >= 0; i--) {
         if (bestAttributes[i].val < bestValue.val) {
           bestAttributes.removeAt(i);
@@ -352,11 +348,11 @@ class Player {
       // more educated & less likely to go insane = want to be younger
       // uses a sigmoid function to evenly distribute the probability of each age
 
-      age = (isIn('EDU', bestAttributes))
+      age = isIn('EDU', bestAttributes)
           ? (20 + 20 * mod).toInt()
           // someone with high EDU won't benefit from older age
           // and would want to avoid the teenage EDU debuff
-          : (isIn('APP', bestAttributes))
+          : isIn('APP', bestAttributes)
               // high APP + low EDU = ideal teen
               ? (15 + 10 * mod).toInt()
               : (15 + 64 * mod).toInt();
@@ -450,13 +446,13 @@ class Player {
       mov += 8;
     }
     final thicc = statGet('STR') + statGet('SIZ');
-    build = (thicc < 65)
+    build = thicc < 65
         ? -2
-        : (thicc < 85)
+        : thicc < 85
             ? -1
-            : (thicc < 125)
+            : thicc < 125
                 ? 0
-                : (thicc < 165)
+                : thicc < 165
                     ? 1
                     : 2;
     final List<String> damageBonuses = ['-2', '-1', '0', '+1d4', '+1d6'];
@@ -468,7 +464,7 @@ class Player {
     for (final i in [5, 2, 1]) {
       bestAttributes.removeAt(i);
     } // remove stats that don't affect job skills
-    final bestValue = bestAttributes.reduce((a, b) => (a.val > b.val) ? a : b);
+    final bestValue = bestAttributes.reduce((a, b) => a.val > b.val ? a : b);
     for (int i = bestAttributes.toList().length - 1; i >= 0; i--) {
       if (bestAttributes[i].val < bestValue.val) {
         bestAttributes.removeAt(i);

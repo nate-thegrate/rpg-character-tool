@@ -10,6 +10,8 @@ var rng = new Random();
 
 int d6() => rng.nextInt(6) + 1;
 
+pickRandom(List array) => array[rng.nextInt(array.length)];
+
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {

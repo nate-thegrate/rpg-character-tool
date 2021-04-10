@@ -94,7 +94,7 @@ class _EditArraysState extends State<EditArrays> {
     String arrayText = '';
     for (final array in arrays) {
       for (int i = 0; i < array.length; i++) {
-        arrayText += '${array[i]}${(i < array.length - 1) ? ' ' : ''}';
+        arrayText += '${array[i]}${i < array.length - 1 ? ' ' : ''}';
       }
       arrayText += '\n';
     }
@@ -244,8 +244,8 @@ class _StatScreenState extends State<StatScreen> {
       List<Widget> w = [
         Container(
             margin: EdgeInsets.fromLTRB(0, 0, 0, 10),
-            child: Text("Character idea${(s.length > 1) ? 's' : ''}:",
-                style: bold)),
+            child:
+                Text("Character idea${s.length > 1 ? 's' : ''}:", style: bold)),
       ];
 
       for (final r in s) {

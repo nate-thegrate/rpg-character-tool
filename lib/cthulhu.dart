@@ -310,8 +310,8 @@ class _StatReduceScreenState extends State<StatReduceScreen> {
               buttons(),
               Container(height: 20),
               Text(() {
-                return (p.reduceAmt > 0)
-                    ? 'Reduce the above stats by $p.reduceAmt, split however you like.'
+                return p.reduceAmt > 0
+                    ? 'Reduce the above stats by ${p.reduceAmt}, split however you like.'
                     : "";
               }()),
             ],
@@ -367,11 +367,11 @@ class StatReduceButton extends StatelessWidget {
 }
 
 class CharacterScreen extends StatelessWidget {
-  final ideology = rngText(ideologyBeliefs);
-  final person = rngText(significantPeople);
-  final reason = rngText(significantReasons);
-  final location = rngText(meaningfulLocations);
-  final possession = rngText(treasuredPossessions);
+  final ideology = pickRandom(ideologyBeliefs);
+  final person = pickRandom(significantPeople);
+  final reason = pickRandom(significantReasons);
+  final location = pickRandom(meaningfulLocations);
+  final possession = pickRandom(treasuredPossessions);
 
   final characteristics = DataTable(
       headingRowHeight: 30,
@@ -426,8 +426,7 @@ class CharacterScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final screenWidth = MediaQuery.of(context).size.width;
-    double tableWidth =
-        (screenWidth < 500) ? screenWidth : 250 + screenWidth / 2;
+    double tableWidth = screenWidth < 500 ? screenWidth : 250 + screenWidth / 2;
 
     final backstoryTitle = Container(
         padding: EdgeInsets.only(top: 30),
@@ -519,8 +518,7 @@ class DataList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
-    double totalWidth =
-        (screenWidth < 500) ? screenWidth : 250 + screenWidth / 2;
+    double totalWidth = screenWidth < 500 ? screenWidth : 250 + screenWidth / 2;
     return InkWell(
       onTap: () {},
       child: Container(
