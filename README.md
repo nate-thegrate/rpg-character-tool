@@ -80,7 +80,8 @@ else:
   Third priority stat is chosen between Intelligence, Wisdom, and Charisma
     (with a slight bias toward Wisdom & away from Intelligence)
 
-Put the highest 3 generated stats into each priority stat in random order; the lower 3 stats fill in the rest
+Put the highest 3 generated stats into each priority stat in random order
+The lower 3 stats fill in the rest
 ```
 
 This method ensures a nice spread of potential outcomes, allowing for every character type to come into play. From there, it's easy to sort the stats by value and create suitable character recommendations.
