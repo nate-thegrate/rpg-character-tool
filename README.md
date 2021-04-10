@@ -50,3 +50,43 @@ Making a character in Call of Cthulhu 7th edition is a pretty lengthy process:
 This app does it in a couple seconds.
 
 (Note: it's assumed that you have the [7th Edition Investigator's Handbook](https://www.drivethrurpg.com/product/167631/Call-of-Cthulhu-Investigator-Handbook-7th-Edition). You'll need it to determine occupation skills, finances, and equipment.)
+
+<br>
+
+# Coding Highlights
+
+This app was made using [Flutter](https://flutter.dev/). All its code is written in Dart and can be found in the [lib](https://github.com/nate-thegrate/character_quickgen/tree/master/lib) folder, and some highlights have been included below.
+
+### D&D
+
+For me, the most interesting part of the D&D section was using the `generate()` function to automatically arrange the ability scores. 13 character classes with 112 published subclasses provides a whole bunch of variety, not to mention all the options that come from racial features, multiclassing, and feats.
+
+Luckily, there is a general pattern that character creation follows. I implemented it using the pseudocode below:
+
+```
+generate 6 stats based on user input
+
+priority stats = array of 3 stats [_, _, _]
+
+1/13th of the time:
+  Do stats for a Barbarian: [Strength, Dexterity, Constitution]
+else:
+  First priority stat is Strength 25% of the time, Dexterity 75%
+  Second priority stat is always Constitution
+  Third priority stat is chosen between Intelligence, Wisdom, and Charisma
+    (with a slight bias toward Wisdom & away from Intelligence)
+
+Put the highest 3 generated stats into each priority stat; the lower 3 stats fill in the rest
+```
+
+This method ensures a nice spread of potential outcomes, allowing for every possible character to come into play. From there, it's easy to sort the stats by value and create suitable character recommendations.
+
+### Call of Cthulhu
+
+Call of Cthulhu puts a whole lot more information into play, so I made a `Player` class to keep the data organized.
+
+Everything that needed to be done was explicitly laid out in the Investigator's Handbook, so the main thing for me to figure out was how to automatically determine a character's age.
+
+Aging in Call of Cthulhu does a few things to the character: most notably, it reduces stats like Appearance and gives you the chance to improve your education (the lower your current education, the higher the chance of improvement). How well a character can resist going insane impacts whether they're able to be used over a long period of time, and thus what their starting age ought to be.
+
+Adding up all the relevant stats results in a bell curve, so I used a [sigmoid function](https://en.wikipedia.org/wiki/Sigmoid_function) to even out the distribution. This method is implemented in the `setAge()` function in [lib/cthulu_data.dart](https://github.com/nate-thegrate/character_quickgen/blob/master/lib/cthulhu_data.dart#L334).
