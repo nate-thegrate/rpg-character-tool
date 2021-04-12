@@ -28,28 +28,38 @@ class MyApp extends StatelessWidget {
   }
 }
 
-Drawer appDrawer(context) {
+Drawer appDrawer(context, controller, animation) {
   return Drawer(
       child: ListView(children: <Widget>[
     DrawerHeader(
       margin: EdgeInsets.symmetric(vertical: 10),
       child: Column(
         children: [
-          Icon(
-            Icons.casino,
-            size: 75,
-            color: () {
-              switch (ModalRoute.of(context)?.settings.name) {
-                case 'CoC':
-                  {
-                    return Colors.purple;
+          GestureDetector(
+            onTap: () {
+              controller
+                ..reset()
+                ..forward();
+            },
+            child: RotationTransition(
+              turns: animation,
+              child: Icon(
+                Icons.casino,
+                size: 75,
+                color: () {
+                  switch (ModalRoute.of(context)?.settings.name) {
+                    case 'CoC':
+                      {
+                        return Colors.purple;
+                      }
+                    default:
+                      {
+                        return Colors.green;
+                      }
                   }
-                default:
-                  {
-                    return Colors.green;
-                  }
-              }
-            }(),
+                }(),
+              ),
+            ),
           ),
           Expanded(
               child: Container(

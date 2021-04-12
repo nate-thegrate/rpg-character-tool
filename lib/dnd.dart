@@ -11,7 +11,30 @@ class DnDHome extends StatefulWidget {
   _DnDHomeState createState() => _DnDHomeState();
 }
 
-class _DnDHomeState extends State<DnDHome> {
+class _DnDHomeState extends State<DnDHome> with SingleTickerProviderStateMixin {
+  late AnimationController controller;
+  late Animation<double> animation;
+  @override
+  void initState() {
+    super.initState();
+
+    controller = AnimationController(
+      duration: Duration(seconds: 1),
+      vsync: this,
+    );
+
+    animation = CurvedAnimation(
+      parent: controller,
+      curve: Curves.decelerate,
+    ).drive(Tween(begin: 0, end: 2));
+  }
+
+  @override
+  void dispose() {
+    controller.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     Widget generateChoices() {
@@ -67,7 +90,7 @@ class _DnDHomeState extends State<DnDHome> {
         appBar: AppBar(
           title: Text('Make a Random 5e Character'),
         ),
-        drawer: appDrawer(context),
+        drawer: appDrawer(context, controller, animation),
         body: Column(
           children: [
             generateChoices(),

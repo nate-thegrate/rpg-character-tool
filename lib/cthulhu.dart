@@ -11,7 +11,32 @@ class CthulhuHome extends StatefulWidget {
   _CthulhuHomeState createState() => _CthulhuHomeState();
 }
 
-class _CthulhuHomeState extends State<CthulhuHome> {
+class _CthulhuHomeState extends State<CthulhuHome>
+    with SingleTickerProviderStateMixin {
+  late AnimationController controller;
+  late Animation<double> animation;
+
+  @override
+  void initState() {
+    super.initState();
+
+    controller = AnimationController(
+      duration: Duration(seconds: 1),
+      vsync: this,
+    );
+
+    animation = CurvedAnimation(
+      parent: controller,
+      curve: Curves.decelerate,
+    ).drive(Tween(begin: 0, end: 2));
+  }
+
+  @override
+  void dispose() {
+    controller.dispose();
+    super.dispose();
+  }
+
   startButton(context) => ElevatedButton(
         child: Padding(
           padding: EdgeInsets.symmetric(vertical: 15, horizontal: 5),
@@ -44,7 +69,7 @@ class _CthulhuHomeState extends State<CthulhuHome> {
       data: cocTheme,
       child: Scaffold(
         appBar: AppBar(title: Text('Quick Call of Cthulhu Character')),
-        drawer: appDrawer(context),
+        drawer: appDrawer(context, controller, animation),
         body: Column(
           children: [
             Expanded(

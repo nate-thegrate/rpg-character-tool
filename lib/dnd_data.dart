@@ -132,7 +132,7 @@ List<String> getRecommendations() {
                 'Barbarian',
                 '“The Grappler” (Barbarian with '
                     'Unarmed fighting style [feat or Fighter level] '
-                    'and/or Athletics Expertise [feat or Rogue level])',
+                    'and Athletics Expertise [feat or Rogue level])',
               ]);
               break;
             }
@@ -228,13 +228,8 @@ List<String> getRecommendations() {
                   'Rogue (Inquisitive)',
                   'Fighter (Samurai)',
                   'Ranger',
-                  pickRandom([
-                    '“D&D Batman” (Shadow Monk '
-                        'with 4 Gloom Stalker Ranger levels)',
-                    '“The Death Fist” (one Monk level, '
-                        '5 Echo Knight Fighter levels, '
-                        'and the rest in Druid Circle of Spores)',
-                  ]),
+                  '“D&D Batman” (Shadow Monk '
+                      'with 4 Gloom Stalker Ranger levels)',
                 ]);
               else {
                 r.add('Rogue');
@@ -263,13 +258,8 @@ List<String> getRecommendations() {
               r.addAll([
                 'Monk',
                 'Ranger',
-                pickRandom([
-                  '“D&D Batman” (Shadow Monk '
-                      'with 4 Gloom Stalker Ranger levels)',
-                  '“The Death Fist” (one Monk level, '
-                      '5 Echo Knight Fighter levels, '
-                      'and the rest in Druid Circle of Spores)',
-                ]),
+                '“D&D Batman” (Shadow Monk '
+                    'with 4 Gloom Stalker Ranger levels)',
               ]);
               break;
             }
@@ -355,8 +345,8 @@ List<String> getRecommendations() {
                   'Bard (College of Whispers, with 6 Paladin levels)',
                   'Sorcerer (with 2 or 6 Paladin levels)',
                   'Warlock (Hexblade, with 2 or 6 Paladin levels)',
-                  '“The Conquistador” (7 or more Conquest Paladin levels '
-                      'and 3 or More Hexblade Warlock levels, '
+                  '“The Conquistador” (7+ Conquest Paladin levels '
+                      'and 3+ Hexblade Warlock levels, '
                       'Pact of the Blade & Polearm Master)',
                 ]);
                 r.add(cheese);
@@ -527,6 +517,12 @@ List<String> getRecommendations() {
                 'Ranger (Fey Wanderer)',
                 'Cleric (Order)',
               ]);
+              if (bestScores[2] == 'Dex' || bestScores[3] == 'Dex')
+                r.add('“Master of All Trades” '
+                    '(3 Scout Rogue levels, 1 Knowledge Cleric level, '
+                    '3 Fey Wanderer Ranger levels, '
+                    'and 3 Eloquence Bard levels, '
+                    'for a total of 9 skills with double proficiency)');
               break;
             }
         }
@@ -616,10 +612,17 @@ List<String> getRecommendations() {
                   '“God of Thunder” (Dwarf Storm Sorcerer '
                       'with 2 Tempest Cleric levels)',
                   '“The Big Succ” (Dwarf Celestial Warlock, '
-                      'Gift of the Ever-Living Ones, Vampiric Touch, '
+                      'Gift of the Ever-Living Ones, '
+                      'Vampiric Touch/Enervation, '
                       'one Life Cleric level)',
                 ]),
               ]);
+              if (bestScores[2] == 'Dex' || bestScores[3] == 'Dex')
+                r.add('“Master of All Trades” '
+                    '(3 Scout Rogue levels, 1 Knowledge Cleric level, '
+                    '3 Fey Wanderer Ranger levels, '
+                    'and 3 Eloquence Bard levels, '
+                    'for a total of 9 skills with double proficiency)');
               break;
             }
         }
