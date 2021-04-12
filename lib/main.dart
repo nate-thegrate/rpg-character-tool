@@ -30,17 +30,15 @@ class MyApp extends StatelessWidget {
 
 Drawer appDrawer(context, controller, animation) {
   return Drawer(
-      child: ListView(children: <Widget>[
+      child: ListView(children: [
     DrawerHeader(
       margin: EdgeInsets.symmetric(vertical: 10),
       child: Column(
         children: [
           GestureDetector(
-            onTap: () {
-              controller
-                ..reset()
-                ..forward();
-            },
+            onTap: () => controller
+              ..reset()
+              ..forward(),
             child: RotationTransition(
               turns: animation,
               child: Icon(
