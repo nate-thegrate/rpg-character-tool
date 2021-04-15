@@ -105,7 +105,7 @@ final List<Build> builds = [
           'that doesn\'t take your reaction, '
           'and you can use your reaction for Absorb Elements and Shield.',
       'Spells like Fire Bolt, Guidance, Spare the Dying, Thaumaturgy, '
-          'and Bless all work really well on a Bard.',
+          'Toll the Dead, and Bless all work really well on a Bard.',
     ],
     race: 'Aasimar would really fit the theme',
   ),
@@ -182,10 +182,12 @@ final List<Build> builds = [
           'and then take 2 more levels of Hexblade (Pact of the Blade).',
       'Finally, take one more Paladin level, '
           'and you can continue with either class from there.',
+      'Make sure you grab the Telekinetic or Polearm Master feat '
+          'at some point.',
     ],
     [
-      'Your character will do really well at any level, '
-          'but it really starts to shine once you hit Paladin 6 / Warlock 3.',
+      'This character does really well at any level, '
+          'but it really starts to shine once you hit Paladin 7 / Warlock 3.',
       'The Aura of Conquest immobilizes frightened enemies within 10 feet '
           'of you, and thanks to Hexblade, you can scare them and '
           'hit them with a reach weapon, and it all runs on Charisma.',
@@ -275,6 +277,25 @@ final List<Build> builds = [
     ],
   ),
   Build(
+    'The Dad',
+    ['Rogue (Thief)', 'Fighter (Banneret)'],
+    ['high Dexterity'],
+    'Rally your companions with some amazing dad jokes!',
+    [
+      'Take 3 Rogue levels and then do Fighter from there.',
+      'Make sure you grab the Healer feat as soon as you can.',
+    ],
+    [
+      'You don\'t need fancy magic to support your friends! Fast Hands & Healer lets you pop up an ally as a bonus action.',
+      'Rallying Cry is another great way to do it.',
+      'Take the Superior Technique Fighting Style and/or the Martial Adept '
+          'feat, so you can perform supportive maneuvers (like Distracting '
+          'Strike, Goading Attack, Maneuvering Attack, or Bait and Switch)',
+    ],
+    race: 'Human (for the ideal dad bod) or Kobold (\'Grovel, Cower, and Beg\' '
+        'is just you making terrible puns)',
+  ),
+  Build(
     'The Ice Porcupine',
     ['Fighter', 'Wizard (School of Abjuration)'],
     ['13 Dexterity', 'high Intelligence'],
@@ -322,6 +343,24 @@ final List<Build> builds = [
     race: 'Tortle',
   ),
   Build(
+    'The Lightning Shooter',
+    ['Artificer (Armorer)', 'Fighter'],
+    ['13 Strength or Dexterity', 'high Intelligence'],
+    '[description]',
+    [
+      'Take 5 Armorer Artificer levels, and then one Fighter level. '
+          'Then continue as an Artificer from there.',
+    ],
+    [
+      'Your Lightning Launcher counts as a simple ranged weapon, '
+          'so it can benefit from Sharpshooter and the Archery Fighting Style, '
+          'and it runs on your Intelligence.',
+      'You can infuse it with a +1 attack/damage bonus, '
+          'which is awesome when paired with Sharpshooter.',
+    ],
+    race: 'Variant Human or Custom Lineage, to get Sharpshooter',
+  ),
+  Build(
     'Teenage Mutant Ninja Tortle',
     ['Barbarian', 'Monk'],
     ['high Strength', '13 Wisdom'],
@@ -340,20 +379,19 @@ final List<Build> builds = [
     race: 'Tortle',
   ),
   Build(
-    'The Holy Spirit',
-    ['Cleric (Trickery Domain)', 'Monk (Way of the Astral Self)'],
-    ['decent Dexterity', 'high Wisdom'],
+    'The Not-a-Paladin Paladin',
+    ['Cleric (War Domain)', 'Fighter (Battle Master)'],
+    ['high Strength', 'decent Wisdom'],
     '[description]',
     [
-      'Take 5 levels as an Astral Monk, and then take 5 levels '
-          'as a Trickery Cleric. Then continue with Monk levels from there.',
+      'Take 5 levels as a Fighter, and then take a Cleric level. '
+          'You can continue as a Cleric from there, '
+          'or you can take Fighter to level 11 first.',
     ],
     [
-      'Free advantage via Invoke Duplicity is awesome, '
-          'and spells like Mirror Image, Blink, and Spirit Shroud '
-          'pair with a Monk beautifully.',
-      'You get some great utility as a Cleric, and everything runs on Wisdom: '
-          'Attacks, Armor Class, Stunning Strike, and spellcasting.',
+      'Being a Cleric gives some really nice utility, even with just 1 level.',
+      'Great Weapon Fighting, Divine Favor, Action Surge, and War Priest '
+          'make you a super solid damage dealer.',
     ],
   ),
   Build(
@@ -370,10 +408,11 @@ final List<Build> builds = [
     [
       'Once you hit Monk level 6, you can take advantage of Deft Strike '
           'and Ki-Fueled Attack to make a club attack as a bonus action, '
-          'and the Fighter level lets you add Dueling damage to each hit.',
-      'That\'s a total of 3d8 + 1d6 + 18 during one turn at level 8, '
-          'and you\'re a character that can cast Shield of Faith to get '
-          '22 AC and can Dodge as a bonus action.',
+          'and the Fighter level lets you add Dueling damage to every hit.',
+      'That\'s a total of 3d8 + 1d6 + 18 during one turn at level 8.',
+      'You\'re a character that can cast Shield of Faith to get '
+          '22 AC and can Dodge as a bonus action, '
+          'and your attacks and Stunning Strikes both run on Wisdom.',
     ],
     race: 'Dwarf: your armor won\'t slow you down, and you can get '
         'Dwarven Fortitude for some great bonus action healing.',
@@ -507,7 +546,7 @@ final List<Build> builds = [
     ],
   ),
   Build(
-    'The Unseen Death',
+    'The Unseen Warden',
     ['Cleric (War Domain)', 'Ranger'],
     ['high Strength', '13 Dexterity', 'decent Wisdom'],
     '[description]',
@@ -524,6 +563,25 @@ final List<Build> builds = [
     ],
     race: 'Variant Human or Custom Lineage, '
         'so you can start with Great Weapon Master',
+  ),
+  Build(
+    'The Unseen Warrior',
+    ['Fighter (Eldritch Knight)'],
+    ['high Strength or Dexterity', 'decent Intelligence'],
+    '[description]',
+    [
+      'Take all your levels as a Fighter.',
+      'Make sure you grab the Sentinel feat as soon as you can.',
+    ],
+    [
+      'Cast Fog Cloud near an enemy, and then hit them repeatedly.',
+      'Blind Fighting Style gives you advantage, and Sentinel makes it '
+          'so they can\'t escape.',
+      'War Priest and Guided Strike are both super helpful.',
+    ],
+    race: 'Be an Elf/Half-Elf and get Elven Accuracy if you\'re focusing '
+        'on Dexterity; be any race and get Great Weapon Master if you\'re '
+        'focusing on Strength.',
   ),
   Build(
     'The Pet Detective',
@@ -552,32 +610,32 @@ final List<Build> builds = [
       'Make sure you grab the Great Weapon Master feat as soon as you can.',
       'If a single class is too boring, you can take 3 levels of '
           'Champion Fighter to get more critical hits. '
-          'You can grab the Piercer feat as well.',
+          '(You can grab the Piercer feat as well.)',
     ],
     [
       'Rage & Reckless Attack with a pike, then fly up or into cover. '
           'Now they can\'t hit you, and they can\'t hit your friends.',
     ],
-    race: 'Aarakocra',
+    race: 'Aarakocra or Protector Aasimar',
   ),
   Build(
-    'The Dad',
-    ['Rogue (Thief)', 'Fighter (Banneret)'],
-    ['high Dexterity'],
-    'Rally your companions with some amazing dad jokes!',
+    'The Furry Fury',
+    ['Barbarian (Path of the Beast)'],
+    ['high Strength', 'decent Dexterity'],
+    '[description]',
     [
-      'Take 3 Rogue levels and then do Fighter from there.',
-      'Make sure you grab the Healer feat as soon as you can.',
+      'Take all your levels in the Barbarian class.',
+      'Make sure you max out your Strength as soon as you can.',
     ],
     [
-      'You don\'t need fancy magic to support your friends! Fast Hands & Healer lets you pop up an ally as a bonus action.',
-      'Rallying Cry is another great way to do it.',
-      'Take the Superior Technique Fighting Style and/or the Martial Adept '
-          'feat, so you can perform supportive maneuvers (like Distracting '
-          'Strike, Goading Attack, Maneuvering Attack, or Bait and Switch)',
+      'With your fangs and claws, '
+          'you can make 4 rage-boosted attacks each turn.',
+      'Take the Martial Adept feat for a Disarming/Distracting/Menacing attack '
+          'that you can use whenever you get a critical hit.',
+      'This build is especially great if you have '
+          'a friendly Paladin or Bard with Crusader\'s Mantle nearby.',
     ],
-    race: 'Human (for the ideal dad bod) or Kobold (\'Grovel, Cower, and Beg\' '
-        'is just you making terrible puns)',
+    race: 'Shifter (Longtooth)',
   ),
 ];
 
@@ -711,9 +769,8 @@ List<String> getRecommendations() {
               r.add('Barbarian');
               if (bestScores[2] == 'Int' || bestScores[3] == 'Int')
                 r.add('The Psychic Suplex');
-              else if (bestScores[2] == 'Con' || bestScores[3] == 'Con')
-                r.add('The Guardian Angel');
-              r.add('The Guardian Angel');
+              else
+                r.add(pickRandom(['The Guardian Angel', 'The Furry Fury']));
               break;
             }
           case 'Con': // highest abilities: Str, Con
@@ -722,7 +779,7 @@ List<String> getRecommendations() {
               switch (bestScores[2]) {
                 case 'Dex':
                   {
-                    r.add('The Guardian Angel');
+                    r.add(pickRandom(['The Guardian Angel', 'The Furry Fury']));
                     break;
                   }
                 case 'Int': // Str, Con, Int
@@ -732,7 +789,8 @@ List<String> getRecommendations() {
                       'Psi Warrior',
                       'with 3 Artificer levels',
                     ])})');
-                    r.add('The Psychic Suplex');
+                    r.add(pickRandom(
+                        ['The Psychic Suplex', 'The Unseen Warrior']));
                     break;
                   }
                 case 'Wis': // Str, Con, Wis
@@ -747,8 +805,7 @@ List<String> getRecommendations() {
                       'Ranger',
                     ]);
                     if (bestScores[3] == 'Cha') r.add('Fighter (Samurai)');
-                    r.add(pickRandom(
-                        ['Teenage Mutant Ninja Tortle', 'The Unseen Death']));
+                    r.add('The Not-a-Paladin Paladin');
                     break;
                   }
                 case 'Cha': // Str, Con, Cha
@@ -769,7 +826,7 @@ List<String> getRecommendations() {
               ])})');
               if (bestScores[2] == 'Dex' || bestScores[3] == 'Dex')
                 r.add('The Psychic Suplex');
-              r.add('The Psychic Suplex');
+              r.add('The Unseen Warrior');
               break;
             }
           case 'Wis': // highest abilities: Str, Wis
@@ -787,9 +844,13 @@ List<String> getRecommendations() {
                 r.add('Fighter (Samurai)');
               }
               if (bestScores[2] == 'Dex' || bestScores[3] == 'Dex')
-                r.add(pickRandom(['The Turn 1 Terror', 'The Unseen Death']));
+                r.add(pickRandom([
+                  'Teenage Mutant Ninja Tortle',
+                  'The Turn 1 Terror',
+                  'The Unseen Warden'
+                ]));
               else
-                r.add('Teenage Mutant Ninja Tortle');
+                r.add('The Not-a-Paladin Paladin');
               break;
             }
           case 'Cha': // highest abilities: Str, Cha
@@ -810,7 +871,7 @@ List<String> getRecommendations() {
           case 'Str': // highest abilities: Dex, Str
             {
               r.add('Barbarian');
-              r.add('The Guardian Angel');
+              r.add(pickRandom(['The Guardian Angel', 'The Furry Fury']));
               break;
             }
           case 'Con': // highest abilities: Dex, Con
@@ -826,9 +887,15 @@ List<String> getRecommendations() {
                 r.add(pickRandom(['D&D Batman', 'The Turn 1 Terror']));
               } else {
                 r.add('Rogue');
-                if (bestScores[2] == 'Str') // Dex, Con, Str
+                if (bestScores[2] == 'Str') {
+                  // Dex, Con, Str
                   r.add('Barbarian');
-                else if (bestScores[2] == 'Cha') {
+                  r.add(pickRandom([
+                    'The Guardian Angel',
+                    'The Superior Daggers',
+                    'The Dad',
+                  ]));
+                } else if (bestScores[2] == 'Cha') {
                   // Dex, Con, Cha
                   r.add('Bard');
                   if (bestScores[3] == 'Wis') r.add('Fighter (Samurai)');
@@ -866,6 +933,8 @@ List<String> getRecommendations() {
           case 'Cha': // highest abilities: Dex, Cha
             {
               r.addAll(['Bard', 'Warlock', 'Rogue (Swashbuckler)']);
+              if (bestScores[2] == 'Wis' || bestScores[3] == 'Wis')
+                r.add('Fighter (Samurai)');
               r.add('The Big Booming Blade');
               break;
             }
@@ -879,9 +948,15 @@ List<String> getRecommendations() {
             {
               r.addAll(['Barbarian', 'Fighter (Great Weapon Fighting Style)']);
               switch (bestScores[2]) {
+                case 'Dex': // Con, Str, Dex
+                  {
+                    r.add(pickRandom(['The Guardian Angel', 'The Furry Fury']));
+                    break;
+                  }
                 case 'Int':
                   {
-                    r.add('The Psychic Suplex');
+                    r.add(pickRandom(
+                        ['The Psychic Suplex', 'The Unseen Warrior']));
                     break;
                   }
                 case 'Wis': // Con, Str, Wis
@@ -895,8 +970,7 @@ List<String> getRecommendations() {
                       ])})',
                     );
                     if (bestScores[3] == 'Cha') r.add('Fighter (Samurai)');
-                    r.add(pickRandom(
-                        ['Teenage Mutant Ninja Tortle', 'The Unseen Death']));
+                    r.add('The Not-a-Paladin Paladin');
                     break;
                   }
                 case 'Cha': // Con, Str, Cha
@@ -908,7 +982,8 @@ List<String> getRecommendations() {
                   }
                 default:
                   {
-                    r.add('The Guardian Angel');
+                    r.add(pickRandom(['The Guardian Angel', 'The Furry Fury']));
+                    break;
                   }
               }
               break;
@@ -919,7 +994,11 @@ List<String> getRecommendations() {
               switch (bestScores[2]) {
                 case 'Str':
                   {
-                    r.add('The Guardian Angel');
+                    r.add(pickRandom([
+                      'The Superior Daggers',
+                      'The Dad',
+                      'The Guardian Angel',
+                    ]));
                     break;
                   }
                 case 'Int': // Con, Dex, Int
@@ -953,7 +1032,11 @@ List<String> getRecommendations() {
           case 'Int': // highest abilities: Con, Int
             {
               r.addAll(['Wizard', 'Artificer']);
-              r.add(pickRandom(['The Ice Porcupine', 'The Conch Shell']));
+              r.add(pickRandom([
+                'The Ice Porcupine',
+                'The Conch Shell',
+                'The Lightning Shooter'
+              ]));
               break;
             }
           case 'Wis': // highest abilities: Con, Wis
@@ -969,7 +1052,7 @@ List<String> getRecommendations() {
                 case 'Dex':
                   {
                     r.addAll(['Monk', 'Ranger']);
-                    r.add(pickRandom(['The Pet Detective', 'The Holy Spirit']));
+                    r.add('The Pet Detective');
                     break;
                   }
                 case 'Int':
@@ -1043,7 +1126,12 @@ List<String> getRecommendations() {
                   'with 3 Artificer levels',
                 ])})',
               ]);
-              r.add(pickRandom(['The Ice Porcupine', 'The Conch Shell']));
+              r.add(pickRandom([
+                'The Ice Porcupine',
+                'The Conch Shell',
+                'The Unseen Warrior',
+                'The Lightning Shooter'
+              ]));
               break;
             }
           case 'Dex': // highest abilities: Int, Dex
@@ -1059,7 +1147,11 @@ List<String> getRecommendations() {
                   'with 3 Artificer levels',
                 ])})',
               ]);
-              r.add(pickRandom(['The Ice Porcupine', 'The Conch Shell']));
+              r.add(pickRandom([
+                'The Ice Porcupine',
+                'The Conch Shell',
+                'The Lightning Shooter'
+              ]));
               break;
             }
           case 'Con': // highest abilities: Int, Con
@@ -1069,7 +1161,11 @@ List<String> getRecommendations() {
                 'Artificer',
                 'Wizard (with one Artificer level)',
               ]);
-              r.add(pickRandom(['The Ice Porcupine', 'The Conch Shell']));
+              r.add(pickRandom([
+                'The Ice Porcupine',
+                'The Conch Shell',
+                'The Lightning Shooter'
+              ]));
               break;
             }
           case 'Wis': // highest abilities: Int, Wis
@@ -1082,7 +1178,11 @@ List<String> getRecommendations() {
                   'Twilight',
                 ])} Cleric level)',
               ]));
-              r.add(pickRandom(['The Ice Porcupine', 'The Conch Shell']));
+              r.add(pickRandom([
+                'The Ice Porcupine',
+                'The Conch Shell',
+                'The Lightning Shooter'
+              ]));
               break;
             }
           case 'Cha': // highest abilities: Int, Cha
@@ -1091,7 +1191,11 @@ List<String> getRecommendations() {
               if (bestScores[2] == 'Dex') {
                 r.add('Rogue (Swashbuckler)');
               }
-              r.add(pickRandom(['The Ice Porcupine', 'The Conch Shell']));
+              r.add(pickRandom([
+                'The Ice Porcupine',
+                'The Conch Shell',
+                'The Lightning Shooter'
+              ]));
               break;
             }
         }
@@ -1111,7 +1215,7 @@ List<String> getRecommendations() {
                 ])})',
                 'Ranger',
               ]);
-              r.add('The Bulletproof Kensei');
+              r.add('The Not-a-Paladin Paladin');
               break;
             }
           case 'Dex': // highest abilities: Wis, Dex
@@ -1129,7 +1233,7 @@ List<String> getRecommendations() {
                 'Monk',
                 'Druid',
               ]);
-              r.add('The Holy Spirit');
+              r.add('The Bulletproof Kensei');
               break;
             }
           case 'Con': // highest abilities: Wis, Con
@@ -1155,11 +1259,8 @@ List<String> getRecommendations() {
                 case 'Dex': // Wis, Con, Dex
                   {
                     r.addAll(['Druid', 'Ranger', 'Monk']);
-                    r.add(pickRandom([
-                      'The Holy Spirit',
-                      'The Bulletproof Kensei',
-                      'The Pet Detective'
-                    ]));
+                    r.add(pickRandom(
+                        ['The Bulletproof Kensei', 'The Pet Detective']));
                     break;
                   }
                 case 'Cha': // Wis, Con, Cha
@@ -1187,11 +1288,8 @@ List<String> getRecommendations() {
             }
           case 'Int': // highest abilities: Wis, Int
             {
-              r.add(
-                'Cleric (Knowledge)',
-              );
+              r.add('Cleric (Knowledge)');
               r.add('The Bulletproof Kensei');
-
               break;
             }
           case 'Cha': // highest abilities: Wis, Cha
@@ -1274,11 +1372,8 @@ List<String> getRecommendations() {
                 'Bard',
                 'Rogue (Swashbuckler, with one Hexblade Warlock level)',
               ]);
-              r.add(pickRandom([
-                'The Sorlock',
-                'The Preacher',
-                'The Politician',
-              ]));
+              r.add(pickRandom(
+                  ['The Preacher', 'The Politician', 'The Edgelord']));
               break;
             }
           case 'Wis': // highest abilities: Cha, Wis
