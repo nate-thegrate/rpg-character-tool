@@ -1,0 +1,723 @@
+import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
+
+final List<Build> builds = [
+  Build(
+    'The Sorlock',
+    ['Sorcerer', 'Warlock'],
+    ['decent Dexterity', 'high Charisma'],
+    'A character of tremendous power, '
+        'combining innate magic with an otherworldly pact. '
+        'Mix & match subclasses for whatever flavor you want!',
+    [
+      'Take your first level as a Sorcerer, and then take one Warlock level.',
+      'Now take the rest of your levels as a Sorcerer. '
+          'Make sure you grab the Eldritch Adept feat as soon as you can.',
+    ],
+    [
+      'As a Sorcerer, you have proficiency in Constitution saving throws '
+          'to help maintain concentration on spells, '
+          'and you have access to really cool options for spells & metamagic.',
+      'Cast a Quickened Agonizing Blast for some amazing damage, '
+          'and then do it again as an action.',
+      'Divine Smite works great with a Sorcerer\'s full-caster spell slots.',
+    ],
+  ),
+  Build(
+    'The Dragon Warrior',
+    ['Paladin', 'Sorcerer'],
+    ['15 Strength', 'high Charisma'],
+    'Fight with explosive power!',
+    [
+      'Take your first two levels as a Paladin.'
+          'Now, you can take the rest of your levels as a '
+          'Red Draconic Sorcerer, or you could get 6 Paladin levels first '
+          'for Extra Attack and Aura of Protection.',
+    ],
+    [
+      'Quicken a Green-Flame Blade. You can deal damage from your weapon, '
+          'your Fighting Style, the cantrip, '
+          'Elemental Affinity, and Divine Smite.',
+      'And you still have a main action to use.',
+      'Feel free to mix & match other subclasses and figure out other cool strategies!',
+    ],
+    race: 'Tiefling could be great for Flames of Phlegethos',
+  ),
+  Build(
+    'The Showoff',
+    ['Bard (College of Swords)', 'Paladin'],
+    ['15 Strength', 'high Charisma'],
+    'Add the power of a Sacred Oath to your massive list of talents.',
+    [
+      'Take your first two levels as a Paladin.',
+      'From there, you can take the rest of your levels as a Bard in the '
+          'College of Swords, or you could get 6 Paladin levels first '
+          'for Extra Attack and Aura of Protection.',
+      'Eventually, your character will either be '
+          '2 Paladin levels and the rest in Bard, '
+          'or 5 Bard levels and the rest in Paladin.',
+    ],
+    [
+      'Divine Smite works great with a Bard\'s full-caster spell slots, '
+          'and you can Smite & Blade Flourish on the same hit.',
+      'Heavy Armor combined with Defensive Flourish '
+          'makes you perfect for the front lines.',
+    ],
+  ),
+  Build(
+    'The Preacher',
+    ['Bard', 'Sorcerer (Divine Soul)'],
+    ['decent Dexterity', 'high Charisma'],
+    'Nobody gives better holy sermons.',
+    [
+      'Take your first level as a Divine Soul Sorcerer, '
+          'and then take the rest of your levels as a Bard.',
+      'College of Glamour works great, '
+          'and so would Creation, Eloquence, or Lore.',
+    ],
+    [
+      'The dip into Sorcerer gives you a lot of awesome stuff '
+          'for just one level.',
+      'You get proficiency in Constitution saving throws, '
+          'which helps you concentrate on spells.',
+      'You also get a +2d4 to a save each short rest '
+          'that doesn\'t take your reaction, '
+          'and you can use your reaction for Absorb Elements and Shield.',
+      'Spells like Fire Bolt, Guidance, Spare the Dying, Thaumaturgy, '
+          'Toll the Dead, and Bless all work really well on a Bard.',
+    ],
+    race: 'Aasimar would really fit the theme',
+  ),
+  Build(
+    'The Politician',
+    ['Bard', 'Warlock'],
+    ['decent Dexterity', 'high Charisma'],
+    'You\'re able to destroy your opposition, '
+        'and you only had to sell your soul a little bit.',
+    [
+      'Take one Warlock level and the rest as a Bard.',
+      'College of Eloquence/Pact of the Fiend really fits the flavor, '
+          'but feel free to mix & match subclasses.',
+      'Make sure you grab the Eldritch Adept feat as soon as you can.',
+    ],
+    [
+      'You now have all the social utility of a Bard, '
+          'with all the power of Agonizing Blast.',
+    ],
+  ),
+  Build(
+    'The Edgelord',
+    ['Bard (College of Whispers)', 'Warlock (Hexblade Patron)'],
+    ['14 Dexterity', 'high Charisma'],
+    'You may not injure all those you meet by edge of your sword, '
+        'but your words are often far more dangerous.',
+    [
+      'Take one Hexblade Warlock level '
+          'and the rest as a Bard in the College of Whispers.',
+    ],
+    [
+      'Hex Warrior is the perfect complement for the College of Whispers, '
+          'letting you focus on Charisma for attacks, spellcasting, '
+          'and socializing, and Psychic Blades gets a whole lot better '
+          'with the expanded critical range of Hexblade\'s Curse.',
+      'Take Booming Blade, Green-Flame Blade, Shield, and Wrathful Smite, '
+          'and you\'ll be set.',
+    ],
+  ),
+  Build(
+    'The Mini-Nuke',
+    [
+      'Bard (College of Whispers)',
+      'Paladin (Oath of Vengeance)',
+      'Warlock (Hexblade Patron)',
+    ],
+    ['15 Strength', 'high Charisma'],
+    'Get ready for some triple-crit-smites!',
+    [
+      'Take one Paladin level to start.',
+      'Take 5 Hexblade Warlock levels and then 2 more Paladin levels '
+          '(for Oath of Vengeance).',
+      'Then take the rest of your levels as a Bard '
+          'in the College of Whispers.',
+      'Make sure you pick up Elven Accuracy at some point.',
+    ],
+    [
+      'With Hexblade\'s Curse, Vow of Enmity, and Elven Accuracy, '
+          'you\'ll get a critical hit 27% of the time.',
+      'Then you can use Divine Smite, Eldritch Smite, and Psychic Blades '
+          'on the same hit for atrocious amonts of damage.',
+    ],
+    race: 'Elf or Half-Elf',
+  ),
+  Build(
+    'The Conquistador',
+    ['Paladin (Oath of Conquest)', 'Warlock (Hexblade Patron)'],
+    ['15 Strength', 'high Charisma'],
+    'Render your enemies frozen with terror, and then whack them to death.',
+    [
+      'Take one Paladin level to start, '
+          'and then take a Hexblade Warlock level.',
+      'Then continue with Paladin (Oath of Conquest) up to level 6, '
+          'and then take 2 more levels of Hexblade (Pact of the Blade).',
+      'Finally, take one more Paladin level, '
+          'and you can continue with either class from there.',
+      'Make sure you grab the Telekinetic or Polearm Master feat '
+          'at some point.',
+    ],
+    [
+      'This character does really well at any level, '
+          'but it really starts to shine once you hit Paladin 7 / Warlock 3.',
+      'The Aura of Conquest immobilizes frightened enemies within 10 feet '
+          'of you, and thanks to Hexblade, you can scare them and '
+          'hit them with a reach weapon, and it all runs on Charisma.',
+    ],
+  ),
+  Build(
+    'The Stick Figure',
+    ['Paladin', 'Warlock (Hexblade Patron)'],
+    ['15 Strength', 'high Charisma'],
+    'Who knew a simple weapon could be so awesome?',
+    [
+      'Take one Paladin level to start, '
+          'and then take a Hexblade Warlock level.',
+      'Then continue with Paladin from there.',
+      'Pick whatever Sacred Oath looks good to you, '
+          'and make sure you grab the Polearm Master feat at some point.',
+    ],
+    [
+      'The spear runs on Charisma and gets an extra hit with Polearm Master.',
+      'Each hit is damage-boosted by Dueling Fighting Style, '
+          'Hexblade\'s Curse, Improved Divine Smite, and whatever spell '
+          'you wanna cast (e.g. Divine Favor/Spirit Shroud/Holy Weapon)',
+    ],
+  ),
+  Build(
+    'The Shogun Pact',
+    ['Fighter (Samurai)', 'Warlock (Hexblade Patron)'],
+    ['15 Strength or 14 Dexterity', 'high Charisma'],
+    'While they partied, you studied the blade.',
+    [
+      'Take one Fighter level, and then take a level of Hexblade Warlock.',
+      'Then pick your favorite out of those two classes '
+          'and take it to level 5.',
+      'From there, which levels you take is up to you. '
+          'Hexblade 5 is great thanks to Eldritch Smite, '
+          'Samurai 7 is great if you have a good Wisdom score, '
+          'and Samurai 11 is really good if you can make it there.',
+      'Make sure you grab the Elven Accuracy feat as soon as you can.',
+    ],
+    [
+      'This build gives you a lot of freedom to choose what you want to do.',
+      'You can wear medium or heavy armor, '
+          'and you can use a melee or a ranged weapon '
+          '(and take feats like Great Weapon Master '
+          'or Sharpshooter respectively).',
+      'With Hexblade\'s Curse, Fighting spirit, and Elven Accuracy, '
+          'you\'ll get a critical hit 27% of the time.',
+    ],
+    race: 'Elf or Half-Elf',
+  ),
+  Build(
+    'The Big Booming Blade',
+    ['Rogue (Swashbuckler)', 'Sorcerer (Wild Magic)'],
+    ['high Dexterity', '13 Charisma'],
+    '[description]',
+    [
+      'Take at least 3 levels as a Swashbuckler Rogue, '
+          'and then take 5 levels as a Wild Magic Sorcerer.',
+      'Then continue as a Rogue from there.',
+    ],
+    [
+      'Tides of Chaos gives you free advantage for whenever '
+          'Rakish Audacity fails, and you get to benefit from Sorcerer spells.',
+      'You can quicken a Booming Blade, and then use your action '
+          'to ready a second Booming Blade. This gives you Sneak Attack '
+          'and Booming Blade damage twice in one round!',
+    ],
+  ),
+  Build(
+    'The Superior Daggers',
+    ['Rogue', 'Fighter (Battle Master)'],
+    ['high Dexterity'],
+    '[description]',
+    [
+      'Take 3 levels as a Battle Master Fighter, and then do the rest as '
+          'a Rogue.',
+      'Do whichever Rogueish Archetype you like '
+          '(Assassin, Inquisitive, and Thief all work well in this build).',
+    ],
+    [
+      'You get 4 Superiority Dice as a Battle Master, and you can get a fifth '
+          'with the Superior Technique Fighting Style.',
+      'On your turn, use Quick Toss to get your Sneak Attack, '
+          'and use your Action to ready another dagger.',
+      'If you miss the Quick Toss, use Action Surge. '
+          'This lets you get your Sneak Attack off twice each round!',
+    ],
+  ),
+  Build(
+    'The Dad',
+    ['Rogue (Thief)', 'Fighter (Banneret)'],
+    ['high Dexterity'],
+    'Rally your companions with some amazing dad jokes!',
+    [
+      'Take 3 Rogue levels and then do Fighter from there.',
+      'Make sure you grab the Healer feat as soon as you can.',
+    ],
+    [
+      'You don\'t need fancy magic to support your friends! Fast Hands & Healer lets you pop up an ally as a bonus action.',
+      'Rallying Cry is another great way to do it.',
+      'Take the Superior Technique Fighting Style and/or the Martial Adept '
+          'feat, so you can perform supportive maneuvers (like Distracting '
+          'Strike, Goading Attack, Maneuvering Attack, or Bait and Switch)',
+    ],
+    race: 'Human (for the ideal dad bod) or Kobold (\'Grovel, Cower, and Beg\' '
+        'is just you making terrible puns)',
+  ),
+  Build(
+    'The Ice Porcupine',
+    ['Fighter', 'Wizard (School of Abjuration)'],
+    ['13 Dexterity', 'high Intelligence'],
+    '[description]',
+    [
+      'Take 1 Fighter level, and then do the rest as a Wizard.',
+      'Make sure you grab the Heavy Armor Master feat at some point.',
+    ],
+    [
+      'Cast Armor of Agathys for temporary hit points, '
+          'and cast Absorb Elements & Stoneskin for damage reduction.',
+      'These spells all recharge your Abjuration Ward, '
+          'and any enemies near you have to eat through the Ward '
+          'and the temporary HP, taking cold damage the whole time.',
+      'Get the Superior Technique Fighting Style for Bait and Switch. '
+          'You can eventually take a second Fighter level for Action Surge '
+          'if you\'d like to.',
+    ],
+    race: 'Dwarf (Mark of Warding)',
+  ),
+  Build(
+    'The Conch Shell',
+    ['Artificer (Battle Smith)', 'Wizard (Bladesinging)'],
+    ['high Intelligence'],
+    '[description]',
+    [
+      'There are a few good ways to do level progression.',
+      '1: Just take Bladesinger Wizard levels (don\'t multiclass).',
+      '2: Take your first level as an Artificer. '
+          'Then take two Bladesinger levels, '
+          'and then continue as a Battle Smith Artificer from there.',
+      '3: Take your first level as an Artificer. '
+          'Take 5 Bladesinger levels and then two more '
+          'Artificer (Battle Smith) levels. '
+          'Then continue as a Bladesinger from there.',
+    ],
+    [
+      'You get a 20+ Armor Class without wearing armor '
+          'or investing in Strength or Dexterity.',
+      'With +5 Intelligence, Bracers of Defense, and the Shield spell, '
+          'you can have an AC of 31!',
+      'Everything runs on your Intelligence: AC, weapon attack/damage '
+          '(if you multiclass), spellcasting, and Constitution saving throws.',
+    ],
+    race: 'Tortle',
+  ),
+  Build(
+    'The Lightning Shooter',
+    ['Artificer (Armorer)', 'Fighter'],
+    ['13 Strength or Dexterity', 'high Intelligence'],
+    '[description]',
+    [
+      'Take 5 Armorer Artificer levels, and then one Fighter level. '
+          'Then continue as an Artificer from there.',
+    ],
+    [
+      'Your Lightning Launcher counts as a simple ranged weapon, '
+          'so it can benefit from Sharpshooter and the Archery Fighting Style, '
+          'and it runs on your Intelligence.',
+      'You can infuse it with a +1 attack/damage bonus, '
+          'which is awesome when paired with Sharpshooter.',
+    ],
+    race: 'Variant Human or Custom Lineage, to get Sharpshooter',
+  ),
+  Build(
+    'Teenage Mutant Ninja Tortle',
+    ['Barbarian', 'Monk'],
+    ['high Strength', '13 Wisdom'],
+    'Beef up your punches with some rage!',
+    [
+      'Take one Barbarian level and then two Monk levels.',
+      'From there, you can continue with Monk levels or get the '
+          'Unarmed Fighting Style and continue as a Barbarian or Fighter.',
+    ],
+    [
+      'Monks get lots of attacks each turn, which synergizes really well '
+          'with the Rage Damage Bonus.',
+      'You can be a fantastic grappler & damage dealer, '
+          'and as a Tortle you don\'t have to worry about Armor Class.',
+    ],
+    race: 'Tortle',
+  ),
+  Build(
+    'The Not-a-Paladin Paladin',
+    ['Cleric (War Domain)', 'Fighter (Battle Master)'],
+    ['high Strength', 'decent Wisdom'],
+    '[description]',
+    [
+      'Take 5 levels as a Fighter, and then take a Cleric level. '
+          'You can continue as a Cleric from there, '
+          'or you can take Fighter to level 11 first.',
+    ],
+    [
+      'Being a Cleric gives some really nice utility, even with just 1 level.',
+      'Great Weapon Fighting, Divine Favor, Action Surge, and War Priest '
+          'make you a super solid damage dealer.',
+    ],
+  ),
+  Build(
+    'The Bulletproof Kensei',
+    ['Cleric (Nature Domain)', 'Fighter', 'Monk (Way of the Kensei)'],
+    ['13 Dexterity', 'high Wisdom'],
+    'Who needs Martial Arts when you have a club and steel plates?',
+    [
+      'Take your first level as a Nature Cleric and grab a club & shield. '
+          'Then take 6 Monk levels in the Way of the Kensei.',
+      'Then take one Fighter level with the Dueling Fighting Style, '
+          'and continue with the Monk class from there.',
+    ],
+    [
+      'Once you hit Monk level 6, you can take advantage of Deft Strike '
+          'and Ki-Fueled Attack to make a club attack as a bonus action, '
+          'and the Fighter level lets you add Dueling damage to every hit.',
+      'That\'s a total of 3d8 + 1d6 + 18 during one turn at level 8.',
+      'You\'re a character that can cast Shield of Faith to get '
+          '22 AC and can Dodge as a bonus action, '
+          'and your attacks and Stunning Strikes both run on Wisdom.',
+    ],
+    race: 'Dwarf: your armor won\'t slow you down, and you can get '
+        'Dwarven Fortitude for some great bonus action healing.',
+  ),
+  Build(
+    'The Big Succ',
+    ['Cleric (Life Domain)', 'Warlock (Celestial Patron)'],
+    ['13 Wisdom', 'high Charisma'],
+    'Who needs Martial Arts when you have a club and steel plates?',
+    [
+      'Take at least 2 Warlock levels, then one Life Domain Cleric level, '
+          'and then continue as a Warlock.',
+    ],
+    [
+      'Get Pact of the Chain, along with Investment of the Chain Master '
+          '& Gift of the Ever-Living Ones.',
+      'Cast Vampiric Touch or Enervation. The recovery you get each turn '
+          'is boosted by Life Domain.',
+      'If you ever actually get hurt, cast a Celestial-boosted Hellish Rebuke '
+          'and then get 24 HP as a bonus action from Soul Cage.',
+    ],
+    race: 'Dwarf in heavy armor, or another race in medium armor',
+  ),
+  Build(
+    'God of Thunder',
+    ['Cleric (Tempest Domain)', 'Sorcerer (Storm Sorcery)'],
+    ['13 Wisdom', 'high Charisma'],
+    '[description]',
+    [
+      'Take 5 Sorcerer levels and then 2 Cleric levels. '
+          'Then continue as a Sorcerer from there.',
+    ],
+    [
+      'Use Transmuted Spell and Destructive Wrath '
+          'whenever you feel like winning.',
+    ],
+    race: 'Be a Dwarf so you don\'t need Strength, '
+        'or be another race and use a hammer for Booming Blade.',
+  ),
+  Build(
+    'God of Support',
+    ['Cleric (Order Domain)', 'Sorcerer (Divine Soul)'],
+    ['13 Wisdom', 'high Charisma'],
+    '[description]',
+    [
+      'Take 5 Sorcerer levels and then 1 Cleric level. '
+          'Then continue as a Sorcerer from there.',
+    ],
+    [
+      'You have a bunch of support spells at your disposal '
+          'that work great with Metamagic, and they can take advantage of '
+          'your Voice of Authority.',
+    ],
+    race: 'Dwarf in heavy armor, or another race in medium armor',
+  ),
+  Build(
+    'Master of All Trades',
+    [
+      'Bard (College of Eloquence)',
+      'Cleric (Knowledge Domain)',
+      'Ranger (Fey Wanderer)',
+      'Rogue (Scout)',
+    ],
+    ['14 Dexterity', 'high Wisdom', 'high Charisma'],
+    'You\'re going to be the very best, like no one ever was.',
+    [
+      'Start of with a Rogue level. Then take a Cleric level, 3 Ranger levels, '
+          '3 Bard levels, and then bring Rogue up to level 6.',
+      'From there, you can level up whichever class you want to.',
+      'Make sure you grab the Prodigy and Skill Expert feats '
+          'as soon as you can.',
+    ],
+    [
+      'You\'ll have Expertise in 9 skills by level 10, '
+          'and 4 more skills by level 14.',
+      'Every skill can get a bonus d4 via Guidance, all Charisma checks add '
+          'your Wisdom modifier (thanks to Fey Wanderer), and '
+          'Deception/Persuasion are guaranteed at least a 10 '
+          '(Thanks to College of Eloquence)',
+    ],
+    race: 'Human (Mark of Finding) gives you a d4 bonus with '
+        'Perception & Survival checks, and Pallid Elf gives advantage on '
+        'Investigation & Insight.',
+  ),
+  Build(
+    'The Psychic Suplex',
+    ['Barbarian (Path of the Battlerager)', 'Fighter (Psi Warrior)'],
+    ['high Strength', 'decent Dexterity', 'decent Intelligence'],
+    '[description]',
+    [
+      'Take 1 Barbarian level and then 7 Psi Warrior Fighter levels.',
+      'Then take Barbarian up to 3 for Path of the Battlerager, '
+          'and continue with Fighter from there.',
+      'Make sure you grab the Skill Expert feat as soon as you can '
+          'so you get Expertise in Athletics.',
+    ],
+    [
+      'Grapple two enemies with a +13 bonus and advantage, '
+          'then fly up 60 feet and drop them. Nonmagical weapon resistance '
+          'doesn\'t reduce fall damage, but your rage does.',
+      'Get even higher if somebody casts Haste so you can Dash.',
+    ],
+    race: 'Tabaxi, so you get Feline Agility',
+  ),
+  Build(
+    'D&D Batman',
+    ['Monk (Way of Shadow)', 'Ranger (Gloom Stalker)'],
+    ['high Dexterity', 'decent Wisdom'],
+    'Darkness is your ally.',
+    [
+      'Take 5 Monk levels, then 4 Ranger levels, and then continue with Monk.',
+    ],
+    [
+      'Invisibility, teleportation, and a bunch of Hunter\'s Mark-boosted '
+          'attacks each turn.',
+      'Use natural darkness, or take Eldritch Adept for Devil\'s Sight.',
+    ],
+  ),
+  Build(
+    'The Turn 1 Terror',
+    ['Fighter', 'Ranger (Gloom Stalker)'],
+    ['high Dexterity', 'decent Wisdom'],
+    '[description]',
+    [
+      'Take 3-5 Ranger levels, then 2 Fighter levels, '
+          'and then continue with either class.',
+    ],
+    [
+      'Activate Dread Ambush, and then use Action Surge and do it again '
+          'for some crazy good damage straight from the gate.',
+    ],
+  ),
+  Build(
+    'The Unseen Warden',
+    ['Cleric (War Domain)', 'Ranger'],
+    ['high Strength', '13 Dexterity', 'decent Wisdom'],
+    '[description]',
+    [
+      'Take 2 Cleric levels and then do Ranger from there.',
+      'Make sure you grab the Great Weapon Master and Sentinel feats '
+          'as soon as you can.',
+    ],
+    [
+      'Cast Fog Cloud near a Favored Foe, and then hit them repeatedly.',
+      'Blind Fighting Style gives you advantage, and Sentinel makes it '
+          'so they can\'t escape.',
+      'War Priest and Guided Strike are both super helpful.',
+    ],
+    race: 'Variant Human or Custom Lineage, '
+        'so you can start with Great Weapon Master',
+  ),
+  Build(
+    'The Unseen Warrior',
+    ['Fighter (Eldritch Knight)'],
+    ['high Strength or Dexterity', 'decent Intelligence'],
+    '[description]',
+    [
+      'Take all your levels as a Fighter.',
+      'Make sure you grab the Sentinel feat as soon as you can.',
+    ],
+    [
+      'Cast Fog Cloud near an enemy, and then hit them repeatedly.',
+      'Blind Fighting Style gives you advantage, and Sentinel makes it '
+          'so they can\'t escape.',
+    ],
+    race: 'Be an Elf/Half-Elf and get Elven Accuracy if you\'re focusing '
+        'on Dexterity; be any race and get Great Weapon Master if you\'re '
+        'focusing on Strength.',
+  ),
+  Build(
+    'The Pet Detective',
+    ['Druid (Circle of the Shepherd)', 'Rogue (Inquisitive)'],
+    ['14 Dexterity', 'high Wisdom'],
+    '[description]',
+    [
+      'Take 2 Druid levels and then do Rogue from there.',
+    ],
+    [
+      'Expertise and advantage on skill checks to talk to animals '
+          'means they\'ll do whatever you want them to, which can open up '
+          'a bunch of possibilities.',
+      'The Entangle spell and the Hawk Spirit Totem set up Sneak Attack, '
+          'and you can use Magic Stone to attack using your Wisdom.',
+    ],
+    race: 'Firbolg, so you can talk to animals with advantage',
+  ),
+  Build(
+    'The Guardian Angel',
+    ['Barbarian (Path of the Ancestral Guardian)'],
+    ['high Strength', 'decent Dexterity'],
+    '[description]',
+    [
+      'Take all your levels in the Barbarian class.',
+      'Make sure you grab the Great Weapon Master feat as soon as you can.',
+      'If a single class is too boring, you can take 3 levels of '
+          'Champion Fighter to get more critical hits. '
+          '(You can grab the Piercer feat as well.)',
+    ],
+    [
+      'Rage & Reckless Attack with a pike, then fly up or into cover. '
+          'Now they can\'t hit you, and they can\'t hit your friends.',
+    ],
+    race: 'Aarakocra or Protector Aasimar',
+  ),
+  Build(
+    'The Furry Fury',
+    ['Barbarian (Path of the Beast)'],
+    ['high Strength', 'decent Dexterity'],
+    '[description]',
+    [
+      'Take all your levels in the Barbarian class.',
+      'Make sure you max out your Strength as soon as you can.',
+    ],
+    [
+      'With your fangs and claws, '
+          'you can make 4 rage-boosted attacks each turn.',
+      'Take the Martial Adept feat for a Disarming/Distracting/Menacing attack '
+          'that you can use whenever you get a critical hit.',
+      'This build is especially great if you have '
+          'a friendly Paladin or Bard with Crusader\'s Mantle nearby.',
+    ],
+    race: 'Shifter (Longtooth)',
+  ),
+];
+
+class Build {
+  String name = '';
+  List<String> classes = [];
+  List<String> scores = [];
+  String description = '';
+  List<String> buildSteps = [];
+  List<String> combatSteps = [];
+  String race = '';
+
+  Build(String name, List<String> classes, List<String> scores, String desc,
+      List<String> build, List<String> combat,
+      {String race = 'any'}) {
+    this.name = name;
+    this.classes = classes;
+    this.scores = scores;
+    this.description = desc;
+    this.buildSteps = build;
+    this.combatSteps = combat;
+    this.race = race;
+  }
+}
+
+Build getBuild(String buildName) {
+  for (final build in builds) {
+    if (build.name == buildName) {
+      return build;
+    }
+  }
+  return Build('Unable to find $buildName', [], [], '', [], []);
+}
+
+Widget buildCard(String buildName) {
+  final Build b = getBuild(buildName);
+  String classes = b.classes[0];
+  for (int i = 1; i < b.classes.length; i++) {
+    classes += ' / ${b.classes[i]}';
+  }
+
+  List<Widget> buildSteps = [];
+
+  for (final step in b.buildSteps) {
+    buildSteps.add(Text(step, style: TextStyle(fontSize: 16)));
+    buildSteps.add(Container(height: 5));
+  }
+
+  List<Widget> combatSteps = [];
+
+  for (final step in b.combatSteps) {
+    combatSteps.add(Text(step, style: TextStyle(fontSize: 16)));
+    combatSteps.add(Container(height: 5));
+  }
+
+  List<Widget> items = [
+    Row(
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        Text(b.name,
+            style: TextStyle(
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
+                color: Colors.green[900])),
+        Container(width: 30),
+        Flexible(
+            child: Text(classes,
+                style: TextStyle(fontSize: 16, color: Color(0xFF608062)))),
+      ],
+    ),
+    Container(height: 15),
+    Text(b.description, style: TextStyle(fontSize: 16)),
+    Container(height: 5),
+    Text('Race: ${b.race}', style: TextStyle(fontSize: 16)),
+    Container(height: 20),
+    Text('Character Levels',
+        style: TextStyle(
+            fontSize: 16,
+            fontWeight: FontWeight.bold,
+            color: Colors.green[900])),
+    Container(height: 5),
+    Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: buildSteps,
+    ),
+    Container(height: 20),
+    Text('Strategy/Evaluation',
+        style: TextStyle(
+            fontSize: 16,
+            fontWeight: FontWeight.bold,
+            color: Colors.green[900])),
+    Container(height: 5),
+    Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: combatSteps,
+    ),
+  ];
+
+  return Container(
+    padding: EdgeInsets.all(25),
+    color: Colors.green[50],
+    child: Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: items,
+    ),
+  );
+}

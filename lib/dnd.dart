@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'main.dart';
 import 'dnd_data.dart';
+import 'dnd_builds.dart';
 
 final ThemeData dndTheme = ThemeData(primarySwatch: Colors.green);
 bool autoArrange = true;
@@ -41,7 +42,8 @@ class _DnDHomeState extends State<DnDHome> with SingleTickerProviderStateMixin {
       final List choices = [
         '4d6 Drop Lowest',
         'Standard Array',
-        'Random Array'
+        'Random Array',
+        'Custom'
       ];
       return Flexible(
         child: ListView.separated(
@@ -205,7 +207,27 @@ class StatScreen extends StatefulWidget {
 class _StatScreenState extends State<StatScreen> {
   @override
   Widget build(BuildContext context) {
-    statColumns(width) => [
+    statColumns(width) {
+      if (customStats)
+        return [
+          DataColumn(
+              label: Padding(
+            padding: const EdgeInsets.only(left: 20),
+            child: Text('Stat'),
+          )),
+          DataColumn(
+              label: Container(
+            padding: EdgeInsets.only(left: (15 + width / 2).toDouble()),
+            child: Text('Score'),
+          )),
+          DataColumn(
+              label: Container(
+            padding: EdgeInsets.only(left: width / 2),
+            child: Text('Mod'),
+          )),
+        ];
+      else
+        return [
           DataColumn(label: Text('Stat')),
           DataColumn(label: Container()),
           DataColumn(
@@ -219,30 +241,32 @@ class _StatScreenState extends State<StatScreen> {
             child: Text('Final'),
           ))
         ];
+    }
 
     statRows(width) {
       List<DataRow> rows = [];
-      for (int i = 0; i < 6; i++) {
-        rows.add(DataRow(cells: [
-          DataCell(Text(
-            statNames[i],
-            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
-          )),
-          DataCell(Text(stats[i].toString())),
-          DataCell(ArrowIncrement(
-            value: bonuses[i],
-            update: (bonus) => setState(() => bonuses[i] = bonus),
-          )),
-          DataCell(Row(children: [
-            Container(width: width),
-            Container(
-              width: 25,
-              alignment: Alignment.center,
-              child: Text((stats[i] + bonuses[i]).toString()),
-            ),
-            Container(
+      if (customStats) {
+        for (int i = 0; i < 6; i++) {
+          rows.add(DataRow(cells: [
+            DataCell(Padding(
+              padding: const EdgeInsets.only(left: 20),
+              child: Text(
+                statNames[i],
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+              ),
+            )),
+            DataCell(Container(
+              margin: EdgeInsets.only(left: width / 2),
+              child: ArrowIncrement(
+                value: stats[i],
+                update: (stat) => setState(() => stats[i] = stat),
+              ),
+            )),
+            DataCell(
+              Container(
                 width: 50,
                 alignment: Alignment.center,
+                margin: EdgeInsets.fromLTRB((width / 2), 0, 30, 0),
                 child: Text(
                   () {
                     int mod = ((stats[i] + bonuses[i]) / 2 - 5).floor();
@@ -253,41 +277,81 @@ class _StatScreenState extends State<StatScreen> {
                     }
                   }(),
                   style: TextStyle(fontSize: 20),
-                )),
-          ])),
-        ]));
+                ),
+              ),
+            )
+          ]));
+        }
+      } else {
+        for (int i = 0; i < 6; i++) {
+          rows.add(DataRow(cells: [
+            DataCell(Text(
+              statNames[i],
+              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+            )),
+            DataCell(Text(stats[i].toString())),
+            DataCell(ArrowIncrement(
+              value: bonuses[i],
+              update: (bonus) => setState(() => bonuses[i] = bonus),
+            )),
+            DataCell(Row(children: [
+              Container(width: width),
+              Container(
+                width: 25,
+                alignment: Alignment.center,
+                child: Text((stats[i] + bonuses[i]).toString()),
+              ),
+              Container(
+                  width: 50,
+                  alignment: Alignment.center,
+                  child: Text(
+                    () {
+                      int mod = ((stats[i] + bonuses[i]) / 2 - 5).floor();
+                      if (mod > 0) {
+                        return '+$mod';
+                      } else {
+                        return mod.toString();
+                      }
+                    }(),
+                    style: TextStyle(fontSize: 20),
+                  )),
+            ])),
+          ]));
+        }
       }
       return rows;
     }
 
     recommendations(width) {
-      final List<String> s = getRecommendations();
+      List<String> s = getRecommendations();
       final reg = TextStyle(fontSize: 18);
       final bold = TextStyle(fontSize: 18, fontWeight: FontWeight.bold);
       List<Widget> w = [
         Container(
-            margin: EdgeInsets.fromLTRB(0, 0, 0, 10),
+            margin: EdgeInsets.fromLTRB(0, 20, 0, 10),
             child:
                 Text("Character idea${s.length > 1 ? 's' : ''}:", style: bold)),
       ];
 
-      for (final r in s) {
-        w.add(Padding(
-          padding: EdgeInsets.symmetric(vertical: 5),
-          child: Row(crossAxisAlignment: CrossAxisAlignment.start, children: [
-            Container(width: 20, child: Text(' •', style: bold)),
-            Container(width: width - 60, child: Text(r, style: reg)),
-          ]),
+      String buildName = s[s.length - 1];
+      s[s.length - 1] = '“$buildName” (info below)';
+      for (int i = 0; i < s.length; i++) {
+        w.add(InkWell(
+          onTap: () {},
+          child: Padding(
+            padding: EdgeInsets.symmetric(vertical: 5, horizontal: 20),
+            child: Row(crossAxisAlignment: CrossAxisAlignment.start, children: [
+              Container(width: 20, child: Text(' •', style: bold)),
+              Container(width: width - 60, child: Text(s[i], style: reg)),
+            ]),
+          ),
         ));
       }
 
-      return InkWell(
-        onTap: () {},
-        child: Container(
-            width: width,
-            margin: EdgeInsets.all(20),
-            child: Column(children: w)),
-      );
+      w.add(Container(height: 25));
+      w.add(buildCard(buildName));
+
+      return Container(width: width, child: Column(children: w));
     }
 
     double screenWidth = MediaQuery.of(context).size.width;
@@ -298,36 +362,38 @@ class _StatScreenState extends State<StatScreen> {
         appBar: AppBar(title: Text('Stats')),
         body: Container(
           constraints: BoxConstraints.expand(),
-          margin: EdgeInsets.symmetric(
-            horizontal: () {
-              if (screenWidth < 600) {
-                return 0.0;
-              } else {
-                double margin = (screenWidth - 600) / 3;
-                tableWidth = screenWidth - margin * 2;
-                return margin;
-              }
-            }(),
-            vertical: 15,
-          ),
           child: SingleChildScrollView(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                DataTable(
-                  headingRowHeight: 50,
-                  headingTextStyle: TextStyle(
-                    fontSize: 18,
-                    color: Colors.black,
-                    fontWeight: FontWeight.bold,
+            child: Container(
+              margin: EdgeInsets.symmetric(
+                horizontal: () {
+                  if (screenWidth < 600) {
+                    return 0.0;
+                  } else {
+                    double margin = (screenWidth - 600) / 3;
+                    tableWidth = screenWidth - margin * 2;
+                    return margin;
+                  }
+                }(),
+                vertical: 15,
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  DataTable(
+                    headingRowHeight: 50,
+                    headingTextStyle: TextStyle(
+                      fontSize: 18,
+                      color: Colors.black,
+                      fontWeight: FontWeight.bold,
+                    ),
+                    columnSpacing: 20,
+                    dataRowHeight: 75,
+                    columns: statColumns(tableWidth - 294),
+                    rows: statRows(tableWidth - 310),
                   ),
-                  columnSpacing: 20,
-                  dataRowHeight: 75,
-                  columns: statColumns(tableWidth - 294),
-                  rows: statRows(tableWidth - 310),
-                ),
-                recommendations(tableWidth),
-              ],
+                  recommendations(tableWidth),
+                ],
+              ),
             ),
           ),
         ),
