@@ -159,8 +159,7 @@ List<String> getRecommendations() {
                       'Psi Warrior',
                       'with 3 Artificer levels',
                     ])})');
-                    r.add(pickRandom(
-                        ['The Psychic Suplex', 'The Unseen Warrior']));
+                    r.add('The Psychic Suplex');
                     break;
                   }
                 case 'Wis': // Str, Con, Wis
@@ -175,7 +174,7 @@ List<String> getRecommendations() {
                       'Ranger',
                     ]);
                     if (bestScores[3] == 'Cha') r.add('Fighter (Samurai)');
-                    r.add('The Not-a-Paladin Paladin');
+                    r.add('The Favored Fighter');
                     break;
                   }
                 case 'Cha': // Str, Con, Cha
@@ -199,9 +198,7 @@ List<String> getRecommendations() {
                 'Psi Warrior',
                 'with 3 Artificer levels',
               ])})');
-              if (bestScores[2] == 'Dex' || bestScores[3] == 'Dex')
-                r.add('The Psychic Suplex');
-              r.add('The Unseen Warrior');
+              r.add('The Psychic Suplex');
               break;
             }
           case 'Wis': // highest abilities: Str, Wis
@@ -225,7 +222,7 @@ List<String> getRecommendations() {
                   'The Unseen Warden'
                 ]));
               else
-                r.add('The Not-a-Paladin Paladin');
+                r.add('The Favored Fighter');
               break;
             }
           case 'Cha': // highest abilities: Str, Cha
@@ -252,7 +249,11 @@ List<String> getRecommendations() {
           case 'Con': // highest abilities: Dex, Con
             {
               r.add('Fighter (Archery Fighting Style)');
-              if (bestScores[2] == 'Wis') {
+              if (bestScores[2] == 'Int') {
+                // Dex, Con, Cha
+                r.add('Rogue (Arcane Trickster)');
+                r.add('The Spellsword');
+              } else if (bestScores[2] == 'Wis') {
                 // Dex, Con, Wis
                 r.addAll([
                   'Rogue (Inquisitive)',
@@ -293,7 +294,7 @@ List<String> getRecommendations() {
                   'with 3 Artificer levels',
                 ])})',
               ]);
-              r.add(pickRandom(['The Superior Daggers', 'The Dad']));
+              r.add('The Spellsword');
               break;
             }
           case 'Wis': // highest abilities: Dex, Wis
@@ -330,8 +331,7 @@ List<String> getRecommendations() {
                   }
                 case 'Int':
                   {
-                    r.add(pickRandom(
-                        ['The Psychic Suplex', 'The Unseen Warrior']));
+                    r.add('The Psychic Suplex');
                     break;
                   }
                 case 'Wis': // Con, Str, Wis
@@ -345,7 +345,7 @@ List<String> getRecommendations() {
                       ])})',
                     );
                     if (bestScores[3] == 'Cha') r.add('Fighter (Samurai)');
-                    r.add('The Not-a-Paladin Paladin');
+                    r.add('The Favored Fighter');
                     break;
                   }
                 case 'Cha': // Con, Str, Cha
@@ -379,8 +379,7 @@ List<String> getRecommendations() {
                 case 'Int': // Con, Dex, Int
                   {
                     r.addAll(['Wizard', 'Artificer']);
-                    r.add(pickRandom(['The Superior Daggers', 'The Dad']));
-
+                    r.add('The Spellsword');
                     break;
                   }
                 case 'Wis': // Con, Dex, Wis
@@ -407,11 +406,14 @@ List<String> getRecommendations() {
           case 'Int': // highest abilities: Con, Int
             {
               r.addAll(['Wizard', 'Artificer']);
-              r.add(pickRandom([
-                'The Ice Porcupine',
-                'The Conch Shell',
-                'The Lightning Shooter'
-              ]));
+              if (bestScores[2] == 'Cha' || bestScores[3] == 'Cha')
+                r.add('Pocket-size Pain');
+              else
+                r.add(pickRandom([
+                  'The Ice Porcupine',
+                  'The Conch Shell',
+                  'The Lightning Shooter'
+                ]));
               break;
             }
           case 'Wis': // highest abilities: Con, Wis
@@ -421,13 +423,13 @@ List<String> getRecommendations() {
                 case 'Str': // Con, Wis, Str
                   {
                     r.add('Ranger');
-                    r.add('The Bulletproof Kensei');
+                    r.add('The Telekinetic Tiger');
                     break;
                   }
                 case 'Dex': // Con, Wis, Dex
                   {
                     r.addAll(['Monk', 'Ranger']);
-                    r.add('The Pet Detective');
+                    r.add('The BBC');
                     break;
                   }
                 case 'Int': // Con, Wis, Int
@@ -444,7 +446,7 @@ List<String> getRecommendations() {
                   }
                 default:
                   {
-                    r.add('The Bulletproof Kensei');
+                    r.add('The Telekinetic Tiger');
                     break;
                   }
               }
@@ -509,7 +511,6 @@ List<String> getRecommendations() {
               r.add(pickRandom([
                 'The Ice Porcupine',
                 'The Conch Shell',
-                'The Unseen Warrior',
                 'The Lightning Shooter'
               ]));
               break;
@@ -529,7 +530,7 @@ List<String> getRecommendations() {
               ]);
               r.add(pickRandom([
                 'The Ice Porcupine',
-                'The Conch Shell',
+                'The Spellsword',
                 'The Lightning Shooter'
               ]));
               break;
@@ -541,11 +542,14 @@ List<String> getRecommendations() {
                 'Artificer',
                 'Wizard (with one Artificer level)',
               ]);
-              r.add(pickRandom([
-                'The Ice Porcupine',
-                'The Conch Shell',
-                'The Lightning Shooter'
-              ]));
+              if (bestScores[2] == 'Cha' || bestScores[3] == 'Cha')
+                r.add('Pocket-size Pain');
+              else
+                r.add(pickRandom([
+                  'The Ice Porcupine',
+                  'The Conch Shell',
+                  'The Lightning Shooter'
+                ]));
               break;
             }
           case 'Wis': // highest abilities: Int, Wis
@@ -571,11 +575,7 @@ List<String> getRecommendations() {
               if (bestScores[2] == 'Dex') {
                 r.add('Rogue (Swashbuckler)');
               }
-              r.add(pickRandom([
-                'The Ice Porcupine',
-                'The Conch Shell',
-                'The Lightning Shooter'
-              ]));
+              r.add('Pocket-size Pain');
               break;
             }
         }
@@ -595,7 +595,7 @@ List<String> getRecommendations() {
                 ])})',
                 'Ranger',
               ]);
-              r.add('The Not-a-Paladin Paladin');
+              r.add('The Favored Fighter');
               break;
             }
           case 'Dex': // highest abilities: Wis, Dex
@@ -633,14 +633,13 @@ List<String> getRecommendations() {
                       ])})',
                       'Ranger (with 1 or 2 Fighter levels)',
                     ]);
-                    r.add('The Bulletproof Kensei');
+                    r.add('The Telekinetic Tiger');
                     break;
                   }
                 case 'Dex': // Wis, Con, Dex
                   {
                     r.addAll(['Druid', 'Ranger', 'Monk']);
-                    r.add(pickRandom(
-                        ['The Bulletproof Kensei', 'The Pet Detective']));
+                    r.add(pickRandom(['The Bulletproof Kensei', 'The BBC']));
                     break;
                   }
                 case 'Cha': // Wis, Con, Cha
@@ -660,7 +659,7 @@ List<String> getRecommendations() {
                       'Druid',
                       'Ranger (Druidic Warrior Fighting Style)',
                     ]);
-                    r.add('The Bulletproof Kensei');
+                    r.add('The Telekinetic Tiger');
                     break;
                   }
               }

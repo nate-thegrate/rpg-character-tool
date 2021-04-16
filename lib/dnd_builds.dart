@@ -29,8 +29,8 @@ final List<Build> builds = [
     ['15 Strength', 'high Charisma'],
     'Fight with explosive power!',
     [
-      'Take your first two levels as a Paladin.'
-          'Now, you can take the rest of your levels as a '
+      'Take your first two levels as a Paladin.',
+      'Now, you can take the rest of your levels as a '
           'Red Draconic Sorcerer, or you could get 6 Paladin levels first '
           'for Extra Attack and Aura of Protection.',
     ],
@@ -265,14 +265,33 @@ final List<Build> builds = [
       'Make sure you grab the Healer feat as soon as you can.',
     ],
     [
-      'You don\'t need fancy magic to support your friends! Fast Hands & Healer lets you pop up an ally as a bonus action.',
+      'You don\'t need fancy magic to support your friends! '
+          'Fast Hands & Healer lets you pop up an ally as a bonus action.',
       'Rallying Cry is another great way to do it.',
       'Take the Superior Technique Fighting Style and/or the Martial Adept '
           'feat, so you can perform supportive maneuvers (like Distracting '
           'Strike, Goading Attack, Maneuvering Attack, or Bait and Switch)',
     ],
-    race: 'Human (for the ideal dad bod) or Kobold (\'Grovel, Cower, and Beg\' '
-        'is just you making terrible puns)',
+  ),
+  Build(
+    'Pocket-size Pain',
+    ['Wizard (School of Evocation)', 'Warlock (Hexblade Patron)'],
+    ['high Intelligence', '13 Charisma'],
+    'Being a runt doesn\'t matter if your enemies are all dead.',
+    [
+      'Take 5 Evocation Wizard levels and then one Hexblade Warlock level. '
+          'Then continue as a Wizard from there.',
+    ],
+    [
+      'Magic Missile is awesome. It always hits, and since each missile '
+          'uses the same damage roll, it isn\'t hard '
+          'to get the damage numbers up super high.',
+      'Cast an overchanneled Bestow Curse through your familiar, '
+          'and then use Hexblade\'s Curse & Fury of the Small.',
+      'A level 7 Magic Missile will deal an average of '
+          '355.5 damage on a single turn!',
+    ],
+    race: 'Goblin',
   ),
   Build(
     'The Ice Porcupine',
@@ -340,6 +359,30 @@ final List<Build> builds = [
     race: 'Variant Human or Custom Lineage, to get Sharpshooter',
   ),
   Build(
+    'The Spellsword',
+    ['Fighter (Eldritch Knight)'],
+    ['high Dexterity', 'decent Intelligence'],
+    '[description]',
+    [
+      'Take all your levels as an Eldritch Knight.',
+      'Make sure you grab the Sentinel feat as soon as you can.',
+    ],
+    [
+      'There are a bunch of great ways to use this build.',
+      'You can take Blind Fighting Style and Cast Fog Cloud near an enemy. '
+          'You\'ll get advantage, and Sentinel makes it '
+          'so they can\'t escape.',
+      'You could also take the Dueling Fighting Style '
+          '(in place of Blind Fighting or as a feat). '
+          'Cast Shadow Blade or Spirit Shroud, '
+          'and use Action Surge for some awesome damage.',
+      'Mirror Image is great for fighting in melee, '
+          'especially since it can help trigger your Sentinel attack.',
+    ],
+    race: 'Be an Elf/Half-Elf to get Elven Accuracy, '
+        'or do Variant Human/Custom Lineage for a head start on feats.',
+  ),
+  Build(
     'Teenage Mutant Ninja Tortle',
     ['Barbarian', 'Monk'],
     ['high Strength', '13 Wisdom'],
@@ -356,22 +399,6 @@ final List<Build> builds = [
           'and as a Tortle you don\'t have to worry about Armor Class.',
     ],
     race: 'Tortle',
-  ),
-  Build(
-    'The Not-a-Paladin Paladin',
-    ['Cleric (War Domain)', 'Fighter (Battle Master)'],
-    ['high Strength', 'decent Wisdom'],
-    '[description]',
-    [
-      'Take 5 levels as a Fighter, and then take a Cleric level. '
-          'You can continue as a Cleric from there, '
-          'or you can take Fighter to level 11 first.',
-    ],
-    [
-      'Being a Cleric gives some really nice utility, even with just 1 level.',
-      'Great Weapon Fighting, Divine Favor, Action Surge, and War Priest '
-          'make you a super solid damage dealer.',
-    ],
   ),
   Build(
     'The Bulletproof Kensei',
@@ -395,6 +422,67 @@ final List<Build> builds = [
     ],
     race: 'Dwarf: your armor won\'t slow you down, and you can get '
         'Dwarven Fortitude for some great bonus action healing.',
+  ),
+  Build(
+    'The BBC',
+    ['Cleric (Arcana Domain)'],
+    ['14 Dexterity', 'high Wisdom'],
+    'There\'s nothing quite like a thicc wood shaft, '
+        'enchanted and wielded by a Booming Blade Cleric.',
+    [
+      'Take all your levels as an Arcana Domain Cleric.',
+      'Max out your Wisdom and then grab the War Caster feat.',
+    ],
+    [
+      'Since Booming Blade and Green-Flame Blade have 2 damage rolls, '
+          'they can benefit twice from Potent Spellcasting.',
+      'If you cast Shillelagh and Spiritual Weapon, '
+          'you can deal damage with your Wisdom mod 4 times in one turn!',
+      'Being a Cleric provides a lot of utility, and the level 17 '
+          'Arcana Domain feature is amazing (if you get that far).',
+    ],
+    race: 'Variant Human/Custom Lineage '
+        '(grab Magic Initiate to get Shillelagh right away) '
+        'or Wood Elf (to qualify for Wood Elf Magic)',
+  ),
+  Build(
+    'The Telekinetic Tiger',
+    ['Druid (Circle of the Moon)'],
+    ['high Wisdom'],
+    'The only thing scarier than a ferocious beast '
+        'is a ferocious beast with mind powers.',
+    [
+      'Take all your levels as a Druid (Circle of the Moon).',
+      'Make sure you grab the Telekinetic feat as soon as you can.',
+    ],
+    [
+      'Wild Shape usually doesn\'t give you anything to do '
+          'with your bonus action, and since you retain your Wisdom score, '
+          'the Telekinetic feat is a perfect fit.',
+      'Shove an enemy prone with your mind, '
+          'and then charge at them with advantage.',
+      'You can also take a Barbarian level, '
+          'since your Telekinesis still functions while raging.',
+    ],
+    race: 'Variant Human/Custom Lineage '
+        '(grab Magic Initiate to get Shillelagh right away) '
+        'or Wood Elf (to qualify for Wood Elf Magic)',
+  ),
+  Build(
+    'The Favored Fighter',
+    ['Cleric (War Domain)', 'Fighter (Battle Master)'],
+    ['high Strength', 'decent Wisdom'],
+    '[description]',
+    [
+      'Take 5 levels as a Fighter, and then take a Cleric level. '
+          'You can continue as a Cleric from there, '
+          'or you can take Fighter to level 11 first.',
+    ],
+    [
+      'Being a Cleric gives some really nice utility, even with just 1 level.',
+      'Great Weapon Fighting, Divine Favor, Action Surge, and War Priest '
+          'make you a super solid damage dealer.',
+    ],
   ),
   Build(
     'The Big Succ',
@@ -544,24 +632,6 @@ final List<Build> builds = [
         'so you can start with Great Weapon Master',
   ),
   Build(
-    'The Unseen Warrior',
-    ['Fighter (Eldritch Knight)'],
-    ['high Strength or Dexterity', 'decent Intelligence'],
-    '[description]',
-    [
-      'Take all your levels as a Fighter.',
-      'Make sure you grab the Sentinel feat as soon as you can.',
-    ],
-    [
-      'Cast Fog Cloud near an enemy, and then hit them repeatedly.',
-      'Blind Fighting Style gives you advantage, and Sentinel makes it '
-          'so they can\'t escape.',
-    ],
-    race: 'Be an Elf/Half-Elf and get Elven Accuracy if you\'re focusing '
-        'on Dexterity; be any race and get Great Weapon Master if you\'re '
-        'focusing on Strength.',
-  ),
-  Build(
     'The Pet Detective',
     ['Druid (Circle of the Shepherd)', 'Rogue (Inquisitive)'],
     ['14 Dexterity', 'high Wisdom'],
@@ -665,8 +735,8 @@ Widget buildCard(String buildName) {
   List<Widget> combatSteps = [];
 
   for (final step in b.combatSteps) {
-    combatSteps.add(Text(step, style: TextStyle(fontSize: 16)));
     combatSteps.add(Container(height: 5));
+    combatSteps.add(Text(step, style: TextStyle(fontSize: 16)));
   }
 
   List<Widget> items = [
@@ -705,7 +775,6 @@ Widget buildCard(String buildName) {
             fontSize: 16,
             fontWeight: FontWeight.bold,
             color: Colors.green[900])),
-    Container(height: 5),
     Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: combatSteps,
