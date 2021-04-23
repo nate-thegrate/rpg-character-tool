@@ -283,13 +283,18 @@ final List<Build> builds = [
           'Then continue as a Wizard from there.',
     ],
     [
-      'Magic Missile is awesome. It always hits, and since each missile '
+      'Magic missile is awesome. It always hits, and since each missile '
           'uses the same damage roll, it isn\'t hard '
           'to get the damage numbers up super high.',
       'Cast an overchanneled Bestow Curse through your familiar, '
           'and then use Hexblade\'s Curse & Fury of the Small.',
-      'A level 7 Magic Missile will deal an average of '
+      'A level 7, magic missile will deal an average of '
           '355.5 damage on a single turn!',
+      'Some DMs will rule that magic missile uses multiple damage rolls, '
+          'which means that Fury of the Small and Empowered Evocation '
+          'only apply once. This reduces the average total damage to 168.5.',
+      'Other DMs will have the enemy cast a level 1 shield spell. '
+          'This reduces the average total damage to 0.',
     ],
     race: 'Goblin',
   ),
@@ -409,7 +414,7 @@ final List<Build> builds = [
       'Take your first level as a Nature Cleric and grab a club & shield. '
           'Then take 6 Monk levels in the Way of the Kensei.',
       'Then take one Fighter level with the Dueling Fighting Style, '
-          'and continue with the Monk class from there.',
+          'and continue as a Cleric from there.',
     ],
     [
       'Once you hit Monk level 6, you can take advantage of Deft Strike '
