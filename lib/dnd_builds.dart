@@ -18,8 +18,8 @@ final List<Build> builds = [
       'As a Sorcerer, you have proficiency in Constitution saving throws '
           'to help maintain concentration on spells, '
           'and you have access to really cool options for spells & metamagic.',
-      'Cast a Quickened Agonizing Blast for some amazing damage, '
-          'and then do it again as an action.',
+      'Cast an Agonizing Blast with your action, '
+          'and then quicken another spell (maybe a second Eldritch blast!)',
       'Divine Smite works great with a Sorcerer\'s full-caster spell slots.',
     ],
   ),
@@ -42,6 +42,27 @@ final List<Build> builds = [
       'Feel free to mix & match other subclasses and figure out other cool strategies!',
     ],
     race: 'Tiefling could be great for Flames of Phlegethos',
+  ),
+  Build(
+    'The Diplomat',
+    ['Bard (College of Eloquence)', 'Paladin (Oath of Redemption)'],
+    ['high Strength', 'high Charisma'],
+    'Become the king of negotiation.',
+    [
+      'Take your first six levels as a Paladin, '
+          'and then take five Bard levels.',
+      'Then you can continue with either class.',
+    ],
+    [
+      'When it comes time to make a persuasion check, you\'ll have '
+          'Expertise, Silver Tongue, Emissary of Peace, Ever Hospitable, '
+          'and charming spells, giving yourself an average of 35 '
+          'for each persuasion roll.',
+      'You get great bonus action usage with Healing Word/Bardic Inspiration, '
+          'and you have the Bard\'s full caster spell slot progression '
+          'to smite with.',
+    ],
+    race: 'Halfling (Mark of Hospitality)',
   ),
   Build(
     'The Showoff',
@@ -221,7 +242,7 @@ final List<Build> builds = [
     'The Big Booming Blade',
     ['Rogue (Swashbuckler)', 'Sorcerer (Wild Magic)'],
     ['high Dexterity', '13 Charisma'],
-    '[description]',
+    '',
     [
       'Take at least 3 levels as a Swashbuckler Rogue, '
           'and then take 5 levels as a Wild Magic Sorcerer.',
@@ -239,7 +260,7 @@ final List<Build> builds = [
     'The Superior Daggers',
     ['Rogue', 'Fighter (Battle Master)'],
     ['high Dexterity'],
-    '[description]',
+    '',
     [
       'Take 3 levels as a Battle Master Fighter, and then do the rest as '
           'a Rogue.',
@@ -302,7 +323,7 @@ final List<Build> builds = [
     'The Ice Porcupine',
     ['Fighter', 'Wizard (School of Abjuration)'],
     ['13 Dexterity', 'high Intelligence'],
-    '[description]',
+    'You\'ll be such a good tank that they\'ll forget you\'re a Wizard.',
     [
       'Take 1 Fighter level, and then do the rest as a Wizard.',
       'Make sure you grab the Heavy Armor Master feat at some point.',
@@ -323,7 +344,7 @@ final List<Build> builds = [
     'The Conch Shell',
     ['Artificer (Battle Smith)', 'Wizard (Bladesinging)'],
     ['high Intelligence'],
-    '[description]',
+    'Avoid damage with nothing but a turtle shell and a big brain.',
     [
       'There are a few good ways to do level progression.',
       '1: Just take Bladesinger Wizard levels (don\'t multiclass).',
@@ -349,7 +370,7 @@ final List<Build> builds = [
     'The Lightning Shooter',
     ['Artificer (Armorer)', 'Fighter'],
     ['13 Strength or Dexterity', 'high Intelligence'],
-    '[description]',
+    'pew pew!',
     [
       'Take 5 Armorer Artificer levels, and then one Fighter level. '
           'Then continue as an Artificer from there.',
@@ -367,7 +388,7 @@ final List<Build> builds = [
     'The Spellsword',
     ['Fighter (Eldritch Knight)'],
     ['high Dexterity', 'decent Intelligence'],
-    '[description]',
+    'Weapons + Magic = fun times.',
     [
       'Take all your levels as an Eldritch Knight.',
       'Make sure you grab the Sentinel feat as soon as you can.',
@@ -425,7 +446,7 @@ final List<Build> builds = [
           '22 AC and can Dodge as a bonus action, '
           'and your attacks and Stunning Strikes both run on Wisdom.',
     ],
-    race: 'Dwarf: your armor won\'t slow you down, and you can get '
+    race: 'Dwarf—your armor won\'t slow you down, and you can get '
         'Dwarven Fortitude for some great bonus action healing.',
   ),
   Build(
@@ -477,7 +498,7 @@ final List<Build> builds = [
     'The Favored Fighter',
     ['Cleric (War Domain)', 'Fighter (Battle Master)'],
     ['high Strength', 'decent Wisdom'],
-    '[description]',
+    '',
     [
       'Take 5 levels as a Fighter, and then take a Cleric level. '
           'You can continue as a Cleric from there, '
@@ -512,7 +533,7 @@ final List<Build> builds = [
     'God of Thunder',
     ['Cleric (Tempest Domain)', 'Sorcerer (Storm Sorcery)'],
     ['13 Wisdom', 'high Charisma'],
-    '[description]',
+    'Death will come about at your whim.',
     [
       'Take 5 Sorcerer levels and then 2 Cleric levels. '
           'Then continue as a Sorcerer from there.',
@@ -520,6 +541,9 @@ final List<Build> builds = [
     [
       'Use Transmuted Spell and Destructive Wrath '
           'whenever you feel like winning.',
+      'The Cleric levels also give some awesome spells. '
+          'Use subtle spell on a Command, Healing Word, and Thaumaturgy '
+          'to convince NPCs to worship you.',
     ],
     race: 'Be a Dwarf so you don\'t need Strength, '
         'or be another race and use a hammer for Booming Blade.',
@@ -528,7 +552,7 @@ final List<Build> builds = [
     'God of Support',
     ['Cleric (Order Domain)', 'Sorcerer (Divine Soul)'],
     ['13 Wisdom', 'high Charisma'],
-    '[description]',
+    '',
     [
       'Take 5 Sorcerer levels and then 1 Cleric level. '
           'Then continue as a Sorcerer from there.',
@@ -537,6 +561,9 @@ final List<Build> builds = [
       'You have a bunch of support spells at your disposal '
           'that work great with Metamagic, and they can take advantage of '
           'your Voice of Authority.',
+      'The Cleric level also helps you to remember a few more spells. '
+          'Use subtle spell on a Command, Healing Word, and Thaumaturgy '
+          'to convince NPCs to worship you.',
     ],
     race: 'Dwarf in heavy armor, or another race in medium armor',
   ),
@@ -573,7 +600,7 @@ final List<Build> builds = [
     'The Psychic Suplex',
     ['Barbarian (Path of the Battlerager)', 'Fighter (Psi Warrior)'],
     ['high Strength', 'decent Dexterity', 'decent Intelligence'],
-    '[description]',
+    'Take someone for a ride (against their will).',
     [
       'Take 1 Barbarian level and then 7 Psi Warrior Fighter levels.',
       'Then take Barbarian up to 3 for Path of the Battlerager, '
@@ -607,7 +634,7 @@ final List<Build> builds = [
     'The Turn 1 Terror',
     ['Fighter', 'Ranger (Gloom Stalker)'],
     ['high Dexterity', 'decent Wisdom'],
-    '[description]',
+    '',
     [
       'Take 3-5 Ranger levels, then 2 Fighter levels, '
           'and then continue with either class.',
@@ -621,7 +648,7 @@ final List<Build> builds = [
     'The Unseen Warden',
     ['Cleric (War Domain)', 'Ranger'],
     ['high Strength', '13 Dexterity', 'decent Wisdom'],
-    '[description]',
+    '',
     [
       'Take 2 Cleric levels and then do Ranger from there.',
       'Make sure you grab the Great Weapon Master and Sentinel feats '
@@ -640,7 +667,7 @@ final List<Build> builds = [
     'The Pet Detective',
     ['Druid (Circle of the Shepherd)', 'Rogue (Inquisitive)'],
     ['14 Dexterity', 'high Wisdom'],
-    '[description]',
+    'Call in animals whenever you need a favor.',
     [
       'Take 2 Druid levels and then do Rogue from there.',
     ],
@@ -657,7 +684,7 @@ final List<Build> builds = [
     'The Guardian Angel',
     ['Barbarian (Path of the Ancestral Guardian)'],
     ['high Strength', 'decent Dexterity'],
-    '[description]',
+    'Protect yourself and everyone else with the power of flight.',
     [
       'Take all your levels in the Barbarian class.',
       'Make sure you grab the Great Weapon Master feat as soon as you can.',
@@ -668,6 +695,8 @@ final List<Build> builds = [
     [
       'Rage & Reckless Attack with a pike, then fly up or into cover. '
           'Now they can\'t hit you, and they can\'t hit your friends.',
+      'Works really well if the enemy is forced to run past your companions '
+          'to get to you, provoking a bunch of opportunity attacks.',
     ],
     race: 'Aarakocra or Protector Aasimar',
   ),
@@ -675,7 +704,7 @@ final List<Build> builds = [
     'The Furry Fury',
     ['Barbarian (Path of the Beast)'],
     ['high Strength', 'decent Dexterity'],
-    '[description]',
+    'Dish out a furry flurry in a hurry.',
     [
       'Take all your levels in the Barbarian class.',
       'Make sure you max out your Strength as soon as you can.',

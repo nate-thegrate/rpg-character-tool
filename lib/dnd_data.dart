@@ -1,3 +1,5 @@
+import 'package:character_quickgen/dnd_builds.dart';
+
 import 'main.dart';
 import 'dnd.dart';
 import 'dart:math';
@@ -129,6 +131,7 @@ List<String> getRecommendations() {
   for (int i = 2; i < bestScores.length; i++) {
     if (stats[statNames.indexOf(bestScores[i])] < 12) bestScores[i] = "";
   }
+  print(builds.length);
   List<String> r = []; // list of recommendations
   switch (bestScores[0]) {
     case 'Str': // highest ability is Strength
@@ -180,7 +183,8 @@ List<String> getRecommendations() {
                 case 'Cha': // Str, Con, Cha
                   {
                     r.add('Paladin');
-                    r.add(pickRandom(['The Dragon Warrior', 'The Showoff']));
+                    r.add(pickRandom(
+                        ['The Dragon Warrior', 'The Diplomat', 'The Showoff']));
                     break;
                   }
                 default:
@@ -231,7 +235,8 @@ List<String> getRecommendations() {
               if (bestScores[2] == 'Wis')
                 r.add('God of Thunder');
               else
-                r.add(pickRandom(['The Dragon Warrior', 'The Showoff']));
+                r.add(pickRandom(
+                    ['The Dragon Warrior', 'The Diplomat', 'The Showoff']));
               break;
             }
         }
@@ -352,7 +357,8 @@ List<String> getRecommendations() {
                   {
                     r.add('Paladin');
                     if (bestScores[3] == 'Wis') r.add('Fighter (Samurai)');
-                    r.add(pickRandom(['The Dragon Warrior', 'The Showoff']));
+                    r.add(pickRandom(
+                        ['The Dragon Warrior', 'The Diplomat', 'The Showoff']));
                     break;
                   }
                 default:
@@ -695,7 +701,8 @@ List<String> getRecommendations() {
               if (bestScores[2] == 'Wis')
                 r.add('God of Thunder');
               else
-                r.add(pickRandom(['The Dragon Warrior', 'The Showoff']));
+                r.add(pickRandom(
+                    ['The Dragon Warrior', 'The Diplomat', 'The Showoff']));
               break;
             }
           case 'Dex': // highest abilities: Cha, Dex
