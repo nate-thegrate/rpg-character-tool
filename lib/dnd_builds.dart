@@ -26,7 +26,7 @@ final List<Build> builds = [
   Build(
     'The Dragon Warrior',
     ['Paladin', 'Sorcerer'],
-    ['15 Strength', 'high Charisma'],
+    ['high Strength', 'high Charisma'],
     'Fight with explosive power!',
     [
       'Take your first two levels as a Paladin.',
@@ -39,30 +39,40 @@ final List<Build> builds = [
           'your Fighting Style, the cantrip, '
           'Elemental Affinity, and Divine Smite.',
       'And you still have a main action to use.',
-      'Feel free to mix & match other subclasses and figure out other cool strategies!',
+      'You can also quicken Hold Person to get some awesome crit-Smites.',
+      'Feel free to mix & match other subclasses '
+          'and figure out other cool strategies!',
     ],
     race: 'Tiefling could be great for Flames of Phlegethos',
   ),
   Build(
-    'The Diplomat',
-    ['Bard (College of Eloquence)', 'Paladin (Oath of Redemption)'],
-    ['high Strength', 'high Charisma'],
-    'Become the king of negotiation.',
+    'The Dragon Tamer',
+    ['Paladin (Oath of the Crown)', 'Warlock (Genie Patron)'],
+    ['decent Strength', 'high Charisma'],
+    'Fight with explosive power!',
     [
-      'Take your first six levels as a Paladin, '
-          'and then take five Bard levels.',
-      'Then you can continue with either class.',
+      'Take your first 6 levels as a Paladin.',
+      'Then take 3-5 Warlock levels, '
+          'and continue with either class from there.',
+      'Be sure to grab the Sentinel feat as soon as you can.',
     ],
     [
-      'When it comes time to make a persuasion check, you\'ll have '
-          'Expertise, Silver Tongue, Emissary of Peace, Ever Hospitable, '
-          'and charming spells, giving yourself an average of 35 '
-          'for each persuasion roll.',
-      'You get great bonus action usage with Healing Word/Bardic Inspiration, '
-          'and you have the Bard\'s full caster spell slot progression '
-          'to smite with.',
+      'Blind Fighting Style means that both you and the dragon have '
+          'blindsight, and you can fight side-by-side to gain its '
+          'Magic Resistance trait.',
+      'Choose the Marid Genie, and get Pact of the Chain '
+          'for a Pseudodragon familiar.',
+      'Cast Fog Cloud centered on an opponent and move up to them, '
+          'and have your Pseudodragon sting them.',
+      'You can prevent their escape with Sentinel, Compelled Duel, '
+          'and/or Champion Challenge.',
+      'With the boost from Investment of the Chain Master, '
+          'there\'s a decent chance that the Pseudodragon can knock your '
+          'opponent out, letting you get a massive critical Divine Smite.',
+      'This build works especially well if you have a party member with '
+          'Darkness or Fog Cloud, so you can concentrate on Compelled Duel.',
     ],
-    race: 'Halfling (Mark of Hospitality)',
+    race: 'Half-Orc, or Variant Human/Custom Lineage for Sentinel',
   ),
   Build(
     'The Showoff',
@@ -506,9 +516,28 @@ final List<Build> builds = [
     ],
     [
       'Being a Cleric gives some really nice utility, even with just 1 level.',
-      'Great Weapon Fighting, Divine Favor, Action Surge, and War Priest '
-          'make you a super solid damage dealer.',
+      'Great Weapon Fighting, Divine Favor, Spirit Shroud, Action Surge, '
+          'and War Priest make you a super solid damage dealer.',
     ],
+  ),
+  Build(
+    'The Unseen Warden',
+    ['Cleric (War Domain)', 'Ranger'],
+    ['high Strength', '13 Dexterity', 'decent Wisdom'],
+    '',
+    [
+      'Take 2 Cleric levels and then do Ranger from there.',
+      'Make sure you grab the Great Weapon Master and Sentinel feats '
+          'as soon as you can.',
+    ],
+    [
+      'Cast Fog Cloud near a Favored Foe, and then hit them repeatedly.',
+      'Blind Fighting Style gives you advantage, and Sentinel makes it '
+          'so they can\'t escape.',
+      'War Priest and Guided Strike are both super helpful.',
+    ],
+    race: 'Variant Human or Custom Lineage, '
+        'so you can start with Great Weapon Master',
   ),
   Build(
     'The Big Succ',
@@ -542,7 +571,7 @@ final List<Build> builds = [
       'Use Transmuted Spell and Destructive Wrath '
           'whenever you feel like winning.',
       'The Cleric levels also give some awesome spells. '
-          'Use subtle spell on a Command, Healing Word, and Thaumaturgy '
+          'Use subtle spell on Command, Healing Word, and Thaumaturgy '
           'to convince NPCs to worship you.',
     ],
     race: 'Be a Dwarf so you don\'t need Strength, '
@@ -562,39 +591,51 @@ final List<Build> builds = [
           'that work great with Metamagic, and they can take advantage of '
           'your Voice of Authority.',
       'The Cleric level also helps you to remember a few more spells. '
-          'Use subtle spell on a Command, Healing Word, and Thaumaturgy '
+          'Use subtle spell on Command, Healing Word, and Thaumaturgy '
           'to convince NPCs to worship you.',
     ],
     race: 'Dwarf in heavy armor, or another race in medium armor',
   ),
   Build(
-    'Master of All Trades',
+    'The All-Seeing Eye',
     [
-      'Bard (College of Eloquence)',
-      'Cleric (Knowledge Domain)',
-      'Ranger (Fey Wanderer)',
-      'Rogue (Scout)',
+      'Cleric (Peace Domain)',
+      'Rogue (Soulknife)',
     ],
-    ['14 Dexterity', 'high Wisdom', 'high Charisma'],
-    'You\'re going to be the very best, like no one ever was.',
+    ['high Dexterity', 'high Wisdom'],
+    '',
     [
-      'Start of with a Rogue level. Then take a Cleric level, 3 Ranger levels, '
-          '3 Bard levels, and then bring Rogue up to level 6.',
-      'From there, you can level up whichever class you want to.',
-      'Make sure you grab the Prodigy and Skill Expert feats '
-          'as soon as you can.',
+      'Take 1 Cleric level, and then go Rogue from there.',
+      'Make sure you grab the Observant feat as soon as you can.',
     ],
     [
-      'You\'ll have Expertise in 9 skills by level 10, '
-          'and 4 more skills by level 14.',
-      'Every skill can get a bonus d4 via Guidance, all Charisma checks add '
-          'your Wisdom modifier (thanks to Fey Wanderer), and '
-          'Deception/Persuasion are guaranteed at least a 10 '
-          '(Thanks to College of Eloquence)',
+      'Not only do you have Perception Expertise, but your sight is enhanced '
+          'with Darkvision, Hunter\'s Intuition, Faerie Fire, Guidance, '
+          'Emboldening Bond, Observant, and Psi-Bolstered Knack, '
+          'for a passive Perception of 24 '
+          'and an average Perception check of 31 at level 5.',
     ],
-    race: 'Human (Mark of Finding) gives you a d4 bonus with '
-        'Perception & Survival checks, and Pallid Elf gives advantage on '
-        'Investigation & Insight.',
+    race: 'Human or Half-Orc (Mark of Finding)',
+  ),
+  Build(
+    'The Diplomat',
+    ['Bard (College of Eloquence)', 'Ranger (Fey Wanderer)'],
+    ['14 Dexterity' 'high Wisdom', 'high Charisma'],
+    'Become the ultimate negotiator.',
+    [
+      'Take 5 Bard levels and 4 Ranger levels, and then continue as a Bard.',
+    ],
+    [
+      'When it comes time to make a Persuasion check, you\'ll have '
+          'Expertise, Silver Tongue, Otherworldly Glamour, Ever Hospitable, '
+          'and charming spells, giving yourself an average of 33 '
+          'for each Persuasion roll.',
+      'If you want to go overboard, you can take a Cleric (Peace Domain) '
+          'level, 3 Paladin (Oath of Redemption) levels, and/or '
+          '3 Warlock levels to get Persuasion boosts from '
+          'Emboldening Bond, Emissary of Peace, and Pact of the Talisman.'
+    ],
+    race: 'Halfling (Mark of Hospitality)',
   ),
   Build(
     'The Psychic Suplex',
@@ -688,15 +729,15 @@ final List<Build> builds = [
     [
       'Take all your levels in the Barbarian class.',
       'Make sure you grab the Great Weapon Master feat as soon as you can.',
-      'If a single class is too boring, you can take 3 levels of '
-          'Champion Fighter to get more critical hits. '
-          '(You can grab the Piercer feat as well.)',
     ],
     [
       'Rage & Reckless Attack with a pike, then fly up or into cover. '
           'Now they can\'t hit you, and they can\'t hit your friends.',
       'Works really well if the enemy is forced to run past your companions '
           'to get to you, provoking a bunch of opportunity attacks.',
+      'Alternatively, you can pick a non-flying race, take 5 Barbarian levels, '
+          'and then take 4 Echo Knight Fighter levels '
+          'to achieve a similar effect.',
     ],
     race: 'Aarakocra or Protector Aasimar',
   ),

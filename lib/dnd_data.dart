@@ -183,8 +183,7 @@ List<String> getRecommendations() {
                 case 'Cha': // Str, Con, Cha
                   {
                     r.add('Paladin');
-                    r.add(pickRandom(
-                        ['The Dragon Warrior', 'The Diplomat', 'The Showoff']));
+                    r.add(pickRandom(['The Dragon Warrior', 'The Showoff']));
                     break;
                   }
                 default:
@@ -236,7 +235,7 @@ List<String> getRecommendations() {
                 r.add('God of Thunder');
               else
                 r.add(pickRandom(
-                    ['The Dragon Warrior', 'The Diplomat', 'The Showoff']));
+                    ['The Dragon Warrior', 'The Dragon Tamer', 'The Showoff']));
               break;
             }
         }
@@ -308,7 +307,8 @@ List<String> getRecommendations() {
                 'Monk',
                 'Ranger',
               ]);
-              r.add(pickRandom(['D&D Batman', 'The Turn 1 Terror']));
+              r.add(pickRandom(
+                  ['D&D Batman', 'The Turn 1 Terror', 'The All-Seeing Eye']));
               break;
             }
           case 'Cha': // highest abilities: Dex, Cha
@@ -357,8 +357,7 @@ List<String> getRecommendations() {
                   {
                     r.add('Paladin');
                     if (bestScores[3] == 'Wis') r.add('Fighter (Samurai)');
-                    r.add(pickRandom(
-                        ['The Dragon Warrior', 'The Diplomat', 'The Showoff']));
+                    r.add(pickRandom(['The Dragon Warrior', 'The Showoff']));
                     break;
                   }
                 default:
@@ -435,7 +434,7 @@ List<String> getRecommendations() {
                 case 'Dex': // Con, Wis, Dex
                   {
                     r.addAll(['Monk', 'Ranger']);
-                    r.add('The BBC');
+                    r.add(pickRandom(['The BBC', 'The All-Seeing Eye']));
                     break;
                   }
                 case 'Int': // Con, Wis, Int
@@ -446,8 +445,7 @@ List<String> getRecommendations() {
                   }
                 case 'Cha': // Con, Wis, Cha
                   {
-                    r.add(pickRandom(
-                        ['Master of All Trades', 'The Pet Detective']));
+                    r.add(pickRandom(['The Diplomat', 'The Pet Detective']));
                     break;
                   }
                 default:
@@ -619,7 +617,8 @@ List<String> getRecommendations() {
                 'Monk',
                 'Druid',
               ]);
-              r.add('The Bulletproof Kensei');
+              r.add(
+                  pickRandom(['The Bulletproof Kensei', 'The All-Seeing Eye']));
               break;
             }
           case 'Con': // highest abilities: Wis, Con
@@ -645,13 +644,17 @@ List<String> getRecommendations() {
                 case 'Dex': // Wis, Con, Dex
                   {
                     r.addAll(['Druid', 'Ranger', 'Monk']);
-                    r.add(pickRandom(['The Bulletproof Kensei', 'The BBC']));
+                    r.add(pickRandom([
+                      'The Bulletproof Kensei',
+                      'The BBC',
+                      'The All-Seeing Eye'
+                    ]));
                     break;
                   }
                 case 'Cha': // Wis, Con, Cha
                   {
                     r.add('Ranger (Fey Wanderer)');
-                    r.add('Master of All Trades');
+                    r.add('The Diplomat');
                     break;
                   }
                 default:
@@ -683,10 +686,10 @@ List<String> getRecommendations() {
                 'Ranger (Fey Wanderer)',
                 'Cleric (Order)',
               ]);
-              if (bestScores[2] == 'Dex' || bestScores[3] == 'Dex') {
-                r.add('Master of All Trades');
-              }
-              r.add('Master of All Trades');
+              if (bestScores[2] == 'Dex' || bestScores[3] == 'Dex')
+                r.add(pickRandom(['The Diplomat', 'The Pet Detective']));
+              else
+                r.add('God of Thunder');
               break;
             }
         }
@@ -698,11 +701,11 @@ List<String> getRecommendations() {
           case 'Str': // highest abilities: Cha, Str
             {
               r.add('Paladin');
-              if (bestScores[2] == 'Wis')
+              if (bestScores[2] == 'Wis' || bestScores[3] == 'Wis')
                 r.add('God of Thunder');
               else
                 r.add(pickRandom(
-                    ['The Dragon Warrior', 'The Diplomat', 'The Showoff']));
+                    ['The Dragon Warrior', 'The Dragon Tamer', 'The Showoff']));
               break;
             }
           case 'Dex': // highest abilities: Cha, Dex
