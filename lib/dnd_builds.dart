@@ -796,9 +796,7 @@ Build getBuild(String buildName) {
 Widget buildCard(String buildName) {
   final Build b = getBuild(buildName);
   String classes = b.classes[0];
-  for (int i = 1; i < b.classes.length; i++) {
-    classes += ' / ${b.classes[i]}';
-  }
+  for (int i = 1; i < b.classes.length; i++) classes += ' / ${b.classes[i]}';
 
   List<Widget> buildSteps = [];
 
@@ -855,6 +853,11 @@ Widget buildCard(String buildName) {
       children: combatSteps,
     ),
   ];
+
+  if (b.description == '') {
+    items.removeAt(3);
+    items.removeAt(3);
+  } // remove empty descriptions
 
   return Container(
     padding: EdgeInsets.all(25),
