@@ -521,25 +521,6 @@ final List<Build> builds = [
     ],
   ),
   Build(
-    'The Unseen Warden',
-    ['Cleric (War Domain)', 'Ranger'],
-    ['high Strength', '13 Dexterity', 'decent Wisdom'],
-    '',
-    [
-      'Take 2 Cleric levels and then do Ranger from there.',
-      'Make sure you grab the Great Weapon Master and Sentinel feats '
-          'as soon as you can.',
-    ],
-    [
-      'Cast Fog Cloud near a Favored Foe, and then hit them repeatedly.',
-      'Blind Fighting Style gives you advantage, and Sentinel makes it '
-          'so they can\'t escape.',
-      'War Priest and Guided Strike are both super helpful.',
-    ],
-    race: 'Variant Human or Custom Lineage, '
-        'so you can start with Great Weapon Master',
-  ),
-  Build(
     'The Big Succ',
     ['Cleric (Life Domain)', 'Warlock (Celestial Patron)'],
     ['13 Wisdom', 'high Charisma'],
@@ -696,7 +677,7 @@ final List<Build> builds = [
           'as soon as you can.',
     ],
     [
-      'Cast Fog Cloud near a Favored Foe, and then hit them repeatedly.',
+      'Cast Fog Cloud, and then hit repeatedly.',
       'Blind Fighting Style gives you advantage, and Sentinel makes it '
           'so they can\'t escape.',
       'War Priest and Guided Strike are both super helpful.',

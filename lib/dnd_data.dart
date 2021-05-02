@@ -131,7 +131,6 @@ List<String> getRecommendations() {
   for (int i = 2; i < bestScores.length; i++) {
     if (stats[statNames.indexOf(bestScores[i])] < 12) bestScores[i] = "";
   }
-  print(builds.length);
   List<String> r = []; // list of recommendations
   switch (bestScores[0]) {
     case 'Str': // highest ability is Strength
