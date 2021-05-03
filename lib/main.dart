@@ -77,3 +77,57 @@ Drawer appDrawer(context, controller, animation) {
     )
   ]));
 }
+
+class DataList extends StatelessWidget {
+  final String left;
+  final dynamic right;
+  final String subtitle;
+
+  DataList({required this.left, required this.right, this.subtitle = ''});
+
+  @override
+  Widget build(BuildContext context) {
+    double screenWidth = MediaQuery.of(context).size.width;
+    double totalWidth = screenWidth < 500 ? screenWidth : 250 + screenWidth / 2;
+    return InkWell(
+      onTap: () {},
+      child: Container(
+        padding: EdgeInsets.symmetric(vertical: 20),
+        child: Row(
+          children: [
+            Container(
+                width: totalWidth / 4,
+                padding: EdgeInsets.symmetric(horizontal: 20),
+                alignment: Alignment.centerRight,
+                child: Text(left,
+                    textAlign: TextAlign.right,
+                    style: TextStyle(fontWeight: FontWeight.bold))),
+            Container(
+              width: totalWidth * 3 / 4,
+              padding: EdgeInsets.only(right: 10),
+              child: () {
+                List<Widget> items = [];
+                if (right.runtimeType == String)
+                  items.add(Text(right));
+                else
+                  for (final s in right)
+                    items.add(Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 3),
+                        child: Text(s)));
+
+                if (subtitle != '')
+                  items.add(Text(subtitle,
+                      style: TextStyle(color: Colors.grey, fontSize: 13)));
+
+                return Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: items,
+                );
+              }(),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}

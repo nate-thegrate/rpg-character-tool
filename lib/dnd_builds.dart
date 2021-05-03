@@ -1,3 +1,4 @@
+import 'package:character_quickgen/main.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 
@@ -463,7 +464,7 @@ final List<Build> builds = [
     'The BBC',
     ['Cleric (Arcana Domain)'],
     ['14 Dexterity', 'high Wisdom'],
-    'There\'s nothing quite like a thicc wood shaft, '
+    'There\'s nothing quite like a girthy wooden shaft, '
         'enchanted and wielded by a Booming Blade Cleric.',
     [
       'Take all your levels as an Arcana Domain Cleric.',
@@ -651,6 +652,8 @@ final List<Build> builds = [
           'attacks each turn.',
       'Use natural darkness, or take Eldritch Adept for Devil\'s Sight.',
     ],
+    race: 'Dwarf (Duergar) could be nice, since Duergar Magic '
+        'and Dwarven Resilience both work well with this build.',
   ),
   Build(
     'The Turn 1 Terror',
@@ -847,5 +850,25 @@ Widget buildCard(String buildName) {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: items,
     ),
+  );
+}
+
+Column buildScreen(Build b) {
+  return Column(
+    children: [
+      Container(height: 20),
+      Text(b.name, style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+      Container(height: 10),
+      Text(b.description),
+      Container(height: 10),
+      DataList(
+          left: 'Class${b.classes.length > 1 ? 'es' : ''}', right: b.classes),
+      DataList(left: 'Race', right: b.race),
+      DataList(left: 'Ability Scores', right: b.scores),
+      DataList(left: 'Levels', right: b.buildSteps),
+      DataList(
+          left: 'Strateg${b.combatSteps.length > 1 ? 'ies' : 'y'}',
+          right: b.combatSteps),
+    ],
   );
 }

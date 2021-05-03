@@ -69,6 +69,14 @@ class _DnDHomeState extends State<DnDHome> with SingleTickerProviderStateMixin {
 
     final bottomButtons = Column(children: [
       ListTile(
+          title: Text('View All Character Builds'),
+          trailing: Container(
+              margin: EdgeInsets.only(right: 15), child: Icon(Icons.view_list)),
+          onTap: () {
+            Navigator.push(
+                context, MaterialPageRoute(builder: (context) => ViewBuilds()));
+          }),
+      ListTile(
           title: Text('Edit Random Arrays'),
           trailing: Container(
               margin: EdgeInsets.only(right: 15), child: Icon(Icons.edit)),
@@ -99,6 +107,76 @@ class _DnDHomeState extends State<DnDHome> with SingleTickerProviderStateMixin {
             bottomButtons,
           ],
         ),
+      ),
+    );
+  }
+}
+
+class ViewBuilds extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Theme(
+      data: dndTheme,
+      child: Scaffold(
+        appBar: AppBar(),
+        body: Scrollbar(
+          child: ListView.separated(
+            padding: const EdgeInsets.all(8),
+            itemCount: builds.length,
+            itemBuilder: (BuildContext context, int index) {
+              final b = builds[index];
+              return ListTile(
+                  title: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(b.name),
+                      Text(
+                        () {
+                          String classes = b.classes[0];
+                          for (int i = 1; i < b.classes.length; i++) {
+                            classes += ' / ${b.classes[i]}';
+                          }
+                          return classes;
+                        }(),
+                        style: TextStyle(color: Colors.grey, fontSize: 12),
+                      ),
+                    ],
+                  ),
+                  trailing: Icon(Icons.keyboard_arrow_right_rounded),
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => ViewBuild(i: index)),
+                    );
+                  });
+            },
+            separatorBuilder: (BuildContext context, int index) =>
+                const Divider(),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class ViewBuild extends StatelessWidget {
+  final int i;
+
+  ViewBuild({required this.i});
+
+  @override
+  Widget build(BuildContext context) {
+    final screenWidth = MediaQuery.of(context).size.width;
+    double textWidth = screenWidth < 500 ? screenWidth : 250 + screenWidth / 2;
+    return Theme(
+      data: dndTheme,
+      child: Scaffold(
+        appBar: AppBar(),
+        body: Container(
+            width: textWidth,
+            margin: EdgeInsets.only(left: (screenWidth - textWidth) / 2),
+            child: buildScreen(builds[i])),
       ),
     );
   }
@@ -138,26 +216,31 @@ class _EditArraysState extends State<EditArrays> {
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
 
-    final saveIcon = IconButton(
-        icon: Icon(Icons.check_rounded),
-        onPressed: () {
-          String txt = _controller.text;
-          List<String> tempArrays = txt.split('\n');
-          arrays = [];
-          for (final array in tempArrays) {
-            List<String> stats = array.split(' ');
-            List<int> intStats = [];
-            for (final stat in stats) {
-              try {
-                intStats.add(int.parse(stat));
-              } catch (e) {}
-            }
-            if (intStats.length == 6) {
-              arrays.add(intStats);
-            }
-          }
-          Navigator.pop(context);
-        });
+    final saveIcon = Row(
+      children: [
+        Text('Save', style: TextStyle(fontSize: 18)),
+        IconButton(
+            icon: Icon(Icons.check_rounded),
+            onPressed: () {
+              String txt = _controller.text;
+              List<String> tempArrays = txt.split('\n');
+              arrays = [];
+              for (final array in tempArrays) {
+                List<String> stats = array.split(' ');
+                List<int> intStats = [];
+                for (final stat in stats) {
+                  try {
+                    intStats.add(int.parse(stat));
+                  } catch (e) {}
+                }
+                if (intStats.length == 6) {
+                  arrays.add(intStats);
+                }
+              }
+              Navigator.pop(context);
+            }),
+      ],
+    );
 
     final description = Text(
       'Combines the fun randomness of rolling for stats with the fairness of arrays!\n\n',
@@ -180,7 +263,8 @@ class _EditArraysState extends State<EditArrays> {
       data: dndTheme,
       child: Scaffold(
         appBar: AppBar(title: Text('Random Arrays'), actions: [
-          Container(margin: EdgeInsets.only(right: 10), child: saveIcon)
+          saveIcon,
+          Container(width: 12),
         ]),
         body: SingleChildScrollView(
           child: Container(
