@@ -602,7 +602,7 @@ final List<Build> builds = [
   Build(
     'The Diplomat',
     ['Bard (College of Eloquence)', 'Ranger (Fey Wanderer)'],
-    ['14 Dexterity' 'high Wisdom', 'high Charisma'],
+    ['14 Dexterity', 'high Wisdom', 'high Charisma'],
     'Become the ultimate negotiator.',
     [
       'Take 5 Bard levels and 4 Ranger levels, and then continue as a Bard.',
