@@ -30,50 +30,76 @@ class MyApp extends StatelessWidget {
 
 Drawer appDrawer(context, controller, animation) {
   return Drawer(
-      child: ListView(children: [
-    DrawerHeader(
-      margin: EdgeInsets.symmetric(vertical: 10),
+      child: Column(children: [
+    Expanded(
       child: Column(
         children: [
-          GestureDetector(
-            onTap: () => controller
-              ..reset()
-              ..forward(),
-            child: RotationTransition(
-              turns: animation,
-              child: Icon(
-                Icons.casino,
-                size: 75,
-                color: () {
-                  switch (ModalRoute.of(context)?.settings.name) {
-                    case 'CoC':
-                      {
-                        return Colors.purple;
-                      }
-                    default:
-                      {
-                        return Colors.green;
-                      }
-                  }
-                }(),
-              ),
+          DrawerHeader(
+            margin: EdgeInsets.symmetric(vertical: 10),
+            child: Column(
+              children: [
+                GestureDetector(
+                  onTap: () => controller
+                    ..reset()
+                    ..forward(),
+                  child: RotationTransition(
+                    turns: animation,
+                    child: Icon(
+                      Icons.casino,
+                      size: 75,
+                      color: () {
+                        switch (ModalRoute.of(context)?.settings.name) {
+                          case 'CoC':
+                            {
+                              return Colors.purple;
+                            }
+                          default:
+                            {
+                              return Colors.green;
+                            }
+                        }
+                      }(),
+                    ),
+                  ),
+                ),
+                Expanded(
+                    child: Container(
+                        alignment: Alignment.bottomCenter,
+                        margin: EdgeInsets.only(bottom: 15),
+                        child: Text('Quick & Easy Character Generation'))),
+              ],
             ),
           ),
-          Expanded(
-              child: Container(
-                  alignment: Alignment.bottomCenter,
-                  margin: EdgeInsets.only(bottom: 15),
-                  child: Text('Quick & Easy Character Generation'))),
+          ListTile(
+            title: Text('D&D 5th Edition'),
+            onTap: () => Navigator.pushReplacementNamed(context, 'D&D'),
+          ),
+          ListTile(
+            title: Text('Call of Cthulhu 7th Edition'),
+            onTap: () => Navigator.pushReplacementNamed(context, 'CoC'),
+          )
         ],
       ),
     ),
-    ListTile(
-      title: Text('D&D 5th Edition'),
-      onTap: () => Navigator.pushReplacementNamed(context, 'D&D'),
-    ),
-    ListTile(
-      title: Text('Call of Cthulhu 7th Edition'),
-      onTap: () => Navigator.pushReplacementNamed(context, 'CoC'),
+    Container(
+      margin: EdgeInsets.all(10),
+      child: Column(
+        children: [
+          Row(
+            children: [
+              Container(
+                  width: 180,
+                  alignment: Alignment.centerRight,
+                  padding: EdgeInsets.only(right: 10),
+                  child: Text('Made using Flutter')),
+              FlutterLogo(),
+            ],
+          ),
+          Container(height: 10),
+          Text('Thanks to the people of /r/3d6 '
+              'for some awesome character ideas!'),
+        ],
+      ),
     )
   ]));
 }

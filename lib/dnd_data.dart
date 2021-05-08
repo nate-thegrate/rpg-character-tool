@@ -2,27 +2,28 @@ import 'main.dart';
 import 'dnd.dart';
 import 'dart:math';
 
+bool customStats = false;
+
 List<int> stats = []; // generated stat values
 List<int> bonuses = []; // bonuses that can be changed by user
-
-bool customStats = false;
+List<bool> selected = [false, false, false, false, false, false];
 final List<String> statNames = ['Str', 'Dex', 'Con', 'Int', 'Wis', 'Cha'];
 List<List<int>> arrays = [
-  [18, 17, 8, 8, 7, 7],
-  [18, 15, 14, 7, 7, 7],
-  [18, 14, 13, 11, 7, 7],
-  [18, 11, 11, 11, 11, 11],
-  [17, 16, 10, 10, 9, 9],
-  [17, 14, 12, 10, 10, 10],
-  [16, 16, 16, 7, 7, 7],
+  [17, 16, 12, 8, 8, 7],
+  [17, 15, 14, 10, 7, 7],
+  [17, 15, 13, 11, 9, 7],
+  [17, 14, 12, 12, 10, 7],
   [16, 15, 14, 10, 8, 8],
-  [16, 14, 13, 12, 10, 9],
-  [16, 12, 12, 12, 12, 12],
-  [15, 14, 14, 14, 9, 9],
-  [15, 15, 15, 10, 10, 10],
-  [15, 14, 12, 12, 12, 12],
-  [14, 14, 14, 14, 14, 9]
+  [16, 15, 14, 12, 7, 7],
+  [16, 15, 12, 12, 10, 7],
+  [15, 15, 14, 14, 9, 9],
 ];
+
+List<int> findSelected() {
+  List<int> s = [];
+  for (int i = 0; i < 6; i++) if (selected[i]) s.add(i);
+  return s;
+}
 
 void generate(index) {
   customStats = false;

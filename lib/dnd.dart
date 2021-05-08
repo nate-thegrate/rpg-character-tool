@@ -173,10 +173,12 @@ class ViewBuild extends StatelessWidget {
       data: dndTheme,
       child: Scaffold(
         appBar: AppBar(),
-        body: Container(
-            width: textWidth,
-            margin: EdgeInsets.only(left: (screenWidth - textWidth) / 2),
-            child: buildScreen(builds[i])),
+        body: SingleChildScrollView(
+          child: Container(
+              width: textWidth,
+              margin: EdgeInsets.only(left: (screenWidth - textWidth) / 2),
+              child: buildScreen(builds[i])),
+        ),
       ),
     );
   }
@@ -291,6 +293,17 @@ class StatScreen extends StatefulWidget {
 class _StatScreenState extends State<StatScreen> {
   @override
   Widget build(BuildContext context) {
+    var s = findSelected();
+    if (s.length == 2) {
+      var tempStat = stats[s[0]];
+      var tempBonus = bonuses[s[0]];
+      stats[s[0]] = stats[s[1]];
+      bonuses[s[0]] = bonuses[s[1]];
+      stats[s[1]] = tempStat;
+      bonuses[s[1]] = tempBonus;
+      selected = [false, false, false, false, false, false];
+    }
+
     statColumns(width) {
       if (customStats)
         return [
@@ -354,11 +367,7 @@ class _StatScreenState extends State<StatScreen> {
                 child: Text(
                   () {
                     int mod = ((stats[i] + bonuses[i]) / 2 - 5).floor();
-                    if (mod > 0) {
-                      return '+$mod';
-                    } else {
-                      return mod.toString();
-                    }
+                    return (mod > 0) ? '+$mod' : mod.toString();
                   }(),
                   style: TextStyle(fontSize: 20),
                 ),
@@ -373,7 +382,26 @@ class _StatScreenState extends State<StatScreen> {
               statNames[i],
               style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
             )),
-            DataCell(Text(stats[i].toString())),
+            DataCell(Container(
+              width: 40,
+              height: 30,
+              child: Tooltip(
+                message: 'press to swap stats',
+                child: OutlinedButton(
+                  onPressed: () => setState(() => selected[i] = !selected[i]),
+                  child: Text(stats[i].toString()),
+                  style: () {
+                    if (selected[i])
+                      return OutlinedButton.styleFrom(
+                        primary: Colors.white,
+                        backgroundColor: Colors.green,
+                      );
+                    else
+                      return null;
+                  }(),
+                ),
+              ),
+            )),
             DataCell(ArrowIncrement(
               value: bonuses[i],
               update: (bonus) => setState(() => bonuses[i] = bonus),
@@ -391,11 +419,7 @@ class _StatScreenState extends State<StatScreen> {
                   child: Text(
                     () {
                       int mod = ((stats[i] + bonuses[i]) / 2 - 5).floor();
-                      if (mod > 0) {
-                        return '+$mod';
-                      } else {
-                        return mod.toString();
-                      }
+                      return (mod > 0) ? '+$mod' : mod.toString();
                     }(),
                     style: TextStyle(fontSize: 20),
                   )),
@@ -472,8 +496,8 @@ class _StatScreenState extends State<StatScreen> {
                     ),
                     columnSpacing: 20,
                     dataRowHeight: 75,
-                    columns: statColumns(tableWidth - 294),
-                    rows: statRows(tableWidth - 310),
+                    columns: statColumns(tableWidth - 314),
+                    rows: statRows(tableWidth - 330),
                   ),
                   recommendations(tableWidth),
                 ],

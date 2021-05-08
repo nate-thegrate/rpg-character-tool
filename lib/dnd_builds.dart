@@ -859,7 +859,9 @@ Column buildScreen(Build b) {
       Container(height: 20),
       Text(b.name, style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
       Container(height: 10),
-      Text(b.description),
+      Container(
+          padding: EdgeInsets.symmetric(horizontal: 15),
+          child: Text(b.description)),
       Container(height: 10),
       DataList(
           left: 'Class${b.classes.length > 1 ? 'es' : ''}', right: b.classes),

@@ -145,6 +145,7 @@ class _AutoAgeDisplayState extends State<AutoAgeDisplay> {
                 MaterialPageRoute(builder: (context) => CharacterScreen()));
           },
         ),
+        Container(height: 25),
       ],
     );
 
@@ -398,60 +399,65 @@ class CharacterScreen extends StatelessWidget {
   final location = pickRandom(meaningfulLocations);
   final possession = pickRandom(treasuredPossessions);
 
-  final characteristics = DataTable(
-      headingRowHeight: 30,
-      columns: [
-        DataColumn(label: Text('Stat')),
-        DataColumn(label: Text('Value')),
-        DataColumn(label: Text('Half')),
-        DataColumn(label: Text('Fifth')),
-      ],
-      rows: () {
-        List<DataRow> rows = [];
-        for (int i = 0; i < p.stats.length; i++) {
-          rows.add(DataRow(cells: [
-            DataCell(Text(statNames[i])),
-            DataCell(Text(p.stats[i].val.toString())),
-            DataCell(Text((p.stats[i].val ~/ 2).toString())),
-            DataCell(Text((p.stats[i].val ~/ 5).toString())),
-          ]));
-        }
-        return rows;
-      }());
-
-  final otherStats = Column(
-    children: [
-      DataList(left: 'Hit Points', right: p.hp.toString()),
-      DataList(left: 'Sanity', right: p.statGet('POW').toString()),
-      DataList(left: 'Magic Points', right: (p.statGet('POW') ~/ 5).toString()),
-      DataList(left: 'Luck', right: p.luck.toString()),
-      DataList(left: 'Age', right: p.age.toString()),
-      DataList(left: 'Move Rate', right: p.mov.toString()),
-      DataList(left: 'Build', right: p.build.toString()),
-      DataList(left: 'Damage Bonus', right: p.dmgBonus.toString()),
-      DataList(
-        left: 'Best Occupation Choices',
-        right: () {
-          String text = '${p.bestJobs[0]}';
-          for (int i = 1; i < p.bestJobs.length; i++) {
-            text += ", ${p.bestJobs[i]}";
-          }
-          return text;
-        }(),
-        subtitle: 'choose one of these for the maximum Occupation Skill Points',
-      ),
-      DataList(
-          left: 'Occupation Skill Points', right: p.jobSkillPoints.toString()),
-      DataList(
-          left: 'Personal Interest Skill Points',
-          right: (p.statGet('INT') * 2).toString()),
-    ],
-  );
+  final boldHeader = TextStyle(fontSize: 15, fontWeight: FontWeight.bold);
 
   @override
   Widget build(BuildContext context) {
     final screenWidth = MediaQuery.of(context).size.width;
     double tableWidth = screenWidth < 500 ? screenWidth : 250 + screenWidth / 2;
+
+    final characteristics = DataTable(
+        headingRowHeight: 30,
+        columns: [
+          DataColumn(label: Text('Stat', style: boldHeader)),
+          DataColumn(label: Text('Value', style: boldHeader)),
+          DataColumn(label: Text('Half', style: boldHeader)),
+          DataColumn(label: Text('Fifth', style: boldHeader)),
+        ],
+        rows: () {
+          List<DataRow> rows = [];
+          for (int i = 0; i < p.stats.length; i++) {
+            rows.add(DataRow(cells: [
+              DataCell(Text(statNames[i])),
+              DataCell(Text(p.stats[i].val.toString())),
+              DataCell(Text((p.stats[i].val ~/ 2).toString())),
+              DataCell(Text((p.stats[i].val ~/ 5).toString())),
+            ]));
+          }
+          return rows;
+        }());
+
+    final otherStats = Column(
+      children: [
+        DataList(left: 'Hit Points', right: p.hp.toString()),
+        DataList(left: 'Sanity', right: p.statGet('POW').toString()),
+        DataList(
+            left: 'Magic Points', right: (p.statGet('POW') ~/ 5).toString()),
+        DataList(left: 'Luck', right: p.luck.toString()),
+        DataList(left: 'Age', right: p.age.toString()),
+        DataList(left: 'Move Rate', right: p.mov.toString()),
+        DataList(left: 'Build', right: p.build.toString()),
+        DataList(left: 'Damage Bonus', right: p.dmgBonus.toString()),
+        DataList(
+          left: 'Best Occupation Choices',
+          right: () {
+            String text = '${p.bestJobs[0]}';
+            for (int i = 1; i < p.bestJobs.length; i++) {
+              text += ", ${p.bestJobs[i]}";
+            }
+            return text;
+          }(),
+          subtitle:
+              'choose one of these for the maximum Occupation Skill Points',
+        ),
+        DataList(
+            left: 'Occupation Skill Points',
+            right: p.jobSkillPoints.toString()),
+        DataList(
+            left: 'Personal Interest Skill Points',
+            right: (p.statGet('INT') * 2).toString()),
+      ],
+    );
 
     final backstoryTitle = Container(
         padding: EdgeInsets.only(top: 30),
