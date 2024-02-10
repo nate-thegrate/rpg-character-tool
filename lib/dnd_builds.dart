@@ -1,8 +1,7 @@
 import 'package:character_quickgen/main.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/cupertino.dart';
 
-final List<Build> builds = [
+const List<Build> builds = [
   Build(
     'The Sorlock',
     ['Sorcerer', 'Warlock'],
@@ -11,9 +10,8 @@ final List<Build> builds = [
         'combining innate magic with an otherworldly pact. '
         'Mix & match subclasses for whatever flavor you want!',
     [
-      'Take your first level as a Sorcerer, and then take one Warlock level.',
-      'Now take the rest of your levels as a Sorcerer. '
-          'Make sure you grab the Eldritch Adept feat as soon as you can.',
+      'Take your first level as a Sorcerer, and then take 2 Warlock levels.',
+      'Now take the rest of your levels as a Sorcerer.',
     ],
     [
       'As a Sorcerer, you have proficiency in Constitution saving throws '
@@ -21,7 +19,6 @@ final List<Build> builds = [
           'and you have access to really cool options for spells & metamagic.',
       'Cast an Agonizing Blast with your action, '
           'and then quicken another spell (maybe a second Eldritch blast!)',
-      'Divine Smite works great with a Sorcerer\'s full-caster spell slots.',
     ],
   ),
   Build(
@@ -44,7 +41,7 @@ final List<Build> builds = [
       'Feel free to mix & match other subclasses '
           'and figure out other cool strategies!',
     ],
-    race: 'Tiefling could be great for Flames of Phlegethos',
+    race: 'Tiefling could be great, for Flames of Phlegethos',
   ),
   Build(
     'The Dragon Tamer',
@@ -78,7 +75,7 @@ final List<Build> builds = [
   Build(
     'The Showoff',
     ['Bard (College of Swords)', 'Paladin'],
-    ['15 Strength', 'high Charisma'],
+    ['high Strength', 'high Charisma'],
     'Add the power of a Sacred Oath to your massive list of talents.',
     [
       'Take your first two levels as a Paladin.',
@@ -118,7 +115,6 @@ final List<Build> builds = [
       'Spells like Fire Bolt, Guidance, Spare the Dying, Thaumaturgy, '
           'Toll the Dead, and Bless all work really well on a Bard.',
     ],
-    race: 'Aasimar would really fit the theme',
   ),
   Build(
     'The Politician',
@@ -127,10 +123,9 @@ final List<Build> builds = [
     'You\'re able to destroy your opposition, '
         'and you only had to sell your soul a little bit.',
     [
-      'Take one Warlock level and the rest as a Bard.',
+      'Take 2 Warlock levels, and then the rest as a Bard.',
       'College of Eloquence/Pact of the Fiend really fits the flavor, '
           'but feel free to mix & match subclasses.',
-      'Make sure you grab the Eldritch Adept feat as soon as you can.',
     ],
     [
       'You now have all the social utility of a Bard, '
@@ -398,7 +393,7 @@ final List<Build> builds = [
   Build(
     'The Spellsword',
     ['Fighter (Eldritch Knight)'],
-    ['high Dexterity', 'decent Intelligence'],
+    ['high Strength or Dexterity', 'decent Intelligence'],
     'Weapons + Magic = fun times.',
     [
       'Take all your levels as an Eldritch Knight.',
@@ -409,12 +404,10 @@ final List<Build> builds = [
       'You can take Blind Fighting Style and Cast Fog Cloud near an enemy. '
           'You\'ll get advantage, and Sentinel makes it '
           'so they can\'t escape.',
-      'You could also take the Dueling Fighting Style '
-          '(in place of Blind Fighting or as a feat). '
-          'Cast Shadow Blade or Spirit Shroud, '
+      'Cast Shadow Blade or Spirit Shroud, '
           'and use Action Surge for some awesome damage.',
       'Mirror Image is great for fighting in melee, '
-          'especially since it can help trigger your Sentinel attack.',
+          'especially since it can help trigger a Sentinel attack.',
     ],
     race: 'Be an Elf/Half-Elf to get Elven Accuracy, '
         'or do Variant Human/Custom Lineage for a head start on feats.',
@@ -422,7 +415,7 @@ final List<Build> builds = [
   Build(
     'Teenage Mutant Ninja Tortle',
     ['Barbarian', 'Monk'],
-    ['high Strength', '13 Wisdom'],
+    ['high Strength', '13 Dexterity', '13 Wisdom'],
     'Beef up your punches with some rage!',
     [
       'Take one Barbarian level and then two Monk levels.',
@@ -438,27 +431,24 @@ final List<Build> builds = [
     race: 'Tortle',
   ),
   Build(
-    'The Bulletproof Kensei',
-    ['Cleric (Nature Domain)', 'Fighter', 'Monk (Way of the Kensei)'],
+    'The Platinum Star',
+    ['Cleric', 'Fighter', 'Monk (Way of the Astral Self)'],
     ['13 Dexterity', 'high Wisdom'],
-    'Who needs Martial Arts when you have a club and steel plates?',
+    'Hunker down in plate armor and let your avatar take care of things.',
     [
-      'Take your first level as a Nature Cleric and grab a club & shield. '
-          'Then take 6 Monk levels in the Way of the Kensei.',
-      'Then take one Fighter level with the Dueling Fighting Style, '
-          'and continue as a Cleric from there.',
+      'Start as a level 1 Cleric. Forge, Life, Order, and War domains all work great.',
+      "You'll need the Unarmed Fighting Style, either with a feat or a Fighter level.",
+      'Take 5 Monk levels, and then continue as a Cleric from there.',
     ],
     [
-      'Once you hit Monk level 6, you can take advantage of Deft Strike '
-          'and Ki-Fueled Attack to make a club attack as a bonus action, '
-          'and the Fighter level lets you add Dueling damage to every hit.',
-      'That\'s a total of 3d8 + 1d6 + 18 during one turn at level 8.',
-      'You\'re a character that can cast Shield of Faith to get '
-          '22 AC and can Dodge as a bonus action, '
-          'and your attacks and Stunning Strikes both run on Wisdom.',
+      'Your attacks, stunning strikes, and spells all run on Wisdom, '
+          'and you get to use Plate Armor and a shield.',
+      'Access to Divine Favor/Shield of Faith/Spirit Shroud make it even better, '
+          'and the abundance of spells and features '
+          'gives you a lot of good options for your action & bonus action each turn.',
     ],
-    race: 'Dwarf—your armor won\'t slow you down, and you can get '
-        'Dwarven Fortitude for some great bonus action healing.',
+    race: "Dwarf—your armor won't slow you down, and you can get "
+        'Dwarven Fortitude to go with Patient Defense.',
   ),
   Build(
     'The BBC',
@@ -468,7 +458,7 @@ final List<Build> builds = [
         'enchanted and wielded by a Booming Blade Cleric.',
     [
       'Take all your levels as an Arcana Domain Cleric.',
-      'Max out your Wisdom and then grab the War Caster feat.',
+      'Get Shillelagh, max out your Wisdom, and then get War Caster and/or Metamagic Adept.',
     ],
     [
       'Since Booming Blade and Green-Flame Blade have 2 damage rolls, '
@@ -493,7 +483,7 @@ final List<Build> builds = [
       'Make sure you grab the Telekinetic feat as soon as you can.',
     ],
     [
-      'Wild Shape usually doesn\'t give you anything to do '
+      "Wild Shape usually doesn't give you anything to do "
           'with your bonus action, and since you retain your Wisdom score, '
           'the Telekinetic feat is a perfect fit.',
       'Shove an enemy prone with your mind, '
@@ -675,7 +665,7 @@ final List<Build> builds = [
     ['high Strength', '13 Dexterity', 'decent Wisdom'],
     '',
     [
-      'Take 2 Cleric levels and then do Ranger from there.',
+      'Take 1 or 2 Cleric levels and then do Ranger (or Fighter) from there.',
       'Make sure you grab the Great Weapon Master and Sentinel feats '
           'as soon as you can.',
     ],
@@ -693,13 +683,10 @@ final List<Build> builds = [
     ['Druid (Circle of the Shepherd)', 'Rogue (Inquisitive)'],
     ['14 Dexterity', 'high Wisdom'],
     'Call in animals whenever you need a favor.',
-    [
-      'Take 2 Druid levels and then do Rogue from there.',
-    ],
+    ['Take 2 Druid levels and then go Rogue from there.'],
     [
       'Expertise and advantage on skill checks to talk to animals '
-          'means they\'ll do whatever you want them to, which can open up '
-          'a bunch of possibilities.',
+          'can open up a bunch of possibilities.',
       'The Entangle spell and the Hawk Spirit Totem set up Sneak Attack, '
           'and you can use Magic Stone to attack using your Wisdom.',
     ],
@@ -723,7 +710,7 @@ final List<Build> builds = [
           'and then take 4 Echo Knight Fighter levels '
           'to achieve a similar effect.',
     ],
-    race: 'Aarakocra or Protector Aasimar',
+    race: 'Aarakocra or other flying race',
   ),
   Build(
     'The Furry Fury',
@@ -744,133 +731,155 @@ final List<Build> builds = [
     ],
     race: 'Shifter (Longtooth)',
   ),
+  Build(
+    'The Thunder Cleaver',
+    ['Barbarian (Path of the Giant)', 'Fighter'],
+    ['high Strength', 'decent Dexterity'],
+    'An unrivaled onslaught of elemental might.',
+    [
+      'Take 6 Barbarian levels and then 4 in the Fighter class.',
+      'From there, you can continue with Barbarian, '
+          'or get spicy and take some Paladin/Cleric levels. '
+          "(Spells don't work while raging, but Divine Smite and Channel Divinity do.)",
+      'This build works well with a greatsword & Great Weapon Master, '
+          'or a halberd & Polearm Master.',
+    ],
+    [
+      'Elemental Cleaver is insane: '
+          'never before has a level 6 martial class been granted an extra die to each attack. '
+          "It's like a Hunter's Mark or Elemental Weapon "
+          "that doesn't require any spell slots, concentration, or extra setup.",
+      'You now have a thunder damage weapon '
+          'with extra reach and unlimited rage-boosted throwing.',
+      "All of this pairs beautifully with the Fighter's Action Surge. "
+          "And at Fighter level 3, you can get the Champion's crit range, "
+          'or pick Echo Knight for yet another boosted attack and even more reach.',
+    ],
+    race:
+        'Bugbear (for insane reach) or Variant Human/Custom Lineage (for a head-start on feats)',
+  ),
 ];
 
 class Build {
-  String name = '';
-  List<String> classes = [];
-  List<String> scores = [];
-  String description = '';
-  List<String> buildSteps = [];
-  List<String> combatSteps = [];
-  String race = '';
+  const Build(
+    this.name,
+    this.classes,
+    this.scores,
+    this.description,
+    this.buildSteps,
+    this.combatSteps, {
+    this.race = 'any',
+  });
 
-  Build(String name, List<String> classes, List<String> scores, String desc,
-      List<String> build, List<String> combat,
-      {String race = 'any'}) {
-    this.name = name;
-    this.classes = classes;
-    this.scores = scores;
-    this.description = desc;
-    this.buildSteps = build;
-    this.combatSteps = combat;
-    this.race = race;
-  }
-}
-
-Build getBuild(String buildName) {
-  for (final build in builds) {
-    if (build.name == buildName) {
-      return build;
+  factory Build.fromName(String buildName) {
+    for (final build in builds) {
+      if (build.name == buildName) return build;
     }
+    return Build('Unable to find $buildName', [], [], '', [], []);
   }
-  return Build('Unable to find $buildName', [], [], '', [], []);
+
+  final String name;
+  final List<String> classes;
+  final List<String> scores;
+  final String description;
+  final List<String> buildSteps;
+  final List<String> combatSteps;
+  final String race;
 }
 
-Widget buildCard(String buildName) {
-  final Build b = getBuild(buildName);
-  String classes = b.classes[0];
-  for (int i = 1; i < b.classes.length; i++) classes += ' / ${b.classes[i]}';
+class BuildCard extends StatelessWidget {
+  const BuildCard(this.buildName, {super.key});
+  final String buildName;
 
-  List<Widget> buildSteps = [];
+  @override
+  Widget build(BuildContext context) {
+    final Build b = Build.fromName(buildName);
+    final classes = b.classes.join(' / ');
 
-  for (final step in b.buildSteps) {
-    buildSteps.add(Text(step, style: TextStyle(fontSize: 16)));
-    buildSteps.add(Container(height: 5));
-  }
-
-  List<Widget> combatSteps = [];
-
-  for (final step in b.combatSteps) {
-    combatSteps.add(Container(height: 5));
-    combatSteps.add(Text(step, style: TextStyle(fontSize: 16)));
-  }
-
-  List<Widget> items = [
-    Row(
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: [
-        Text(b.name,
-            style: TextStyle(
-                fontSize: 18,
-                fontWeight: FontWeight.bold,
-                color: Colors.green[900])),
-        Container(width: 30),
-        Flexible(
-            child: Text(classes,
-                style: TextStyle(fontSize: 16, color: Color(0xFF608062)))),
-      ],
-    ),
-    Container(height: 15),
-    Text(b.description, style: TextStyle(fontSize: 16)),
-    Container(height: 5),
-    Text('Race: ${b.race}', style: TextStyle(fontSize: 16)),
-    Container(height: 20),
-    Text('Character Levels',
-        style: TextStyle(
+    final List<Widget> items = [
+      Row(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Text(
+            b.name,
+            style: const TextStyle(
+              fontSize: 18,
+              fontWeight: FontWeight.bold,
+              color: Color(0xFF800000),
+            ),
+          ),
+          const SizedBox(width: 30),
+          Expanded(
+            child: Text(
+              classes,
+              style: const TextStyle(fontSize: 16, color: Colors.grey),
+            ),
+          ),
+        ],
+      ),
+      const SizedBox(height: 15),
+      Text(b.description, style: const TextStyle(fontSize: 16)),
+      const SizedBox(height: 5),
+      Text('Race: ${b.race}', style: const TextStyle(fontSize: 16)),
+      const SizedBox(height: 20),
+      const Text('Character Levels',
+          style: TextStyle(
             fontSize: 16,
             fontWeight: FontWeight.bold,
-            color: Colors.green[900])),
-    Container(height: 5),
-    Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: buildSteps,
-    ),
-    Container(height: 20),
-    Text('Strategy/Evaluation',
+          )),
+      const SizedBox(height: 5),
+      Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          for (final step in b.buildSteps) ...[
+            Text(step, style: const TextStyle(fontSize: 16)),
+            const SizedBox(height: 5),
+          ],
+        ],
+      ),
+      const SizedBox(height: 20),
+      const Text(
+        'Strategy/Evaluation',
         style: TextStyle(
-            fontSize: 16,
-            fontWeight: FontWeight.bold,
-            color: Colors.green[900])),
-    Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: combatSteps,
-    ),
-  ];
+          fontSize: 16,
+          fontWeight: FontWeight.bold,
+        ),
+      ),
+      Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          for (final step in b.combatSteps) ...[
+            const SizedBox(height: 5),
+            Text(step, style: const TextStyle(fontSize: 16)),
+          ],
+        ],
+      ),
+    ];
 
-  if (b.description == '') {
-    items.removeAt(3);
-    items.removeAt(3);
-  } // remove empty descriptions
-
-  return Container(
-    padding: EdgeInsets.all(25),
-    color: Colors.green[50],
-    child: Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: items,
-    ),
-  );
+    return Container(
+      padding: const EdgeInsets.all(25),
+      color: Colors.grey[200],
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: items,
+      ),
+    );
+  }
 }
 
 Column buildScreen(Build b) {
   return Column(
     children: [
       Container(height: 20),
-      Text(b.name, style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+      Text(b.name, style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
       Container(height: 10),
-      Container(
-          padding: EdgeInsets.symmetric(horizontal: 15),
-          child: Text(b.description)),
+      Container(padding: const EdgeInsets.symmetric(horizontal: 15), child: Text(b.description)),
       Container(height: 10),
-      DataList(
-          left: 'Class${b.classes.length > 1 ? 'es' : ''}', right: b.classes),
+      DataList(left: 'Class${b.classes.length > 1 ? 'es' : ''}', right: b.classes),
       DataList(left: 'Race', right: b.race),
       DataList(left: 'Ability Scores', right: b.scores),
       DataList(left: 'Levels', right: b.buildSteps),
-      DataList(
-          left: 'Strateg${b.combatSteps.length > 1 ? 'ies' : 'y'}',
-          right: b.combatSteps),
+      DataList(left: 'Strateg${b.combatSteps.length > 1 ? 'ies' : 'y'}', right: b.combatSteps),
     ],
   );
 }

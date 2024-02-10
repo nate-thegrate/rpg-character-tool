@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/cupertino.dart';
 import 'main.dart';
 import 'dnd_data.dart';
 import 'dnd_builds.dart';
 
-final ThemeData dndTheme = ThemeData(primarySwatch: Colors.green);
 bool autoArrange = true;
 
 class DnDHome extends StatefulWidget {
+  const DnDHome({super.key});
+
   @override
   _DnDHomeState createState() => _DnDHomeState();
 }
@@ -20,7 +20,7 @@ class _DnDHomeState extends State<DnDHome> with SingleTickerProviderStateMixin {
     super.initState();
 
     controller = AnimationController(
-      duration: Duration(seconds: 1),
+      duration: const Duration(seconds: 1),
       vsync: this,
     );
 
@@ -38,146 +38,125 @@ class _DnDHomeState extends State<DnDHome> with SingleTickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
-    Widget generateChoices() {
-      final List choices = [
-        '4d6 Drop Lowest',
-        'Standard Array',
-        'Random Array',
-        'Custom'
-      ];
-      return Flexible(
-        child: ListView.separated(
-          padding: const EdgeInsets.all(8),
-          itemCount: choices.length,
-          itemBuilder: (BuildContext context, int index) {
-            return ListTile(
-                title: Text(choices[index]),
-                trailing: Icon(Icons.keyboard_arrow_right_rounded),
-                onTap: () {
-                  generate(index);
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => StatScreen()),
-                  );
-                });
-          },
-          separatorBuilder: (BuildContext context, int index) =>
-              const Divider(),
-        ),
-      );
-    }
+    final List choices = ['4d6 Drop Lowest', 'Standard Array', 'Random Array', 'Custom'];
+    final Widget generateChoices = Expanded(
+      child: ListView.separated(
+        padding: const EdgeInsets.all(8),
+        itemCount: choices.length,
+        itemBuilder: (BuildContext context, int index) {
+          return ListTile(
+              title: Text(choices[index]),
+              trailing: const Icon(Icons.keyboard_arrow_right_rounded),
+              onTap: () {
+                generate(index);
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const StatScreen()),
+                );
+              });
+        },
+        separatorBuilder: (BuildContext context, int index) => const Divider(),
+      ),
+    );
 
     final bottomButtons = Column(children: [
       ListTile(
-          title: Text('View All Character Builds'),
+          title: const Text('View All Character Builds'),
           trailing: Container(
-              margin: EdgeInsets.only(right: 15), child: Icon(Icons.view_list)),
+              margin: const EdgeInsets.only(right: 15), child: const Icon(Icons.view_list)),
           onTap: () {
-            Navigator.push(
-                context, MaterialPageRoute(builder: (context) => ViewBuilds()));
+            Navigator.push(context, MaterialPageRoute(builder: (context) => const ViewBuilds()));
           }),
       ListTile(
-          title: Text('Edit Random Arrays'),
-          trailing: Container(
-              margin: EdgeInsets.only(right: 15), child: Icon(Icons.edit)),
+          title: const Text('Edit Random Arrays'),
+          trailing:
+              Container(margin: const EdgeInsets.only(right: 15), child: const Icon(Icons.edit)),
           onTap: () {
-            Navigator.push(
-                context, MaterialPageRoute(builder: (context) => EditArrays()));
+            Navigator.push(context, MaterialPageRoute(builder: (context) => const EditArrays()));
           }),
       Tooltip(
         message: 'Allocate stats into a viable configuration',
         child: SwitchListTile(
-          title: Text('Auto-arrange stats?'),
+          title: const Text('Auto-arrange stats?'),
           value: autoArrange,
           onChanged: (value) => setState(() => autoArrange = value),
         ),
       ),
     ]);
 
-    return Theme(
-      data: dndTheme,
-      child: Scaffold(
-        appBar: AppBar(
-          title: Text('Make a Random 5e Character'),
-        ),
-        drawer: appDrawer(context, controller, animation),
-        body: Column(
-          children: [
-            generateChoices(),
-            bottomButtons,
-          ],
-        ),
+    return AdaptiveScaffold(
+      appBar: AppBar(title: const Text('Random D&D 5e Character')),
+      drawer: AppDrawer(controller: controller, animation: animation),
+      body: Column(
+        children: [
+          const Padding(
+            padding: EdgeInsets.only(top: 20, bottom: 10),
+            child: Text(
+              'How are we generating stats?',
+              style: TextStyle(fontWeight: FontWeight.w600, fontSize: 16),
+            ),
+          ),
+          generateChoices,
+          bottomButtons,
+        ],
       ),
     );
   }
 }
 
 class ViewBuilds extends StatelessWidget {
+  const ViewBuilds({super.key});
+
   @override
   Widget build(BuildContext context) {
-    return Theme(
-      data: dndTheme,
-      child: Scaffold(
-        appBar: AppBar(),
-        body: Scrollbar(
-          child: ListView.separated(
-            padding: const EdgeInsets.all(8),
-            itemCount: builds.length,
-            itemBuilder: (BuildContext context, int index) {
-              final b = builds[index];
-              return ListTile(
-                  title: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(b.name),
-                      Text(
-                        () {
-                          String classes = b.classes[0];
-                          for (int i = 1; i < b.classes.length; i++) {
-                            classes += ' / ${b.classes[i]}';
-                          }
-                          return classes;
-                        }(),
-                        style: TextStyle(color: Colors.grey, fontSize: 12),
-                      ),
-                    ],
+    return AdaptiveScaffold(
+      appBar: AppBar(),
+      body: ListView.separated(
+        padding: const EdgeInsets.all(8),
+        itemCount: builds.length,
+        itemBuilder: (BuildContext context, int index) {
+          final b = builds[index];
+          final String classes = b.classes.join(' / ');
+          return ListTile(
+              title: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(b.name),
+                  Text(
+                    classes,
+                    style: const TextStyle(color: Colors.grey, fontSize: 12),
                   ),
-                  trailing: Icon(Icons.keyboard_arrow_right_rounded),
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => ViewBuild(i: index)),
-                    );
-                  });
-            },
-            separatorBuilder: (BuildContext context, int index) =>
-                const Divider(),
-          ),
-        ),
+                ],
+              ),
+              trailing: const Icon(Icons.keyboard_arrow_right_rounded),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => ViewBuild(i: index)),
+                );
+              });
+        },
+        separatorBuilder: (BuildContext context, int index) => const Divider(),
       ),
     );
   }
 }
 
 class ViewBuild extends StatelessWidget {
+  const ViewBuild({super.key, required this.i});
   final int i;
-
-  ViewBuild({required this.i});
 
   @override
   Widget build(BuildContext context) {
     final screenWidth = MediaQuery.of(context).size.width;
-    double textWidth = screenWidth < 500 ? screenWidth : 250 + screenWidth / 2;
-    return Theme(
-      data: dndTheme,
-      child: Scaffold(
-        appBar: AppBar(),
-        body: SingleChildScrollView(
-          child: Container(
-              width: textWidth,
-              margin: EdgeInsets.only(left: (screenWidth - textWidth) / 2),
-              child: buildScreen(builds[i])),
+    final double textWidth = screenWidth < 500 ? screenWidth : 250 + screenWidth / 2;
+    return AdaptiveScaffold(
+      appBar: AppBar(),
+      body: SingleChildScrollView(
+        child: Container(
+          width: textWidth,
+          margin: EdgeInsets.only(left: (screenWidth - textWidth) / 2),
+          child: buildScreen(builds[i]),
         ),
       ),
     );
@@ -185,6 +164,8 @@ class ViewBuild extends StatelessWidget {
 }
 
 class EditArrays extends StatefulWidget {
+  const EditArrays({super.key});
+
   @override
   _EditArraysState createState() => _EditArraysState();
 }
@@ -212,28 +193,25 @@ class _EditArraysState extends State<EditArrays> {
     super.dispose();
   }
 
-  Icon editIcon = Icon(Icons.edit);
+  Icon editIcon = const Icon(Icons.edit);
 
   @override
   Widget build(BuildContext context) {
-    double screenWidth = MediaQuery.of(context).size.width;
+    final double screenWidth = MediaQuery.of(context).size.width;
 
     final saveIcon = Row(
       children: [
-        Text('Save', style: TextStyle(fontSize: 18)),
+        const Text('Save', style: TextStyle(fontSize: 18)),
         IconButton(
-            icon: Icon(Icons.check_rounded),
+            icon: const Icon(Icons.check_rounded),
             onPressed: () {
-              String txt = _controller.text;
-              List<String> tempArrays = txt.split('\n');
               arrays = [];
-              for (final array in tempArrays) {
-                List<String> stats = array.split(' ');
-                List<int> intStats = [];
+              for (final array in _controller.text.split('\n')) {
+                final List<String> stats = array.split(' ');
+                final List<int> intStats = [];
                 for (final stat in stats) {
-                  try {
-                    intStats.add(int.parse(stat));
-                  } catch (e) {}
+                  final val = int.tryParse(stat);
+                  if (val != null) intStats.add(val);
                 }
                 if (intStats.length == 6) {
                   arrays.add(intStats);
@@ -244,40 +222,36 @@ class _EditArraysState extends State<EditArrays> {
       ],
     );
 
-    final description = Text(
+    const description = Text(
       'Combines the fun randomness of rolling for stats with the fairness of arrays!\n\n',
       style: TextStyle(fontSize: 16),
     );
 
-    final textBox = Container(
+    final textBox = SizedBox(
         width: 250 + screenWidth / 5,
         child: TextField(
-          decoration: InputDecoration(
-              contentPadding:
-                  EdgeInsets.symmetric(vertical: 20, horizontal: 15),
+          decoration: const InputDecoration(
+              contentPadding: EdgeInsets.symmetric(vertical: 20, horizontal: 15),
               border: OutlineInputBorder()),
           keyboardType: TextInputType.multiline,
           maxLines: null,
           controller: _controller,
         ));
 
-    return Theme(
-      data: dndTheme,
-      child: Scaffold(
-        appBar: AppBar(title: Text('Random Arrays'), actions: [
-          saveIcon,
-          Container(width: 12),
-        ]),
-        body: SingleChildScrollView(
-          child: Container(
-            margin: EdgeInsets.all(30),
-            alignment: Alignment.topCenter,
-            child: Column(
-              children: [
-                description,
-                textBox,
-              ],
-            ),
+    return AdaptiveScaffold(
+      appBar: AppBar(title: const Text('Random Arrays'), actions: [
+        saveIcon,
+        Container(width: 12),
+      ]),
+      body: SingleChildScrollView(
+        child: Container(
+          margin: const EdgeInsets.all(30),
+          alignment: Alignment.topCenter,
+          child: Column(
+            children: [
+              description,
+              textBox,
+            ],
           ),
         ),
       ),
@@ -286,6 +260,8 @@ class _EditArraysState extends State<EditArrays> {
 }
 
 class StatScreen extends StatefulWidget {
+  const StatScreen({super.key});
+
   @override
   _StatScreenState createState() => _StatScreenState();
 }
@@ -293,10 +269,10 @@ class StatScreen extends StatefulWidget {
 class _StatScreenState extends State<StatScreen> {
   @override
   Widget build(BuildContext context) {
-    var s = findSelected();
+    final s = findSelected();
     if (s.length == 2) {
-      var tempStat = stats[s[0]];
-      var tempBonus = bonuses[s[0]];
+      final tempStat = stats[s[0]];
+      final tempBonus = bonuses[s[0]];
       stats[s[0]] = stats[s[1]];
       bonuses[s[0]] = bonuses[s[1]];
       stats[s[1]] = tempStat;
@@ -305,43 +281,44 @@ class _StatScreenState extends State<StatScreen> {
     }
 
     statColumns(width) {
-      if (customStats)
+      if (customStats) {
         return [
-          DataColumn(
+          const DataColumn(
               label: Padding(
-            padding: const EdgeInsets.only(left: 20),
+            padding: EdgeInsets.only(left: 20),
             child: Text('Stat'),
           )),
           DataColumn(
               label: Container(
             padding: EdgeInsets.only(left: (15 + width / 2).toDouble()),
-            child: Text('Score'),
+            child: const Text('Score'),
           )),
           DataColumn(
               label: Container(
             padding: EdgeInsets.only(left: width / 2),
-            child: Text('Mod'),
+            child: const Text('Mod'),
           )),
         ];
-      else
+      } else {
         return [
-          DataColumn(label: Text('Stat')),
+          const DataColumn(label: Text('Stat')),
           DataColumn(label: Container()),
           DataColumn(
               label: Container(
-            padding: EdgeInsets.only(left: 20),
-            child: Text('Bonus'),
+            padding: const EdgeInsets.only(left: 20),
+            child: const Text('Bonus'),
           )),
           DataColumn(
               label: Container(
             padding: EdgeInsets.only(left: width),
-            child: Text('Final'),
+            child: const Text('Final'),
           ))
         ];
+      }
     }
 
     statRows(width) {
-      List<DataRow> rows = [];
+      final List<DataRow> rows = [];
       if (customStats) {
         for (int i = 0; i < 6; i++) {
           rows.add(DataRow(cells: [
@@ -349,7 +326,7 @@ class _StatScreenState extends State<StatScreen> {
               padding: const EdgeInsets.only(left: 20),
               child: Text(
                 statNames[i],
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+                style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
               ),
             )),
             DataCell(Container(
@@ -366,10 +343,10 @@ class _StatScreenState extends State<StatScreen> {
                 margin: EdgeInsets.fromLTRB((width / 2), 0, 30, 0),
                 child: Text(
                   () {
-                    int mod = ((stats[i] + bonuses[i]) / 2 - 5).floor();
+                    final int mod = ((stats[i] + bonuses[i]) / 2 - 5).floor();
                     return (mod > 0) ? '+$mod' : mod.toString();
                   }(),
-                  style: TextStyle(fontSize: 20),
+                  style: const TextStyle(fontSize: 20),
                 ),
               ),
             )
@@ -380,25 +357,25 @@ class _StatScreenState extends State<StatScreen> {
           rows.add(DataRow(cells: [
             DataCell(Text(
               statNames[i],
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+              style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
             )),
-            DataCell(Container(
+            DataCell(SizedBox(
               width: 40,
               height: 30,
               child: Tooltip(
                 message: 'press to swap stats',
                 child: OutlinedButton(
                   onPressed: () => setState(() => selected[i] = !selected[i]),
+                  style: selected[i]
+                      ? OutlinedButton.styleFrom(
+                          foregroundColor: Colors.white,
+                          backgroundColor: Colors.grey[900],
+                          padding: EdgeInsets.zero,
+                        )
+                      : OutlinedButton.styleFrom(
+                          padding: EdgeInsets.zero,
+                        ),
                   child: Text(stats[i].toString()),
-                  style: () {
-                    if (selected[i])
-                      return OutlinedButton.styleFrom(
-                        primary: Colors.white,
-                        backgroundColor: Colors.green,
-                      );
-                    else
-                      return null;
-                  }(),
                 ),
               ),
             )),
@@ -418,10 +395,10 @@ class _StatScreenState extends State<StatScreen> {
                   alignment: Alignment.center,
                   child: Text(
                     () {
-                      int mod = ((stats[i] + bonuses[i]) / 2 - 5).floor();
+                      final int mod = ((stats[i] + bonuses[i]) / 2 - 5).floor();
                       return (mod > 0) ? '+$mod' : mod.toString();
                     }(),
-                    style: TextStyle(fontSize: 20),
+                    style: const TextStyle(fontSize: 20),
                   )),
             ])),
           ]));
@@ -431,77 +408,75 @@ class _StatScreenState extends State<StatScreen> {
     }
 
     recommendations(width) {
-      List<String> s = getRecommendations();
-      final reg = TextStyle(fontSize: 18);
-      final bold = TextStyle(fontSize: 18, fontWeight: FontWeight.bold);
-      List<Widget> w = [
-        Container(
-            margin: EdgeInsets.fromLTRB(0, 20, 0, 10),
-            child:
-                Text("Character idea${s.length > 1 ? 's' : ''}:", style: bold)),
-      ];
-
-      String buildName = s[s.length - 1];
+      final List<String> s = getRecommendations();
+      const reg = TextStyle(fontSize: 18);
+      const bold = TextStyle(fontSize: 18, fontWeight: FontWeight.bold);
+      final String buildName = s[s.length - 1];
       s[s.length - 1] = '“$buildName” (info below)';
-      for (int i = 0; i < s.length; i++) {
-        w.add(InkWell(
-          onTap: () {},
-          child: Padding(
-            padding: EdgeInsets.symmetric(vertical: 5, horizontal: 20),
-            child: Row(crossAxisAlignment: CrossAxisAlignment.start, children: [
-              Container(width: 20, child: Text(' •', style: bold)),
-              Container(width: width - 60, child: Text(s[i], style: reg)),
-            ]),
-          ),
-        ));
-      }
 
-      w.add(Container(height: 25));
-      w.add(buildCard(buildName));
-
-      return Container(width: width, child: Column(children: w));
+      return SizedBox(
+        width: width,
+        child: Column(
+          children: [
+            Container(
+                margin: const EdgeInsets.fromLTRB(0, 20, 0, 10),
+                child: Text("Character idea${s.length > 1 ? 's' : ''}:", style: bold)),
+            for (int i = 0; i < s.length; i++)
+              InkWell(
+                onTap: () {},
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 20),
+                  child: Row(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                    const SizedBox(width: 20, child: Text(' •', style: bold)),
+                    SizedBox(width: width - 60, child: Text(s[i], style: reg)),
+                  ]),
+                ),
+              ),
+            const SizedBox(height: 25),
+            BuildCard(buildName),
+          ],
+        ),
+      );
     }
 
-    double screenWidth = MediaQuery.of(context).size.width;
+    final double screenWidth = MediaQuery.of(context).size.width;
     double tableWidth = screenWidth;
-    return Theme(
-      data: dndTheme,
-      child: Scaffold(
-        appBar: AppBar(title: Text('Stats')),
-        body: Container(
-          constraints: BoxConstraints.expand(),
-          child: SingleChildScrollView(
-            child: Container(
-              margin: EdgeInsets.symmetric(
-                horizontal: () {
-                  if (screenWidth < 600) {
-                    return 0.0;
-                  } else {
-                    double margin = (screenWidth - 600) / 3;
-                    tableWidth = screenWidth - margin * 2;
-                    return margin;
-                  }
-                }(),
-                vertical: 15,
-              ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  DataTable(
-                    headingRowHeight: 50,
-                    headingTextStyle: TextStyle(
-                      fontSize: 18,
-                      color: Colors.black,
-                      fontWeight: FontWeight.bold,
-                    ),
-                    columnSpacing: 20,
-                    dataRowHeight: 75,
-                    columns: statColumns(tableWidth - 314),
-                    rows: statRows(tableWidth - 330),
+    return AdaptiveScaffold(
+      appBar: AppBar(title: const Text('Stats')),
+      body: Container(
+        constraints: const BoxConstraints.expand(),
+        child: SingleChildScrollView(
+          child: Container(
+            margin: EdgeInsets.symmetric(
+              horizontal: () {
+                if (screenWidth < 600) {
+                  return 0.0;
+                } else {
+                  final double margin = (screenWidth - 600) / 3;
+                  tableWidth = screenWidth - margin * 2;
+                  return margin;
+                }
+              }(),
+              vertical: 15,
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                DataTable(
+                  headingRowHeight: 50,
+                  headingTextStyle: const TextStyle(
+                    fontSize: 18,
+                    color: Colors.black,
+                    fontWeight: FontWeight.bold,
                   ),
-                  recommendations(tableWidth),
-                ],
-              ),
+                  columnSpacing: 20,
+                  dataRowMinHeight: 75,
+                  dataRowMaxHeight: 75,
+                  columns: statColumns(tableWidth - 314),
+                  rows: statRows(tableWidth - 330),
+                ),
+                recommendations(tableWidth),
+              ],
             ),
           ),
         ),
@@ -511,10 +486,9 @@ class _StatScreenState extends State<StatScreen> {
 }
 
 class ArrowIncrement extends StatelessWidget {
+  const ArrowIncrement({super.key, required this.value, required this.update});
   final ValueChanged<int> update;
   final int value;
-
-  ArrowIncrement({required this.value, required this.update});
 
   @override
   Widget build(BuildContext context) {
@@ -528,7 +502,7 @@ class ArrowIncrement extends StatelessWidget {
           onPressed: () => update(value - 1),
         ),
       ),
-      Container(width: 90, child: Center(child: Text(value.toString()))),
+      SizedBox(width: 90, child: Center(child: Text(value.toString()))),
       Align(
         alignment: Alignment.centerRight,
         child: IconButton(

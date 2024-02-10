@@ -4,7 +4,7 @@ import 'cthulhu.dart';
 
 Player p = Player();
 
-final List<String> statNames = [
+const List<String> statNames = [
   'Strength',
   'Constitution',
   'Size',
@@ -15,194 +15,141 @@ final List<String> statNames = [
   'Education',
 ];
 
-final List<List<String>> ideologyBeliefs = [
+const List<List<String>> ideologyBeliefs = [
   [
-    "There is a higher power that you worship and pray to.",
-    "Vishnu, Jesus Christ, Haile Selassie I"
+    'There is a higher power that you worship and pray to.',
+    'Vishnu, Jesus Christ, Haile Selassie I'
   ],
+  ['Mankind can do just fine without religions.', 'staunch atheist, humanist, secularist'],
   [
-    "Mankind can do just fine without religions.",
-    "staunch atheist, humanist, secularist"
+    'Science has all the answers. (pick a particular aspect of interest)',
+    'evolution, cryogenics, space exploration'
   ],
-  [
-    "Science has all the answers. (pick a particular aspect of interest)",
-    "evolution, cryogenics, space exploration"
-  ],
-  ["A belief in fate", "karma, the class system, superstitious"],
-  [
-    "Member of a society or secret society",
-    "Freemason, Women's Institute, Anonymous"
-  ],
-  [
-    "There is evil in society that should be rooted out.",
-    "drugs, violence, racism"
-  ],
-  ["The occult", "astrology, spiritualism, tarot"],
-  ["Politics", "conservative, socialist, liberal"],
-  [
-    "\"Money is power, and I'm going to get all I can\"",
-    "greedy, enterprising, ruthless"
-  ],
-  ["Campaigner/Activist", "feminism, equal rights, union power"]
+  ['A belief in fate', 'karma, the class system, superstitious'],
+  ['Member of a society or secret society', "Freemason, Women's Institute, Anonymous"],
+  ['There is evil in society that should be rooted out.', 'drugs, violence, racism'],
+  ['The occult', 'astrology, spiritualism, tarot'],
+  ['Politics', 'conservative, socialist, liberal'],
+  ['"Money is power, and I\'m going to get all I can"', 'greedy, enterprising, ruthless'],
+  ['Campaigner/Activist', 'feminism, equal rights, union power']
 ];
-final List<List<String>> significantPeople = [
-  ["Parent", "mother, father, stepmother"],
-  ["Grandparent", "maternal grandmother, paternal grandfather"],
-  ["Sibling", "brother, half-brother, stepsister"],
-  ["Child", "son or daughter"],
-  ["Partner", "spouse, fiancé, lover"],
+const List<List<String>> significantPeople = [
+  ['Parent', 'mother, father, stepmother'],
+  ['Grandparent', 'maternal grandmother, paternal grandfather'],
+  ['Sibling', 'brother, half-brother, stepsister'],
+  ['Child', 'son or daughter'],
+  ['Partner', 'spouse, fiancé, lover'],
   [
-    "Person who taught you your highest occupational skill. Identify the skill and consider who taught you.",
-    "a schoolteacher, the person you apprenticed with, your father"
+    'Person who taught you your highest occupational skill. Identify the skill and consider who taught you.',
+    'a schoolteacher, the person you apprenticed with, your father'
   ],
-  ["Childhood friend", "classmate, neighbor, imaginary friend"],
+  ['Childhood friend', 'classmate, neighbor, imaginary friend'],
   [
-    "A famous person. Your idol or hero. You may never have even met.",
-    "film star, politician, musician"
+    'A famous person. Your idol or hero. You may never have even met.',
+    'film star, politician, musician'
   ],
-  ["A fellow investigator in your game.", "Pick one or choose randomly."],
-  ["An NPC in the game.", "Ask the Keeper to pick one for you."]
+  ['A fellow investigator in your game.', 'Pick one or choose randomly.'],
+  ['An NPC in the game.', 'Ask the Keeper to pick one for you.']
 ];
-final List<List<String>> significantReasons = [
+const List<List<String>> significantReasons = [
   [
-    "You are indebted to them.",
-    "financially, they protected you through hard times, got you your first job"
+    'You are indebted to them.',
+    'financially, they protected you through hard times, got you your first job'
   ],
-  ["They taught you something.", "a skill, to love, to be a man"],
+  ['They taught you something.', 'a skill, to love, to be a man'],
   [
-    "They give your life meaning.",
-    "you aspire to be like them, you seek to be with them, you seek to make them happy"
-  ],
-  [
-    "You wronged them and seek reconciliation.",
-    "stole money from them, informed the police about them, refused to help when they were desperate"
+    'They give your life meaning.',
+    'you aspire to be like them, you seek to be with them, you seek to make them happy'
   ],
   [
-    "Shared experience",
-    "you lived through hard times together, you grew up together, you served in the war together"
+    'You wronged them and seek reconciliation.',
+    'stole money from them, informed the police about them, refused to help when they were desperate'
   ],
   [
-    "You seek to prove yourself to them.",
-    "by getting a good job, by finding a good spouse, by getting an education"
+    'Shared experience',
+    'you lived through hard times together, you grew up together, you served in the war together'
   ],
-  ["You idolize them.", "for their fame, their beauty, their work"],
   [
-    "A feeling of regret",
+    'You seek to prove yourself to them.',
+    'by getting a good job, by finding a good spouse, by getting an education'
+  ],
+  ['You idolize them.', 'for their fame, their beauty, their work'],
+  [
+    'A feeling of regret',
     "you should have died in their place, you fell out over something you said, you didn't step up and help them when you had the chance"
   ],
+  ['They had a flaw, and you wish to prove yourself better than them.', 'lazy, drunk, unloving'],
   [
-    "They had a flaw, and you wish to prove yourself better than them.",
-    "lazy, drunk, unloving"
-  ],
-  [
-    "They have crossed you and you seek revenge.",
-    "death of a loved one, your financial ruin, marital breakup"
+    'They have crossed you and you seek revenge.',
+    'death of a loved one, your financial ruin, marital breakup'
   ],
 ];
-final List<List<String>> meaningfulLocations = [
-  ["Your seat of learning", "school, university"],
-  ["Your hometown", "rural village, market town, busy city"],
+const List<List<String>> meaningfulLocations = [
+  ['Your seat of learning', 'school, university'],
+  ['Your hometown', 'rural village, market town, busy city'],
+  ['The place you met your first love', 'a music concert, on holiday, a bomb shelter'],
+  ['A place for quiet contemplation', 'the library, country walks on your estate, fishing'],
+  ['A place for socializing', "gentleman's club, local bar, uncle's house"],
+  ['A place connected with your ideology/belief', 'parish church, Mecca, Stonehenge'],
+  ['The grave of a significant person', 'a parent, a child, a lover'],
+  ['Your family home', 'a country estate, a rented flat, the orphanage in which you were raised'],
   [
-    "The place you met your first love",
-    "a music concert, on holiday, a bomb shelter"
+    'The place you were the happiest in your life',
+    'the park bench where you first kissed, your university'
   ],
-  [
-    "A place for quiet contemplation",
-    "the library, country walks on your estate, fishing"
-  ],
-  ["A place for socializing", "gentleman's club, local bar, uncle's house"],
-  [
-    "A place connected with your ideology/belief",
-    "parish church, Mecca, Stonehenge"
-  ],
-  ["The grave of a significant person", "a parent, a child, a lover"],
-  [
-    "Your family home",
-    "a country estate, a rented flat, the orphanage in which you were raised"
-  ],
-  [
-    "The place you were the happiest in your life",
-    "the park bench where you first kissed, your university"
-  ],
-  ["Your workplace", "the office, library, bank"]
+  ['Your workplace', 'the office, library, bank']
 ];
-final List<List<String>> treasuredPossessions = [
-  [
-    "An item connected with your highest skill",
-    "expensive suit, false ID, brass knuckles"
-  ],
-  ["An essential item for your occupation", "doctor's bag, car, lock picks"],
-  ["A memento from your childhood", "comics, pocketknife, lucky coin"],
-  [
-    "A memento of a departed person",
-    "jewelry, a photograph in your wallet, a letter"
-  ],
-  [
-    "Something given to you by your Significant Person",
-    "a ring, a diary, a map"
-  ],
-  ["Your collection", "bus tickets, stuffed animals, records"],
+const List<List<String>> treasuredPossessions = [
+  ['An item connected with your highest skill', 'expensive suit, false ID, brass knuckles'],
+  ['An essential item for your occupation', "doctor's bag, car, lock picks"],
+  ['A memento from your childhood', 'comics, pocketknife, lucky coin'],
+  ['A memento of a departed person', 'jewelry, a photograph in your wallet, a letter'],
+  ['Something given to you by your Significant Person', 'a ring, a diary, a map'],
+  ['Your collection', 'bus tickets, stuffed animals, records'],
   [
     "Something you found but you don't know what it is—you seek answers",
-    "a letter you found in a cupboard written in an unknown language, "
+    'a letter you found in a cupboard written in an unknown language, '
         "a curious pipe of unknown origin found among your late father's effects, "
-        "a curious silver ball you dug up in your garden"
+        'a curious silver ball you dug up in your garden'
   ],
-  ["A sporting item", "cricket bat, a signed baseball, a fishing rod"],
-  [
-    "A weapon",
-    "service revolver, your old hunting rifle, the hidden knife in your boot"
-  ],
-  ["A pet", "a dog, a cat, a tortise"]
+  ['A sporting item', 'cricket bat, a signed baseball, a fishing rod'],
+  ['A weapon', 'service revolver, your old hunting rifle, the hidden knife in your boot'],
+  ['A pet', 'a dog, a cat, a tortise']
 ];
 
 class Job {
-  String name = '';
-  List<String> reqs = [];
-
-  Job(String n, List<String> r) {
-    this.name = n;
-    this.reqs = r;
-  }
+  const Job(this.name, this.reqs);
+  final String name;
+  final List<String> reqs;
 
   @override
-  String toString() {
-    return '{$name: $reqs}';
-  }
+  String toString() => '{$name: $reqs}';
 }
 
 class PlayerStat {
-  String name = '';
-  int val = 0;
-
-  PlayerStat(String n, int v) {
-    this.name = n;
-    this.val = v;
-  }
+  PlayerStat(this.name, this.val);
+  String name;
+  int val;
 
   @override
-  String toString() {
-    return '{$name: $val}';
-  }
+  String toString() => '{$name: $val}';
 }
 
 class Player {
   List<PlayerStat> stats = [
-    PlayerStat('STR', (d6() + d6() + d6()) * 5),
-    PlayerStat('CON', (d6() + d6() + d6()) * 5),
-    PlayerStat('SIZ', (d6() + d6() + 6) * 5),
-    PlayerStat('DEX', (d6() + d6() + d6()) * 5),
-    PlayerStat('APP', (d6() + d6() + d6()) * 5),
-    PlayerStat('INT', (d6() + d6() + 6) * 5),
-    PlayerStat('POW', (d6() + d6() + d6()) * 5),
-    PlayerStat('EDU', (d6() + d6() + 6) * 5)
+    PlayerStat('STR', (d6 + d6 + d6) * 5),
+    PlayerStat('CON', (d6 + d6 + d6) * 5),
+    PlayerStat('SIZ', (d6 + d6 + 6) * 5),
+    PlayerStat('DEX', (d6 + d6 + d6) * 5),
+    PlayerStat('APP', (d6 + d6 + d6) * 5),
+    PlayerStat('INT', (d6 + d6 + 6) * 5),
+    PlayerStat('POW', (d6 + d6 + d6) * 5),
+    PlayerStat('EDU', (d6 + d6 + 6) * 5)
   ];
 
   int statGet(String s) {
     for (final score in stats) {
-      if (score.name == s) {
-        return score.val;
-      }
+      if (score.name == s) return score.val;
     }
     return -1;
   }
@@ -217,12 +164,7 @@ class Player {
   }
 
   bool isIn(String s, List<PlayerStat> bestAttributes) {
-    for (final score in bestAttributes) {
-      if (score.name == s) {
-        return true;
-      }
-    }
-    return false;
+    return bestAttributes.any((score) => score.name == s);
   }
 
   int age = 0;
@@ -279,7 +221,7 @@ class Player {
         addtoStatData(stat, 99 - statGet(stat));
         statSet(stat, 99);
       } else {
-        print('cannot bring $stat over 90');
+        // cannot bring stat over 90
         return false;
       }
     } else {
@@ -319,9 +261,7 @@ class Player {
       if (statGet(reduceStats[0]) < 10) {
         reduceStats.removeAt(0);
       }
-      if (reduceStats.length == 0) {
-        return;
-      }
+      if (reduceStats.isEmpty) return;
       alterStat(reduceStats[0], -5);
       amt -= 5;
     }
@@ -329,21 +269,18 @@ class Player {
 
   void setAge() {
     if (autoAge) {
-      List<PlayerStat> bestAttributes = stats.toList();
+      final List<PlayerStat> bestAttributes = stats.toList();
       for (final i in [5, 2, 1]) {
         bestAttributes.removeAt(i);
       } // remove stats that don't affect job skills
-      PlayerStat bestValue =
-          bestAttributes.reduce((a, b) => a.val > b.val ? a : b);
+      final PlayerStat bestValue = bestAttributes.reduce((a, b) => a.val > b.val ? a : b);
       for (int i = bestAttributes.toList().length - 1; i >= 0; i--) {
         if (bestAttributes[i].val < bestValue.val) {
           bestAttributes.removeAt(i);
         } // remove non-optimal job skills
       }
-      double mod = 1 /
-          (1 +
-              exp(-3 -
-                  (statGet('INT') - statGet('POW') - statGet('EDU')) / 16));
+      final double mod =
+          1 / (1 + exp(-3 - (statGet('INT') - statGet('POW') - statGet('EDU')) / 16));
       // value of mod is between 0 and 1
       // more educated & less likely to go insane = want to be younger
       // uses a sigmoid function to evenly distribute the probability of each age
@@ -357,110 +294,100 @@ class Player {
               ? (15 + 10 * mod).toInt()
               : (15 + 64 * mod).toInt();
 
-      if (age < 20) {
-        luck = [(d6() + d6() + d6()) * 5, (d6() + d6() + d6()) * 5].reduce(max);
-        if (isIn('STR', bestAttributes)) {
-          alterStat('SIZ', -5);
-        } else {
-          alterStat('STR', -5);
-        }
-        alterStat('EDU', -5);
-      } else {
-        luck = (d6() + d6() + d6()) * 5;
-        if (age < 40) {
+      luck = (d6 + d6 + d6) * 5;
+      switch (age) {
+        case < 20:
+          luck = max((d6 + d6 + d6) * 5, (d6 + d6 + d6) * 5);
+          alterStat(isIn('STR', bestAttributes) ? 'SIZ' : 'STR', -5);
+          alterStat('EDU', -5);
+        case < 40:
           eduImprovement(1);
-        } else if (age < 50) {
+        case < 50:
           statReduce(5, bestAttributes);
           alterStat('APP', -5);
           eduImprovement(2);
           mov -= 1;
-        } else if (age < 60) {
+        case < 60:
           statReduce(10, bestAttributes);
           alterStat('APP', -10);
           eduImprovement(3);
           mov -= 2;
-        } else if (age < 70) {
+        case < 70:
           statReduce(20, bestAttributes);
           alterStat('APP', -15);
           eduImprovement(4);
           mov -= 3;
-        } else if (age < 80) {
+        case < 80:
           statReduce(40, bestAttributes);
           alterStat('APP', -20);
           eduImprovement(4);
           mov -= 4;
-        } else {
+        default:
           statReduce(80, bestAttributes);
           alterStat('APP', -25);
           eduImprovement(4);
           mov -= 5;
-        }
       }
     } else {
-      if (age < 20) {
-        luck = [(d6() + d6() + d6()) * 5, (d6() + d6() + d6()) * 5].reduce(max);
-        alterStat('EDU', -5);
-        reduceAmt = 5;
-      } else {
-        luck = (d6() + d6() + d6()) * 5;
-        if (age < 40) {
+      luck = (d6 + d6 + d6) * 5;
+      switch (age) {
+        case < 20:
+          luck = max((d6 + d6 + d6) * 5, (d6 + d6 + d6) * 5);
+          alterStat('EDU', -5);
+          reduceAmt = 5;
+        case < 40:
           eduImprovement(1);
-        } else if (age < 50) {
+        case < 50:
           reduceAmt = 5;
           alterStat('APP', -5);
           eduImprovement(2);
           mov -= 1;
-        } else if (age < 60) {
+        case < 60:
           reduceAmt = 10;
           alterStat('APP', -10);
           eduImprovement(3);
           mov -= 2;
-        } else if (age < 70) {
+        case < 70:
           reduceAmt = 20;
           alterStat('APP', -15);
           eduImprovement(4);
           mov -= 3;
-        } else if (age < 80) {
+        case < 80:
           reduceAmt = 40;
           alterStat('APP', -20);
           eduImprovement(4);
           mov -= 4;
-        } else {
+        default:
           reduceAmt = 80;
           alterStat('APP', -25);
           eduImprovement(4);
           mov -= 5;
-        }
       }
     }
   }
 
   void hpMovBuild() {
     hp = (statGet('SIZ') + statGet('CON')) ~/ 10;
-    if (statGet('DEX') < statGet('SIZ') && statGet('STR') < statGet('SIZ')) {
+    if (max(statGet('DEX'), statGet('STR')) < statGet('SIZ')) {
       mov += 7;
-    } else if (statGet('DEX') > statGet('SIZ') &&
-        statGet('STR') > statGet('SIZ')) {
+    } else if (min(statGet('DEX'), statGet('STR')) > statGet('SIZ')) {
       mov += 9;
     } else {
       mov += 8;
     }
-    final thicc = statGet('STR') + statGet('SIZ');
-    build = thicc < 65
-        ? -2
-        : thicc < 85
-            ? -1
-            : thicc < 125
-                ? 0
-                : thicc < 165
-                    ? 1
-                    : 2;
+    build = switch (statGet('STR') + statGet('SIZ')) {
+      < 65 => -2,
+      < 85 => -1,
+      < 125 => 0,
+      < 165 => 1,
+      _ => 2,
+    };
     final List<String> damageBonuses = ['-2', '-1', '0', '+1d4', '+1d6'];
     dmgBonus = damageBonuses[build + 2];
   }
 
   void decideOccupation() {
-    List<PlayerStat> bestAttributes = stats.toList();
+    final List<PlayerStat> bestAttributes = stats.toList();
     for (final i in [5, 2, 1]) {
       bestAttributes.removeAt(i);
     } // remove stats that don't affect job skills
@@ -470,7 +397,7 @@ class Player {
         bestAttributes.removeAt(i);
       } // remove non-optimal job skills
     }
-    List<Job> jobs = [
+    const List<Job> jobs = [
       Job('Antiquarian', ['EDU']),
       Job('Artist', ['POW', 'DEX']),
       Job('Athlete', ['DEX', 'STR']),
@@ -501,15 +428,11 @@ class Player {
       Job('Zealot', ['APP', 'POW'])
     ];
     for (int i = 0; i < jobs.length; i++) {
-      bool isBestJob = false;
       for (final attribute in jobs[i].reqs) {
         if (isIn(attribute, bestAttributes)) {
-          isBestJob = true;
+          bestJobs.add(jobs[i].name);
           break;
         }
-      }
-      if (isBestJob) {
-        bestJobs.add(jobs[i].name);
       }
     }
     jobSkillPoints = 2 * statGet('EDU') + 2 * bestValue.val;
