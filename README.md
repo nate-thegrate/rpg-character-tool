@@ -9,7 +9,7 @@ This is a resource made for Dungeons & Dragons and Call of Cthulhu. (More tablet
 ### Save to your Desktop
 
 You can download via Microsoft Edge or Google Chrome:  
-<img src="https://i.redd.it/fffnjibpkir61.png" width="500" />
+![PWA download](/pwa.png)
 
 <br>
 
